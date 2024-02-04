@@ -1,0 +1,532 @@
+@font-face {
+	font-family: myFirstFont;
+	src: url(Fonts/A_Anubhuti\ Normal.ttf);
+}
+
+
+
+* {
+	margin: 0;
+	overflow-x: hidden;
+	padding: 0;
+	/* background-color: #D61C4E; */
+
+}
+
+body {
+	/* background-image: url('img/11.jpg');
+	background-repeat: no-repeat; */
+	background-image: linear-gradient(to left bottom,
+			#F77E21,
+			#D61C4E,
+			#FAC213,
+			#FEF9A7);
+}
+
+#navbar {
+	display: flex;
+	height: 80px;
+	width: 100%;
+	background-color: #D61C4E;
+	position: fixed;
+	z-index: 10;
+}
+
+.logo {
+	display: flex;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+.logo img {
+	margin: 2px 13px;
+}
+
+.logo h1 {
+	align-items: center;
+	text-align: center;
+	font-size: 38px;
+	font-weight: bolder;
+	padding: 8px 120px;
+}
+
+.logo .img2 {
+	align-items: end;
+}
+
+.links {
+	display: flex;
+	list-style: none;
+	text-decoration: none;
+}
+
+.links li {
+	font-size: 20px;
+	padding: 0 20px;
+	color: #fff;
+}
+
+.links li a:hover {
+	color: #91640F;
+	/* border: 2px solid #607d8b !important; */
+
+}
+
+.navbar {
+	height: 50px;
+	overflow-y: hidden;
+	width: 100%;
+	position: fixed;
+	top: 80px;
+	z-index: 10;
+	background-image: linear-gradient(to right, #D61C4E, #FEF9A7);
+}
+
+
+
+.carousel-item img {
+	width: 100%;
+}
+
+
+/* About Section */
+#about {
+	margin-top: 130px;
+}
+
+#about h1 {
+	padding: 10px;
+	font-size: 45px;
+	text-align: center;
+	font-weight: bold;
+	color: #FEF9A7;
+}
+
+#about .under {
+	width: 250px;
+	color: #FEF9A7;
+	border-width: 2px;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+	margin: -20px 40% 5px 40%;
+}
+
+.aboutImg {
+	text-align: center;
+}
+
+#aboutImg {
+	width: 80%;
+	height: 450px;
+}
+
+#aboutText {
+	margin-top: 10px;
+	font-size: 16px;
+	color: #FEF9A7;
+}
+
+/* Informarion */
+
+#info {
+	margin-top: 130px;
+}
+
+#info h1 {
+	padding: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+
+#info .under {
+	width: 440px;
+	color: #FEF9A7;
+	margin: -20px 20% 5px 33%;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+.infoCard {
+	text-align: center;
+	align-items: center;
+	background-image: url('img/imagess.jpeg');
+	border: 1px solid #D61C4E;
+	margin: 20px;
+	width: 90%;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.infoCard h5 {
+	color: #D61C4E;
+	font-weight: bolder;
+}
+
+/* Advertisement */
+.ads {
+	width: 100%;
+	height: 300px;
+	transform-style: preserve-3d;
+	perspective: 500px;
+	border: none;
+	background-color: inherit;
+}
+
+.card .box {
+	position: absolute;
+	color: #262626;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	background: #fff;
+	transform-style: preserve-3d;
+	transition: 0.5s;
+	backface-visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+
+
+/* Footer */
+#footer {
+	padding-top: 20px;
+}
+
+.footerHead {
+	display: flex;
+}
+
+/* Gallery */
+#gallery {
+	margin-top: 130px;
+}
+
+#gallery h1 {
+	padding: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+
+#gallery .under {
+	width: 130px;
+	margin: -40px 45% 5px 45%;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+
+/* Wedding */
+#wedding {
+	margin-top: 130px;
+	text-align: center;
+}
+
+#wedding .under {
+	width: 650px;
+	margin: -40px 24% 5px 24%;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+#wedding h3 {
+	padding: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+#wedding .mainImg {
+	width: 90%;
+	height: 500px;
+	border-radius: 20px;
+	margin: 10px;
+}
+
+#wedding h4 {
+	padding: 22px;
+	font-size: 29px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+	line-height: 1px;
+
+}
+
+#wedding h6 {
+	text-align: end;
+	font-size: 18px;
+	font-weight: lighter;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+#wedding h2 {
+	font-size: 29px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+.details {
+	display: flex;
+}
+
+.details .Menimage {
+	width: 40%;
+}
+
+.details .Menimage img {
+	width: 80%;
+	height: 180px;
+}
+
+.center {
+	text-align: center;
+}
+
+.center img {
+	width: 50%;
+	height: 180px;
+}
+
+
+/* News */
+#news {
+	margin-top: 130px;
+}
+
+#news h1 {
+	padding: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+
+#news .under {
+	width: 130px;
+	margin: -40px 45% 5px 45%;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+#news h6 {
+	text-align: left;
+}
+
+
+#teamCom {
+	margin-top: 10px;
+}
+
+#teamCom h1 {
+	padding: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #FEF9A7;
+	text-align: center;
+}
+
+
+#teamCom .under {
+	width: 130px;
+	margin: -40px 45% 5px 45%;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+/* Contact */
+
+#contactForm {
+	margin-top: 135px;
+}
+
+/* Register */
+
+#registerUser{
+	margin-top: 130px;
+}
+
+label {
+	font-weight: 600;
+	color: #666;
+}
+
+.box8 {
+	box-shadow: 0px 0px 5px 1px #999;
+}
+
+@media screen and (max-width: 480px) {
+	.logo {
+		font-size: 9px;
+	}
+
+	img {
+		margin: 0;
+	}
+
+	.logo h1 {
+		padding: 0px;
+		font-size: 20px;
+	}
+
+
+	.links li {
+		font-size: 15px;
+		padding: 0 10px;
+		color: #D61C4E;
+	}
+
+	.navbar {
+		height: 50px;
+		width: 100%;
+		background-color: #FEF9A7;
+	}
+
+
+	.carousel-item {
+		top: 50px;
+	}
+
+	/* About Section */
+
+	#about .under {
+		width: 130px;
+		margin: -20px 34% 5px 34%;
+	}
+
+	#about h1 {
+		font-size: 25px;
+		color: #FEF9A7;
+	}
+
+
+	#aboutText {
+		margin-top: 10px;
+		font-size: 14px;
+		color: #FEF9A7;
+	}
+
+	#aboutImg {
+		width: 50%;
+		height: 200px;
+	}
+
+
+	/* Information */
+	#info h1 {
+		font-size: 25px;
+	}
+
+	#info .under {
+		width: 250px;
+		margin: -20px 34% 5px 20%;
+
+	}
+
+	/* Gallery */
+
+	#gallery h1 {
+		font-size: 35px;
+	}
+
+
+	#gallery .under {
+		width: 90px;
+		margin: -20px 45% 5px 40%;
+	}
+
+	/* Team */
+
+	#teamCom .team h5 {
+		font-size: 16px;
+	}
+
+	#teamCom .team {
+		margin: 9px;
+	}
+
+	#teamCom h1 {
+		font-size: 35px;
+	}
+
+
+	#teamCom .under {
+		width: 90px;
+		margin: -20px 45% 5px 40%;
+	}
+
+	#news h1 {
+		font-size: 35px;
+	}
+
+	#news .under {
+		width: 110px;
+		margin: -20px 38% 5px 38%;
+	}
+
+
+	/* Wedding */
+
+	#wedding .under {
+		width: 350px;
+		margin: -40px 24% 5px 8%;
+	}
+
+	#wedding .mainImg {
+		height: 300px;
+	}
+
+	#wedding h3 {
+		font-size: 25px;
+	}
+
+	#wedding h4 {
+		font-size: 8px;
+		padding: 2px;
+		/* color: #000; */
+		line-height: 1px;
+
+	}
+
+	#wedding h6 {
+		font-size: 8px;
+		/* color: #000; */
+	}
+
+	.details {
+		display: flex;
+	}
+
+	.details .Menimage {
+		width: 55%;
+	}
+
+	.details .Menimage img {
+		width: 80%;
+		height: 70px;
+	}
+
+	.center {
+		text-align: center;
+		/* top: 50%; */
+	}
+
+	.center img {
+		width: 50%;
+		height: 50px;
+	}
+
+	#wedding h2 {
+		font-size: 12px;
+	}
+
+
+}
