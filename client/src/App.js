@@ -10,6 +10,7 @@ import NewsPage from './pages/NewsPage';
 import ContactPage from './pages/ContactPage';
 import SutradharPage from './pages/SutradharPage';
 import Register from './pages/Register';
+import AdminRoute from './components/Routes/AdminRoute';
 
 function App() {
     return (
@@ -25,6 +26,9 @@ function App() {
             <Route exact path='/contact' element={<ContactPage />} />
             <Route exact path='/sutradhar' element={<SutradharPage />} />
             <Route exact path='/register' element={<Register />} />
+            <Route exact path='/dashboard' element={<AdminRoute />}>
+                
+            </Route>
         </Routes>
     );
 }
