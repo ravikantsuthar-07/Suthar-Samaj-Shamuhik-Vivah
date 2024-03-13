@@ -1,24 +1,32 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 
-import connection from './DB/connection.js';
 
 import register from './Routes/registerRouter.js';
 import Slider from './Routes/sliderRoutes.js'
+import wedding from "./Routes/weddingRoutes.js";
 
 // Environment Configuration
-dotenv.config()
+dotenv.config();
 
-// Database Connect
-connection();
 
 
 
 const app = express();
 
 
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
+
+
 app.use('/api/v1/rgister', register);
 app.use('/api/v1/slider', Slider);
+app.use('/api/v1/wedding', wedding);
 
 const PORT = process.env.PORT || 8000;
 

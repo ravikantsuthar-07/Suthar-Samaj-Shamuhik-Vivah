@@ -11,6 +11,9 @@ import ContactPage from './pages/ContactPage';
 import SutradharPage from './pages/SutradharPage';
 import Register from './pages/Register';
 import AdminRoute from './components/Routes/AdminRoute';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import LoginPage from './pages/LoginPage';
+import AdminWedding from './pages/Admin/AdminWedding';
 
 function App() {
     return (
@@ -27,8 +30,10 @@ function App() {
             <Route exact path='/sutradhar' element={<SutradharPage />} />
             <Route exact path='/register' element={<Register />} />
             <Route exact path='/dashboard' element={<AdminRoute />}>
-                
+                <Route path='admin' element={<AdminDashboard />} />
+                <Route path='wedding' element={<AdminWedding />} />
             </Route>
+            <Route exact path='/login' element={<LoginPage /> } />
         </Routes>
     );
 }

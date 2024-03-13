@@ -15,7 +15,6 @@ const NewsPage = () => {
                             <img src={Frist} className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title">सामूहिक विवाह - 2023</h5>
-                                <h6>01-02-2024</h6>
                                 <a href="/wedding/1" className="btn btn-outline-danger">अधिक जानकारी</a>
                             </div>
                         </div>

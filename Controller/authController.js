@@ -1,52 +1,77 @@
-import Register from '../Models/registerModels.js';
 import { comparePassword, hashPassword } from '../helpers/registerHelper.js';
-import JWT from 'jsonwebtoken'
+import JWT from 'jsonwebtoken';
+import DB from '../DB/connection.js';
 export const createController = async (req, res) => {
     try {
 
         const { name, mobileNo, email, password } = req.fields;
         if (!name) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
                 message: "Name is Required"
             });
         }
         if (!email) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
                 message: "Email is Required"
             });
         }
         if (!mobileNo) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
                 message: "Mobile Number is Required"
             });
         }
         if (!password) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
                 message: "Password is Required"
             });
         }
 
-        const check = await Register.findOne({ email });
-        if (check) {
-            return res.status(304).send({
-                success: true,
-                message: 'Email Already register'
-            });
-        }
         const hashedPassword = await hashPassword(password);
+        await DB.query(
+            `SELECT email, name From admins WHERE email = '${email}'`, (err, results) => {
+                if (err) {
+                    console.log('ERR');
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Error in Insert User in Table',
+                        err
+                    });
+                } else {
+                    if (results.length > 0) {
+                        return res.status(400).json({
+                            success: false,
+                            message: 'Email Already register',
+                            results
+                        });
+                    }
+                }
+            }
+        );
 
-        const user = await Register({ name, email, password: hashedPassword, phone: mobileNo }).save();
-        if (user) {
-            return res.status(201).send({
-                success: true,
-                message: "User Register Successfully",
-                user
-            });
-        }
+        const sql = `INSERT INTO admins (name, email, phone, password) VALUES( ?, ?, ?, ? )`;
+        await DB.query(
+            sql, [name, email, mobileNo, hashedPassword], (err, results) => {
+                if (err) {
+                    return res.status(500).json({
+                        success: false,
+                        message: "Error in Insert a new User",
+                        err
+                    });
+                } else {
+                    return res.status(201).json({
+                        success: true,
+                        message: "User Register Successfully",
+                        results
+                    });
+                }
+            }
+        );
+
+
     } catch (error) {
         return res.status(500).send({
             success: false,
@@ -61,41 +86,55 @@ export const loginController = async (req, res) => {
     try {
         const { email, password } = req.fields;
         if (!email) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
                 message: "Email is Required"
             });
         }
         if (!password) {
-            return res.status(500).send({
+            return res.status(400).send({
                 success: false,
                 message: "Password is Required"
             });
         }
-        const user = await Register.findOne({ email });
-        if (!user) {
-            return res.status(404).send({
-                success: false,
-                message: "Email is Not Registered"
-            });
+
+        const abc =  async (password , results) => {
+            const match = await  comparePassword(password, results[0].password)
+            if (match) {
+                const token = await JWT.sign({id: results[0].id }, process.env.JWT_SECRET, {expiresIn: '1d'});
+                return res.status(200).json({
+                    success: true,
+                    message: "Login Successfully",
+                    results,
+                    token
+                });
+            } else {
+                return res.status(401).json({
+                    success: false,
+                    message: "Invalid password"
+                })
+            }
         }
-        console.log("RAvi");
-        const match = await comparePassword(password, user.password);
-        console.log("RAvi");
-        if (!match) {
-            return res.send({
-                status: 200,
-                success: false,
-                message: "Invalid Password"
-            })
-        }
-        const token = await JWT.sign({ _id: user.id }, process.env.JWT_SECRET, { expiresIn: '5d' });
-        return res.status(200).send({
-            success: true,
-            message: "Login Successfully",
-            user,
-            token
-        });
+        const user =  DB.query(
+            `SELECT * From admins WHERE email = ?`, [email], (err, results) => {
+                if (err) {
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Error in Login User ',
+                        err
+                    })
+                } else {
+                    if (results.length === 0) {
+                        return res.status(401).json({
+                            success: false,
+                            message: "Email is Not Registered"
+                        });
+                    }
+                    abc(password, results);
+                }
+            }
+        );
+ 
     } catch (error) {
         return res.status(500).send({
             success: false,

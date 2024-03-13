@@ -1,40 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Frist from '../img/1.jpg'
 import under from '../img/Under.png';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const InformationCom = () => {
+    const [info, setInfo] = useState([]);
+    const navigate = useNavigate()
+
+    const getSlider = async () => {
+        try {
+            const { data } = await axios.get('/api/v1/slider/get-slider-last');
+            console.log(data);
+            if (data.success) {
+                setInfo(data.results)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getSlider();
+    }, []);
     return (
         <section id="info">
             <h1>आयोजित सामूहिक विवाह</h1>
             <img className='under' src={under} alt="" />
             <div className="row ">
-                <div className="col-md-4 col-sm-12">
+                {info.map((info, i) => ( 
+                <div className="col-md-4 col-sm-12" key={i}>
                     <div className="card infoCard">
                         <img src={Frist} className="card-img-top" alt="..." />
                         <div className="card-body">
-                            <h5 className="card-title">सामूहिक विवाह - 2023</h5>
-                            <a href="/" className="btn btn-outline-danger">अधिक जानकारी</a>
+                            <h5 className="card-title">सामूहिक विवाह - {info.Year}</h5>
+                            <button onClick={() => navigate(`/wedding/${info.id}`)} className="btn btn-outline-danger">अधिक जानकारी</button>
                         </div>
                     </div>
                 </div>
-                <div className="col-md-4 col-sm-12">
-                    <div className="card infoCard">
-                        <img src={Frist} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title">सामूहिक विवाह - 2022</h5>
-                            <a href="/" className="btn btn-outline-danger">अधिक जानकारी</a>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md-4 col-sm-12">
-                    <div className="card infoCard">
-                        <img src={Frist} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <h5 className="card-title">सामूहिक विवाह - 2021</h5>
-                            <a href="/" className="btn btn-outline-danger">अधिक जानकारी</a>
-                        </div>
-                    </div>
-                </div>
+                ))}
+
             </div>
         </section>
     )

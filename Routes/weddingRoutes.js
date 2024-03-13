@@ -1,0 +1,43 @@
+import express from "express";
+import {
+    createGiftController,
+    createWeddingController,
+    deleteGiftController,
+    deleteWeddingController,
+    getAllWeddingController,
+    getGiftController,
+    updateGiftController,
+    updateWeddingController,
+} from "../Controller/weddingController.js";
+import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import multer from 'multer';
+
+const router = express.Router();
+
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, process.cwd() + `/client/src/img/wedding/`)
+    },
+    filename: (req, file, cb) => {
+        cb(null,  file.originalname)
+    },
+})
+
+const upload = multer({ storage: storage });
+
+
+router.get('/gettAllWedding/:year', getAllWeddingController);
+
+router.post('/createWedding', requireSignIn, isAdmin, upload.array('Photo', 2), createWeddingController);
+router.put('/updateWedding/:id', requireSignIn, isAdmin, upload.array('Photo', 2), updateWeddingController);
+router.delete('/deleteWedding/:id', requireSignIn, isAdmin, deleteWeddingController);
+
+router.get('/gifts/:year', getGiftController);
+router.post('/createGift', requireSignIn, isAdmin, createGiftController);
+router.put('/updateGift/:id', requireSignIn, isAdmin, updateGiftController);
+router.delete('/deleteGift/:id', requireSignIn, isAdmin, deleteGiftController);
+
+
+export default router;

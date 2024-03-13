@@ -3,8 +3,6 @@
 	src: url(Fonts/A_Anubhuti\ Normal.ttf);
 }
 
-
-
 * {
 	margin: 0;
 	overflow-x: hidden;
@@ -14,10 +12,8 @@
 }
 
 body {
-	/* background-image: url('img/11.jpg');
-	background-repeat: no-repeat; */
 	background-image: linear-gradient(to left bottom,
-			#F77E21,
+			#f77e21,
 			#D61C4E,
 			#FAC213,
 			#FEF9A7);
@@ -45,11 +41,13 @@ body {
 .logo h1 {
 	align-items: center;
 	text-align: center;
-	font-size: 38px;
+	font-size: 35px;
 	font-weight: bolder;
 	padding: 8px 120px;
 }
-
+h2{
+	overflow: hidden;
+}
 .logo .img2 {
 	align-items: end;
 }
@@ -161,45 +159,26 @@ body {
 .infoCard h5 {
 	color: #D61C4E;
 	font-weight: bolder;
+	overflow: hidden;
 }
 
-/* Advertisement */
-.ads {
-	width: 100%;
-	height: 300px;
-	transform-style: preserve-3d;
-	perspective: 500px;
-	border: none;
-	background-color: inherit;
-}
-
-.card .box {
-	position: absolute;
-	color: #262626;
-	width: 100%;
-	height: 100%;
-	box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.1);
-	border-radius: 15px;
-	background: #fff;
-	transform-style: preserve-3d;
-	transition: 0.5s;
-	backface-visibility: hidden;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-
-}
 
 
 
 /* Footer */
 #footer {
 	padding-top: 20px;
+	background: #292828;
+	color: #fff;
 }
 
 .footerHead {
 	display: flex;
+}
+
+h3{
+	font-size: 20px;
+	overflow: hidden;
 }
 
 /* Gallery */
@@ -251,7 +230,7 @@ body {
 }
 
 #wedding h4 {
-	padding: 22px;
+	padding: 22px 0px;
 	font-size: 29px;
 	font-weight: bold;
 	color: #FEF9A7;
@@ -261,11 +240,10 @@ body {
 }
 
 #wedding h6 {
-	text-align: end;
 	font-size: 18px;
 	font-weight: lighter;
 	color: #FEF9A7;
-	text-align: center;
+	overflow: hidden;
 }
 
 #wedding h2 {
@@ -273,6 +251,7 @@ body {
 	font-weight: bold;
 	color: #FEF9A7;
 	text-align: center;
+	overflow: hidden;
 }
 
 .details {
@@ -490,15 +469,14 @@ label {
 
 	#wedding h4 {
 		font-size: 8px;
-		padding: 2px;
-		/* color: #000; */
+		padding: 5px;
 		line-height: 1px;
 
 	}
 
 	#wedding h6 {
 		font-size: 8px;
-		/* color: #000; */
+		margin: 2px;
 	}
 
 	.details {

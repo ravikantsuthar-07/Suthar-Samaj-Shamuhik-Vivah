@@ -10,7 +10,7 @@ export default function AdminRoute() {
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get('/api/v1/auth/admin-auth',
+            const res = await axios.get('/api/v1/rgister/admin-auth',
                 {
                     headers: {
                         "Authorization": auth?.token
