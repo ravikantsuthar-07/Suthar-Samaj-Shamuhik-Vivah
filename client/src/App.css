@@ -17,6 +17,7 @@ body {
 			#D61C4E,
 			#FAC213,
 			#FEF9A7);
+	background-repeat: no-repeat;
 }
 
 #navbar {
@@ -28,27 +29,30 @@ body {
 	z-index: 10;
 }
 
-.logo {
+.logos {
+	position: relative;
 	display: flex;
 	color: #FEF9A7;
 	text-align: center;
 }
 
-.logo img {
+.logos img {
 	margin: 2px 13px;
 }
 
-.logo h1 {
+.logos h1 {
 	align-items: center;
 	text-align: center;
 	font-size: 35px;
 	font-weight: bolder;
 	padding: 8px 120px;
 }
-h2{
+
+h2 {
 	overflow: hidden;
 }
-.logo .img2 {
+
+.logos .img2 {
 	align-items: end;
 }
 
@@ -166,7 +170,7 @@ h2{
 
 
 /* Footer */
-#footer {
+#footers {
 	padding-top: 20px;
 	background: #292828;
 	color: #fff;
@@ -176,7 +180,7 @@ h2{
 	display: flex;
 }
 
-h3{
+h3 {
 	font-size: 20px;
 	overflow: hidden;
 }
@@ -233,7 +237,13 @@ h3{
 	padding: 22px 0px;
 	font-size: 29px;
 	font-weight: bold;
-	color: #FEF9A7;
+	background: linear-gradient(to  right bottom ,
+	#c27c47,
+	#752424,
+	#a78790
+	);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
 	text-align: center;
 	line-height: 1px;
 
@@ -242,20 +252,32 @@ h3{
 #wedding h6 {
 	font-size: 18px;
 	font-weight: lighter;
-	color: #FEF9A7;
+	background: linear-gradient(to  right bottom ,
+	#D61C4E,
+	#5a0720,
+	#c27c47
+	);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	text-align: center;
 	overflow: hidden;
 }
 
 #wedding h2 {
 	font-size: 29px;
 	font-weight: bold;
-	color: #FEF9A7;
+	color: #4b4848;
 	text-align: center;
 	overflow: hidden;
 }
 
 .details {
 	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+
 }
 
 .details .Menimage {
@@ -329,7 +351,7 @@ h3{
 
 /* Register */
 
-#registerUser{
+#registerUser {
 	margin-top: 130px;
 }
 
@@ -343,7 +365,7 @@ label {
 }
 
 @media screen and (max-width: 480px) {
-	.logo {
+	.logos {
 		font-size: 9px;
 	}
 
@@ -351,7 +373,7 @@ label {
 		margin: 0;
 	}
 
-	.logo h1 {
+	.logos h1 {
 		padding: 0px;
 		font-size: 20px;
 	}

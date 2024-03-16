@@ -1,42 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layoout/Layout'
-import Frist from '../img/1.jpg'
 import Under from '../img/Under.png';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const GalleryPage = () => {
+    const [gallery, setGallery] = useState([]);
+    const navigate = useNavigate()
+    const gall = async () => {
+        try {
+            const { data } = await axios.get('/api/v1/slider/get-slider');
+            if (data.success) {
+                setGallery(data.results)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        gall()
+    }, []);
     return (
         <Layout>
             <section id="gallery">
                 <h1>गैलरी</h1>
                 <img className='under' src={Under} alt="" />
                 <div className="row ">
-                    <div className="col-md-4 col-sm-12">
-                        <div className="card infoCard">
-                            <img src={Frist} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">सामूहिक विवाह - 2023</h5>
-                                <a href="/gallery/1" className="btn btn-danger">अधिक जानकारी</a>
+                    {gallery?.map((g, i) => (
+                        <div className="col-md-4 col-sm-12" key={i}>
+                            <div className="card infoCard">
+                                <img src={require(`../img/sliders/${g.path}`)} className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">सामूहिक विवाह - {g.Year}</h5>
+                                    <button type='button' onClick={()=>navigate(`/gallery/${g.id}`)} className="btn btn-danger">अधिक तस्वीरें</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-4 col-sm-12">
-                        <div className="card infoCard">
-                            <img src={Frist} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">सामूहिक विवाह - 2022</h5>
-                                <a href="/gallery/2" className="btn btn-danger">अधिक जानकारी</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 col-sm-12">
-                        <div className="card infoCard">
-                            <img src={Frist} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">सामूहिक विवाह - 2021</h5>
-                                <a href="/gallery/3" className="btn btn-danger">अधिक जानकारी</a>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
+
                 </div>
             </section>
         </Layout>

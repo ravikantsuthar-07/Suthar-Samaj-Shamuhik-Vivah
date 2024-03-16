@@ -31,10 +31,10 @@ const InformationCom = () => {
                 {info.map((info, i) => ( 
                 <div className="col-md-4 col-sm-12" key={i}>
                     <div className="card infoCard">
-                        <img src={Frist} className="card-img-top" alt="..." />
+                        <img src={require(`../img/sliders/${info.path}`)} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <h5 className="card-title">सामूहिक विवाह - {info.Year}</h5>
-                            <button onClick={() => navigate(`/wedding/${info.id}`)} className="btn btn-outline-danger">अधिक जानकारी</button>
+                            <button onClick={() => navigate(`/wedding/${info.Year}`)} className="btn btn-outline-danger">अधिक जानकारी</button>
                         </div>
                     </div>
                 </div>

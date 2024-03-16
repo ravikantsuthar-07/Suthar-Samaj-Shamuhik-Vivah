@@ -4,7 +4,8 @@ import DB from '../DB/connection.js';
 export const createController = async (req, res) => {
     try {
 
-        const { name, mobileNo, email, password } = req.fields;
+        const { name, mobileNo, email, password } = req.body;
+        console.log(req.body);
         if (!name) {
             return res.status(400).send({
                 success: false,
@@ -84,7 +85,7 @@ export const createController = async (req, res) => {
 
 export const loginController = async (req, res) => {
     try {
-        const { email, password } = req.fields;
+        const { email, password } = req.body;
         if (!email) {
             return res.status(400).send({
                 success: false,

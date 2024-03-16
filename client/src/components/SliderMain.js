@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Frist from '../img/1.jpg';
 import axios from 'axios';
 const SliderMain = () => {
     const [slider, setSlider] = useState([]);
@@ -23,7 +22,7 @@ const SliderMain = () => {
                 <div class="carousel-inner">
                     {slider.map((sli, i) => (
                         <div class="carousel-item active">
-                            <img src={Frist} class="d-block w-100" alt="..." />
+                            <img src={require(`../img/sliders/${sli.path}`)} class="d-block w-100" alt="..." />
                         </div>
 
                     ))}

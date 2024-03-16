@@ -18,7 +18,7 @@ const GalleryYear = () => {
                         <div className="card infoCard">
                             <img src={Frist} className="card-img-top" alt="..." />
                         </div>
-                    </div>
+                    </div>      
                     <div className="col-md-4 col-sm-12">
                         <div className="card infoCard">
                             <img src={Frist} className="card-img-top" alt="..." />

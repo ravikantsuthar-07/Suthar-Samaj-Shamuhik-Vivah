@@ -3,7 +3,7 @@ import logo from '../../img/logo.png'
 const Footer = () => {
     return (
         <>
-            <footer id="footer">
+            <footer id="footers">
                 <div className="container">
                     <div className="row" >
                         <div className="col-md-4 col-sm-12" >
@@ -36,6 +36,13 @@ const Footer = () => {
                                 <li ><i className="fa-brands fa-chrome p-2"
                                     ></i>www.ravikant.com</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-12.col-md-12.col-sm-12'>
+                            <p style={{textAlign: 'center'}}>Design By:- Ravikant Suthar</p>
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,8 @@ import {
     deleteWeddingController,
     getAllWeddingController,
     getGiftController,
+    getSingleGiftController,
+    getSingleWeddingController,
     updateGiftController,
     updateWeddingController,
 } from "../Controller/weddingController.js";
@@ -16,24 +18,30 @@ const router = express.Router();
 
 
 
+
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, process.cwd() + `/client/src/img/wedding/`)
+    destination: function (req, file, cb) {
+        if (file.fieldname === 'Photo' ) {
+            cb(null, process.cwd() + '/client/src/img/wedding/');
+        } else {
+            cb(new Error('Invalid field name'));
+        }
     },
     filename: (req, file, cb) => {
-        cb(null,  file.originalname)
-    },
-})
-
+        cb(null, file.originalname);
+    }
+});
 const upload = multer({ storage: storage });
 
 
 router.get('/gettAllWedding/:year', getAllWeddingController);
+router.get('/gettSingleWedding/:id', getSingleWeddingController);
 
 router.post('/createWedding', requireSignIn, isAdmin, upload.array('Photo', 2), createWeddingController);
 router.put('/updateWedding/:id', requireSignIn, isAdmin, upload.array('Photo', 2), updateWeddingController);
 router.delete('/deleteWedding/:id', requireSignIn, isAdmin, deleteWeddingController);
 
+router.get('/getSingleGift/:id', getSingleGiftController);
 router.get('/gifts/:year', getGiftController);
 router.post('/createGift', requireSignIn, isAdmin, createGiftController);
 router.put('/updateGift/:id', requireSignIn, isAdmin, updateGiftController);

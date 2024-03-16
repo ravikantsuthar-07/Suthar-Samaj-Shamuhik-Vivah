@@ -1,161 +1,136 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layoout/Layout'
-import Frist from '../img/1.jpg'
+import Frist from '../img/wedding/package-1.jpg'
 import under from '../img/Under.png';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const InforMationPerYear = () => {
+    let img = [];
+    const navigate = useNavigate();
+    const params = useParams();
+    const [wedding, setWedding] = useState([]);
+    const [gifts, setGifts] = useState([]);
+    const [imgWed, setImgWed] = useState('');
+    const [dates, setDates] = useState('');
+    const [sr, setSr] = useState('');
+    console.log(imgWed);
+
+    const gettAllWedding = async () => {
+        try {
+            const { data } = await axios.get(`/api/v1/wedding/gettAllWedding/${params.year}`);
+            if (data?.success) {
+                setWedding(data?.results);
+                giftsAll();
+            } else {
+                navigate('/wedding');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const giftsAll = async () => {
+        try {
+            const { data } = await axios.get(`/api/v1/wedding/gifts/${params.year}`)
+            if (data.success) {
+                setGifts(data.results);
+            }else {
+                navigate('/wedding');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const info = async () => {
+        try {
+            const {data} = await axios.get(`/api/v1/slider/get-single-slider/${params.year}`);
+            if (data?.success) {
+                setImgWed(data.results[0].path);
+                setDates(data.results[0].Dates);
+                setSr(data.results[0].SrNo);
+                gettAllWedding();
+            } else {
+                navigate('/wedding');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1; 
+        const year = date.getFullYear();
+        const formattedDay = day < 10 ? `0${day}` : day;
+        const formattedMonth = month < 10 ? `0${month}` : month;
+        return `${formattedDay}/${formattedMonth}/${year}`;
+    };
+
+
+    useEffect(() => {
+        info();
+        // eslint-disable-next-line
+    }, []);
     return (
         <Layout>
             <section id='wedding'>
-                <h3>नौवां सामूहिक विवाह के वैवाहिक जोड़े</h3>
+                <h3> {sr} सामूहिक विवाह के वैवाहिक जोड़े</h3>
                 <img className='under' src={under} alt="" />
-                <img className='mainImg' src={Frist} alt="abc" />
+                <img className='mainImg' src={imgWed ? require(`../img/sliders/${imgWed}`) : Frist} alt="abc" />
                 <div className="container">
-                    <div className="row mb-3">
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="menDetail">
-                                    <h4>ची. गणेश प्रकाश माकड़</h4>
-                                    <h6>सुपुत्र श्री घनश्याम जी</h6>
-                                    <h6>सुपौत्र श्री घनश्याम जी</h6>
-                                    <h6>सुथारो का मोहल्ला हाडा, तहसील कोयलात, बीकानेर</h6>
-                                    <h6>मो. 99803047024</h6>
+                    {wedding?.map((w, i) => (
+                        <div className="row mb-3" key={i}>
+                            <div style={{ display: 'none' }}>
+                                {img = w.M_Photo.split(" ")}
+                            </div>
+                            <div className="col-md-5 col-5 col-sm-5 col-lg-5">
+                                <div className="details">
+                                    <div className='col-md-8 col-sm-8 col-8'>
+                                        <div className="menDetail">
+                                            <h4>ची. {w.M_Name}</h4>
+                                            <h6>सुपुत्र {w.MF_Name}</h6>
+                                            <h6>सुपौत्र {w.MG_Name}</h6>
+                                            <h6>{w.M_Address}</h6>
+                                            <h6>मो. {w.M_Mobile}</h6>
+                                        </div>
+                                    </div>
+                                    <div className="Menimage" style={{ alignItems: 'center' }}>
+                                        <img src={require(`../img/wedding/${img[1]}`)} alt="Men" />
+                                    </div>
                                 </div>
-                                <div className="Menimage">
+                            </div>
+                            <div className="col-md-2 col-2 col-sm-2 col-lg-2">
+                                <div className="center">
                                     <img src={Frist} alt="Men" />
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-2 col-2 col-sm-2 col-lg-2">
-                            <div className="center">
-                                <img src={Frist} alt="Men" />
-                            </div>
-                        </div>
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                                <div className="womenDetail">
-                                    <h4>सौ. कां. छवि बरड़वा</h4>
-                                    <h6>सुपुत्री श्री सुशील कुमार जी</h6>
-                                    <h6>सुपौत्री श्री कन्हैयालाल जी</h6>
-                                    <h6>दुजारियो की गली, डागा मौहल्ला, बीकानेर</h6>
-                                    <h6>मो. 9653771504</h6>
+                            <div className="col-md-5 col-5 col-sm-5 col-lg-5">
+                                <div className="details">
+                                    <div className="Menimage">
+                                        <img src={require(`../img/wedding/${img[0]}`)} alt="Men" />
+                                    </div>
+                                    <div className='col-8 col-sm-8 col-md-8'>
+                                        <div className="womenDetail">
+                                            <h4>सौ. कां. {w.F_Name}</h4>
+                                            <h6>सुपुत्री {w.FF_Name}</h6>
+                                            <h6>सुपौत्री {w.FG_Name}</h6>
+                                            <h6>{w.F_Address}</h6>
+                                            <h6>मो. {w.F_Mobile}</h6>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="row mb-3">
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="menDetail">
-                                    <h4>ची. गणेश प्रकाश माकड़</h4>
-                                    <h6>सुपुत्र श्री घनश्याम जी</h6>
-                                    <h6>सुपौत्र श्री घनश्याम जी</h6>
-                                    <h6>सुथारो का मोहल्ला हाडा, तहसील कोयलात, बीकानेर</h6>
-                                    <h6>मो. 99803047024</h6>
-                                </div>
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-2 col-2 col-sm-2 col-lg-2">
-                            <div className="center">
-                                <img src={Frist} alt="Men" />
-                            </div>
-                        </div>
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                                <div className="womenDetail">
-                                    <h4>सौ. कां. छवि बरड़वा</h4>
-                                    <h6>सुपुत्री श्री सुशील कुमार जी</h6>
-                                    <h6>सुपौत्री श्री कन्हैयालाल जी</h6>
-                                    <h6>दुजारियो की गली, डागा मौहल्ला, बीकानेर</h6>
-                                    <h6>मो. 9653771504</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="menDetail">
-                                    <h4>ची. गणेश प्रकाश माकड़</h4>
-                                    <h6>सुपुत्र श्री घनश्याम जी</h6>
-                                    <h6>सुपौत्र श्री घनश्याम जी</h6>
-                                    <h6>सुथारो का मोहल्ला हाडा, तहसील कोयलात, बीकानेर</h6>
-                                    <h6>मो. 99803047024</h6>
-                                </div>
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-2 col-2 col-sm-2 col-lg-2">
-                            <div className="center">
-                                <img src={Frist} alt="Men" />
-                            </div>
-                        </div>
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                                <div className="womenDetail">
-                                    <h4>सौ. कां. छवि बरड़वा</h4>
-                                    <h6>सुपुत्री श्री सुशील कुमार जी</h6>
-                                    <h6>सुपौत्री श्री कन्हैयालाल जी</h6>
-                                    <h6>दुजारियो की गली, डागा मौहल्ला, बीकानेर</h6>
-                                    <h6>मो. 9653771504</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="menDetail">
-                                    <h4>ची. गणेश प्रकाश माकड़</h4>
-                                    <h6>सुपुत्र श्री घनश्याम जी</h6>
-                                    <h6>सुपौत्र श्री घनश्याम जी</h6>
-                                    <h6>सुथारो का मोहल्ला हाडा, तहसील कोयलात, बीकानेर</h6>
-                                    <h6>मो. 99803047024</h6>
-                                </div>
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-2 col-2 col-sm-2 col-lg-2">
-                            <div className="center">
-                                <img src={Frist} alt="Men" />
-                            </div>
-                        </div>
-                        <div className="col-md-5 col-5 col-sm-5 col-lg-5">
-                            <div className="details">
-                                <div className="Menimage">
-                                    <img src={Frist} alt="Men" />
-                                </div>
-                                <div className="womenDetail">
-                                    <h4>सौ. कां. छवि बरड़वा</h4>
-                                    <h6>सुपुत्री श्री सुशील कुमार जी</h6>
-                                    <h6>सुपौत्री श्री कन्हैयालाल जी</h6>
-                                    <h6>दुजारियो की गली, डागा मौहल्ला, बीकानेर</h6>
-                                    <h6>मो. 9653771504</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
+
                 </div>
 
                 <div className="container">
                     <div className="row">
-                        <h2>नौवें सामूहिक विवाह 14/11/2021 को संस्था द्वारा वर-वधु को दिये गये उपहारो का विवरण</h2>
+                        <h2>{sr} सामूहिक विवाह {formatDate(dates)} को संस्था द्वारा वर-वधु को दिये गये उपहारो का विवरण</h2>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -166,72 +141,15 @@ const InforMationPerYear = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>साफा</td>
-                                    <td>9</td>
-                                    <td>2,000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>सफ़ारी सूट</td>
-                                    <td>9</td>
-                                    <td>3,240</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>सीख</td>
-                                    <td>9</td>
-                                    <td>900</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>दुल्हन बेसा</td>
-                                    <td>9</td>
-                                    <td>11,700</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>21 स्टील बर्तन</td>
-                                    <td>9</td>
-                                    <td>28,851</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>लोहे का बक्सा</td>
-                                    <td>8</td>
-                                    <td>14,000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">7</th>
-                                    <td>21 स्टील बर्तन</td>
-                                    <td>9</td>
-                                    <td>28,851</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">8</th>
-                                    <td>लोहे का बक्सा</td>
-                                    <td>8</td>
-                                    <td>14,000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">9</th>
-                                    <td>21 स्टील बर्तन</td>
-                                    <td>9</td>
-                                    <td>28,851</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">10</th>
-                                    <td>लोहे का बक्सा</td>
-                                    <td>8</td>
-                                    <td>14,000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">11</th>
-                                    <td>लोहे का बक्सा</td>
-                                    <td>8</td>
-                                    <td>14,000</td>
-                                </tr>
+                                {gifts.map((c, i) => (
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>{c.Name}</td>
+                                        <td>{c.Numbers}</td>
+                                        <td>{c.Price}</td>
+                                    </tr>
+                                ))}
+
                             </tbody>
                         </table>
                     </div>
