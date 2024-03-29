@@ -62,7 +62,7 @@ const AdminAddTeam = () => {
                                                     <option value={'मंत्री'}>  मंत्री </option>
                                                     <option value={'अध्यक्ष'} > अध्यक्ष</option>
                                                     <option value={'कोषाध्यक्ष'} > कोषाध्यक्ष </option>
-                                                    <option value={'सदस्य'} > सदस्य </option>
+                                                    <option value={'प्रणेता'} >प्रणेता </option>
                                                 </select>
                                             </div>
                                         </div>

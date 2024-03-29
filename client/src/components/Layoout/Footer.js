@@ -42,7 +42,7 @@ const Footer = () => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-12.col-md-12.col-sm-12'>
-                            <p style={{textAlign: 'center'}}>Design By:- Ravikant Suthar</p>
+                            <p style={{textAlign: 'center'}}>Design and Developed By Ravikant Suthar</p>
                         </div>
                     </div>
                 </div>

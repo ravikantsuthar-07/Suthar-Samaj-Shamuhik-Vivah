@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layoout/Layout'
-import Frist from '../img/wedding/package-1.jpg'
+import Frist from '../img/weddingLogo.png'
+import logo from '../img/weddingLogo.png'
 import under from '../img/Under.png';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -35,7 +36,7 @@ const InforMationPerYear = () => {
             const { data } = await axios.get(`/api/v1/wedding/gifts/${params.year}`)
             if (data.success) {
                 setGifts(data.results);
-            }else {
+            } else {
                 navigate('/wedding');
             }
         } catch (error) {
@@ -45,7 +46,7 @@ const InforMationPerYear = () => {
 
     const info = async () => {
         try {
-            const {data} = await axios.get(`/api/v1/slider/get-single-slider/${params.year}`);
+            const { data } = await axios.get(`/api/v1/slider/get-single-slider/${params.year}`);
             if (data?.success) {
                 setImgWed(data.results[0].path);
                 setDates(data.results[0].Dates);
@@ -58,11 +59,11 @@ const InforMationPerYear = () => {
             console.log(error);
         }
     }
-    
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = date.getDate();
-        const month = date.getMonth() + 1; 
+        const month = date.getMonth() + 1;
         const year = date.getFullYear();
         const formattedDay = day < 10 ? `0${day}` : day;
         const formattedMonth = month < 10 ? `0${month}` : month;
@@ -89,7 +90,7 @@ const InforMationPerYear = () => {
                             <div className="col-md-5 col-5 col-sm-5 col-lg-5">
                                 <div className="details">
                                     <div className='col-md-8 col-sm-8 col-8'>
-                                        <div className="menDetail">
+                                        <div className="menDetail" style={{ color: '#D61C4E' }}>
                                             <h4>ची. {w.M_Name}</h4>
                                             <h6>सुपुत्र {w.MF_Name}</h6>
                                             <h6>सुपौत्र {w.MG_Name}</h6>
@@ -104,7 +105,8 @@ const InforMationPerYear = () => {
                             </div>
                             <div className="col-md-2 col-2 col-sm-2 col-lg-2">
                                 <div className="center">
-                                    <img src={Frist} alt="Men" />
+                                    <h4>{w.SrNo}</h4>
+                                    <img src={logo} alt="Men" />
                                 </div>
                             </div>
                             <div className="col-md-5 col-5 col-sm-5 col-lg-5">
@@ -113,7 +115,7 @@ const InforMationPerYear = () => {
                                         <img src={require(`../img/wedding/${img[0]}`)} alt="Men" />
                                     </div>
                                     <div className='col-8 col-sm-8 col-md-8'>
-                                        <div className="womenDetail">
+                                        <div className="womenDetail" style={{ color: '#FEF9A7' }}>
                                             <h4>सौ. कां. {w.F_Name}</h4>
                                             <h6>सुपुत्री {w.FF_Name}</h6>
                                             <h6>सुपौत्री {w.FG_Name}</h6>
@@ -130,8 +132,8 @@ const InforMationPerYear = () => {
 
                 <div className="container">
                     <div className="row">
-                        <h2>{sr} सामूहिक विवाह {formatDate(dates)} को संस्था द्वारा वर-वधु को दिये गये उपहारो का विवरण</h2>
-                        <table className="table">
+                        <h2 style={{ color: '#FEF9A7' }}>{sr} सामूहिक विवाह {formatDate(dates)} को संस्था द्वारा वर-वधु को दिये गये उपहारो का विवरण</h2>
+                        <table className="table" style={{ backfaceVisibility: 'hidden' }}>
                             <thead>
                                 <tr>
                                     <th scope="col">क्रमांक</th>
@@ -143,7 +145,7 @@ const InforMationPerYear = () => {
                             <tbody>
                                 {gifts.map((c, i) => (
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">{i + 1}</th>
                                         <td>{c.Name}</td>
                                         <td>{c.Numbers}</td>
                                         <td>{c.Price}</td>

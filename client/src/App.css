@@ -12,9 +12,9 @@
 }
 
 body {
-	background-image: linear-gradient(to left bottom,
-			#f77e21,
+	background-image: linear-gradient(to left top,
 			#D61C4E,
+			#f77e21,
 			#FAC213,
 			#FEF9A7);
 	background-repeat: no-repeat;
@@ -237,13 +237,6 @@ h3 {
 	padding: 22px 0px;
 	font-size: 29px;
 	font-weight: bold;
-	background: linear-gradient(to  right bottom ,
-	#c27c47,
-	#752424,
-	#a78790
-	);
-	-webkit-text-fill-color: transparent;
-	-webkit-background-clip: text;
 	text-align: center;
 	line-height: 1px;
 
@@ -252,13 +245,6 @@ h3 {
 #wedding h6 {
 	font-size: 18px;
 	font-weight: lighter;
-	background: linear-gradient(to  right bottom ,
-	#D61C4E,
-	#5a0720,
-	#c27c47
-	);
-	-webkit-text-fill-color: transparent;
-	-webkit-background-clip: text;
 	text-align: center;
 	overflow: hidden;
 }
@@ -295,7 +281,12 @@ h3 {
 
 .center img {
 	width: 50%;
-	height: 180px;
+	height: 110px;
+}
+
+.center h4 {
+	color: #FEF9A7;
+	margin: 2px;
 }
 
 
