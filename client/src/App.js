@@ -28,6 +28,8 @@ import AdminAddTeam from './pages/Admin/AdminAddTeam';
 import AdminTeams from './pages/Admin/AdminTeams';
 import AdminContact from './pages/Admin/AdminContact';
 import PageNotFound from './pages/PageNotFound';
+import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam';
+import AdminAddNews from './pages/Admin/AdminAddNews';
 
 function App() {
     return (
@@ -57,7 +59,9 @@ function App() {
                 <Route exact path='admin/gifts_year/:year' element={<AdminGiftsList />} />
                 <Route exact path='admin/add_gifts/' element={<AdminAddGifts />} />
                 <Route exact path='admin/add_team' element={<AdminAddTeam />} />
+                <Route exact path='admin/update_team/:id' element={<AdminUpdateTeam />} />
                 <Route exact path='admin/team' element={<AdminTeams />} />
+                <Route exact path='admin/add_news' element={<AdminAddNews />} />
                 <Route exact path='admin/contact' element={<AdminContact />} />
             </Route>
             <Route exact path='/login' element={<LoginPage /> } />

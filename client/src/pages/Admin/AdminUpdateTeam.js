@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminMenu from '../../components/Layoout/AdminMenu'
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AdminAddTeam = () => {
+const AdminUpdateTeam = () => {
     const navigate = useNavigate();
+    const params = useParams();
     const [name, setName] = useState(null);
     const [post, setPost] = useState(null);
     const [mobile, setMobile] = useState(null);
-    const [img, setImg] = useState(null);
     const [address, setAddress] = useState(null);
+    const [img, setImg] = useState(null);
     const [auth] = useAuth();
 
     const handleCreate = async (e) => {
@@ -22,9 +23,9 @@ const AdminAddTeam = () => {
             teamData.append('Mobile', mobile);
             teamData.append('Address', address);
             teamData.append('img', img);
-            const {data} = await axios.post(`/api/v1/team/create-team`, teamData, {
-                headers:{
-                    'Authorization' : auth.token
+            const { data } = await axios.put(`/api/v1/team/update-team/${params.id}`, teamData, {
+                headers: {
+                    'Authorization': auth.token
                 }
             });
             if (data?.success) {
@@ -36,17 +37,43 @@ const AdminAddTeam = () => {
             console.log(error);
         }
     }
+
+
+    const data = async () => {
+        try {
+
+            const { data } = await axios.get(`/api/v1/team/get-member/${params.id}`, {
+                headers: {
+                    'Authorization': auth.token
+                }
+            });
+            if (data?.success) {
+                setName(data.results[0].Name);
+                setPost(data.results[0].PostOn);
+                setMobile(data.results[0].Mobile);
+                setAddress(data.results[0].Address);
+                setImg(data.results[0].img);
+            } else {
+                navigate(`/dashboard/admin/team`);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(() => {
+        data();
+    }, []);
     return (
         <>
             <AdminMenu />
-            
+
             <main id="main" className="main">
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">सदस्य जोड़ें</h5>
+                                    <h5 className="card-title">सदस्य अपडेट</h5>
                                     <form onSubmit={handleCreate} encType="multipart/form-data">
 
                                         <div className="row mb-3">
@@ -87,7 +114,7 @@ const AdminAddTeam = () => {
                                             </div>
                                         </div>
                                         <div className="text-center">
-                                            <button type="submit" className="btn btn-primary">Submit</button>
+                                            <button type="submit" className="btn btn-primary">Update</button>
                                             <button type="reset" className="btn btn-secondary">Reset</button>
                                         </div>
                                     </form>
@@ -101,4 +128,4 @@ const AdminAddTeam = () => {
     )
 }
 
-export default AdminAddTeam
+export default AdminUpdateTeam

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import { useNavigate } from 'react-router-dom';
 
-const AdminAddTeam = () => {
+const AdminAddNews = () => {
     const navigate = useNavigate();
     const [name, setName] = useState(null);
     const [post, setPost] = useState(null);
@@ -46,7 +46,7 @@ const AdminAddTeam = () => {
                         <div className="col-lg-12">
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">सदस्य जोड़ें</h5>
+                                    <h5 className="card-title">समाचार जोड़ें</h5>
                                     <form onSubmit={handleCreate} encType="multipart/form-data">
 
                                         <div className="row mb-3">
@@ -101,4 +101,4 @@ const AdminAddTeam = () => {
     )
 }
 
-export default AdminAddTeam
+export default AdminAddNews

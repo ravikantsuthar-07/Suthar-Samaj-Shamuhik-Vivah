@@ -101,12 +101,12 @@ h2 {
 	font-size: 45px;
 	text-align: center;
 	font-weight: bold;
-	color: #FEF9A7;
+	color: #D61C4E;
 }
 
 #about .under {
 	width: 250px;
-	color: #FEF9A7;
+	color: #D61C4E;
 	border-width: 2px;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 	margin: -20px 40% 5px 40%;
@@ -124,7 +124,6 @@ h2 {
 #aboutText {
 	margin-top: 10px;
 	font-size: 16px;
-	color: #FEF9A7;
 }
 
 /* Informarion */
@@ -137,7 +136,7 @@ h2 {
 	padding: 20px;
 	font-size: 45px;
 	font-weight: bold;
-	color: #FEF9A7;
+	color: #D61C4E;
 	text-align: center;
 }
 
@@ -194,7 +193,7 @@ h3 {
 	padding: 20px;
 	font-size: 45px;
 	font-weight: bold;
-	color: #FEF9A7;
+	color: #D61C4E;
 	text-align: center;
 }
 
@@ -222,7 +221,7 @@ h3 {
 	padding: 20px;
 	font-size: 45px;
 	font-weight: bold;
-	color: #FEF9A7;
+	color: #D61C4E;
 	text-align: center;
 }
 
@@ -299,14 +298,15 @@ h3 {
 	padding: 20px;
 	font-size: 45px;
 	font-weight: bold;
-	color: #FEF9A7;
+	color: #D61C4E;
 	text-align: center;
 }
 
 
 #news .under {
-	width: 130px;
-	margin: -40px 45% 5px 45%;
+	width: 180px;
+	height: 18px;
+	margin: -50px 45% 0px 43%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 

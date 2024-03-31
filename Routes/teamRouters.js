@@ -3,6 +3,7 @@ import {
     createTeamController,
     deleteTeamController,
     getAdminTeamController,
+    getSingleTeamController,
     getTeamController, 
     updateStatusTeamController,
     updateTeamController
@@ -31,6 +32,7 @@ const upload = multer({ storage: storage });
 
 
 router.get('/get-team', getTeamController);
+router.get('/get-member/:id', requireSignIn, isAdmin, getSingleTeamController);
 router.get('/get-admin-team', requireSignIn, isAdmin, getAdminTeamController);
 router.post('/create-team', requireSignIn, isAdmin, upload.single('img'), createTeamController);
 router.put('/update-status-team/:id', requireSignIn, isAdmin, updateStatusTeamController);

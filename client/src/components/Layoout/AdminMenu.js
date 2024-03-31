@@ -121,6 +121,24 @@ const AdminMenu = () => {
                     </li>
 
                     <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                            <i className="bi bi-layout-text-window-reverse"></i><span>News</span><i className="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
+                            <li>
+                                <NavLink to="/dashboard/admin/add_news">
+                                    <i className="bi bi-circle"></i><span>Add News</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/admin/team">
+                                    <i className="bi bi-circle"></i><span>News</span>
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                             <i className="bi bi-layout-text-window-reverse"></i><span>Team</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
@@ -142,7 +160,7 @@ const AdminMenu = () => {
                             <i className="bi bi-file-earmark"></i>
                             <span>Contact</span>
                         </NavLink>
-                    </li> 
+                    </li>
 
                 </ul>
 

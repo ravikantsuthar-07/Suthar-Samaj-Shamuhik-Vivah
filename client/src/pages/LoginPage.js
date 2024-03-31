@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useAuth } from '../context/auth';
 import logo from '../assets/img/logo.png';
@@ -40,10 +40,10 @@ const LoginPage = () => {
                             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                                 <div class="d-flex justify-content-center py-4">
-                                    <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                    <Link href="/" class="logo d-flex align-items-center w-auto">
                                         <img src={logo} alt="" />
                                         <span class="d-none d-lg-block" style={{ overflow: 'hidden' }}>सामूहिक विवाह</span>
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div class="card mb-3">

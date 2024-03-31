@@ -48,7 +48,7 @@ const AdminTeams = () => {
     useEffect(()=> {
         teamData()
     },[]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
     return (
         <>
             <AdminMenu />
@@ -70,6 +70,7 @@ const AdminTeams = () => {
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Post</th>
                                                 <th scope="col">Mobile</th>
+                                                <th scope="col">Address</th>
                                                 <th scope="col">Image</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -81,9 +82,10 @@ const AdminTeams = () => {
                                                     <td>{t.Name}</td>
                                                     <td>{t.PostOn}</td>
                                                     <td>{t.Mobile}</td>
+                                                    <td>{t.Address}</td>
                                                     <td><img src={require(`../../img/team/${t.img}`)} width={150} height={120} alt='team' /></td>
                                                     <td>
-                                                        <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_slider/${t.id}`)} >Update</button>
+                                                        <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_team/${t.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-2' onClick={() => updateStatusTeam(t.status, t.id)}>{t.status ? "Active" : "Deactive"}</button>
                                                         <button className='btn btn-danger m-2' onClick={() => deleteTeamMember(t.id)}>Delete</button>
                                                     </td>

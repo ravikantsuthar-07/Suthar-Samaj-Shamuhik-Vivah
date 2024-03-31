@@ -34,6 +34,41 @@ export const getTeamController = async (req, res) => {
         })
     }
 }
+export const getSingleTeamController = async (req, res) => {
+    try {
+        const sql = `SELECT * FROM teams WHERE status > 0 AND id = ${req.params.id}`;
+        await DB.query(
+            sql, (err, results) => {
+                if (err) {
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Error in Getting Team from database',
+                        err
+                    });
+                } else {
+                    if (results.length > 0) {
+                        return res.status(200).json({
+                            success: true,
+                            message: 'Getting Team Successfully',
+                            results
+                        });
+                    } else {
+                        return res.status(400).json({
+                            success: false,
+                            message: 'No Data Founds'
+                        });
+                    }
+                }
+            }
+        )
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Error in Getting Team",
+            error
+        })
+    }
+}
 export const getAdminTeamController = async (req, res) => {
     try {
         const sql = `SELECT * FROM teams`;
@@ -72,7 +107,7 @@ export const getAdminTeamController = async (req, res) => {
 
 export const createTeamController = async (req, res) => {
     try {
-        const { Name, PostOn, Mobile } = req.body;
+        const { Name, PostOn, Mobile, Address } = req.body;
         const Img = req.file;
         if (!Name) {
             return res.status(400).json({
@@ -98,10 +133,16 @@ export const createTeamController = async (req, res) => {
                 message: 'Image is Required'
             })
         }
+        if (!Address) {
+            return res.status(400).json({
+                success: false,
+                message: 'Address is Required'
+            })
+        }
 
-        const sql = `INSERT INTO teams (Name, PostOn, Mobile, img) VALUES (?, ?, ?, ?)`;
+        const sql = `INSERT INTO teams (Name, PostOn, Mobile, Address, img) VALUES (?, ?, ?, ?, ?)`;
         await DB.query(
-            sql, [Name, PostOn, Mobile, Img.originalname], (err, results) => {
+            sql, [Name, PostOn, Mobile, Address, Img.originalname], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,
@@ -161,7 +202,7 @@ export const updateStatusTeamController = async (req, res) => {
 export const updateTeamController = async (req, res) => {
     try {
         const id = req.params.id;
-        const { Name, PostOn, Mobile } = req.body;
+        const { Name, PostOn, Mobile, Address } = req.body;
         const img = req.file;
         if (!Name) {
             return res.status(400).json({
@@ -187,11 +228,17 @@ export const updateTeamController = async (req, res) => {
                 message: 'Image is Required'
             })
         }
+        if (!Address) {
+            return res.status(400).json({
+                success: false,
+                message: 'Address is Required'
+            })
+        }
 
 
-        const sql = `UPDATE teams SET Name = ?, PostOn = ?, Mobile = ?, img = ? WHERE id = ? `;
+        const sql = `UPDATE teams SET Name = ?, PostOn = ?, Mobile = ?, img = ?, Address = ? WHERE id = ? `;
         await DB.query(
-            sql, [Name, PostOn, Mobile, img.originalname, id], (err, results) => {
+            sql, [Name, PostOn, Mobile, img.originalname, Address, id], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,
