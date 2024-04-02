@@ -22587,7 +22587,7 @@
             }
           }
         }
-        return '<span class="' + cls + '" data-mce-content="' + editor.dom.encode(args[0]) + '">' + editor.dom.encode(typeof args[1] === 'string' ? args[1] : args[0]) + '</span>';
+        return '<span className="' + cls + '" data-mce-content="' + editor.dom.encode(args[0]) + '">' + editor.dom.encode(typeof args[1] === 'string' ? args[1] : args[0]) + '</span>';
       };
     };
     const convertRegExpsToNonEditable = (editor, nonEditableRegExps, e) => {
@@ -25882,10 +25882,10 @@
         /^[\s\S]*<body[^>]*>\s*|\s*<\/body[^>]*>[\s\S]*$/ig,
         /<!--StartFragment-->|<!--EndFragment-->/g,
         [
-          /( ?)<span class="Apple-converted-space">\u00a0<\/span>( ?)/g,
+          /( ?)<span className="Apple-converted-space">\u00a0<\/span>( ?)/g,
           trimSpaces
         ],
-        /<br class="Apple-interchange-newline">/g,
+        /<br className="Apple-interchange-newline">/g,
         /<br>$/i
       ]);
       return html;
@@ -27307,7 +27307,7 @@
         const body = SugarElement.fromDom(editor.getBody());
         const doc = editor.getDoc();
         const realSelectionContainer = descendant$1(body, '#' + realSelectionId).getOrThunk(() => {
-          const newContainer = SugarElement.fromHtml('<div data-mce-bogus="all" class="mce-offscreen-selection"></div>', doc);
+          const newContainer = SugarElement.fromHtml('<div data-mce-bogus="all" className="mce-offscreen-selection"></div>', doc);
           set$3(newContainer, 'id', realSelectionId);
           append$1(body, newContainer);
           return newContainer;
@@ -28760,7 +28760,7 @@
       if (getContentSecurityPolicy(editor)) {
         iframeHTML += '<meta http-equiv="Content-Security-Policy" content="' + getContentSecurityPolicy(editor) + '" />';
       }
-      iframeHTML += '</head>' + `<body id="${ bodyId }" class="mce-content-body ${ bodyClass }" data-id="${ editor.id }" aria-label="${ translatedAriaText }">` + '<br>' + '</body></html>';
+      iframeHTML += '</head>' + `<body id="${ bodyId }" className="mce-content-body ${ bodyClass }" data-id="${ editor.id }" aria-label="${ translatedAriaText }">` + '<br>' + '</body></html>';
       return iframeHTML;
     };
     const createIframe = (editor, boxInfo) => {

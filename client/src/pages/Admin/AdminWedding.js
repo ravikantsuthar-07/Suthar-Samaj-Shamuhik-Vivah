@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import AdminMenu from '../../components/Layoout/AdminMenu'
 import { useAuth } from '../../context/auth'
 import axios from 'axios'
-import Frist from '../../img/sliders/1.jpg'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -63,7 +62,7 @@ const AdminWedding = () => {
                                                 <tr key={i}>
                                                     <th scope="row">{i + 1}</th>
                                                     <td>{c.Year}</td>
-                                                    <td><img src={Frist} width={120} height={50} alt={c.id} /></td>
+                                                    <td><img src={require(`../../img/sliders/${c.path}`)} width={120} height={50} alt={c.id} /></td>
                                                     <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/wedding_year/${c.Year}`)}>See Wedding in {c.Year}</button></td>
                                                 </tr>
                                             ))}

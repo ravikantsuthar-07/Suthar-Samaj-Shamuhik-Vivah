@@ -792,11 +792,11 @@
       const uid = generate('acc');
       const summaryText = editor.dom.encode(editor.selection.getRng().toString() || editor.translate('Accordion summary...'));
       const bodyText = editor.dom.encode(editor.translate('Accordion body...'));
-      const accordionSummaryHtml = `<summary class="${ accordionSummaryClass }">${ summaryText }</summary>`;
-      const accordionBodyHtml = `<${ accordionBodyWrapperTag } class="${ accordionBodyWrapperClass }"><p>${ bodyText }</p></${ accordionBodyWrapperTag }>`;
+      const accordionSummaryHtml = `<summary className="${ accordionSummaryClass }">${ summaryText }</summary>`;
+      const accordionBodyHtml = `<${ accordionBodyWrapperTag } className="${ accordionBodyWrapperClass }"><p>${ bodyText }</p></${ accordionBodyWrapperTag }>`;
       editor.undoManager.transact(() => {
         editor.insertContent([
-          `<details data-mce-id="${ uid }" class="${ accordionDetailsClass }" open="open">`,
+          `<details data-mce-id="${ uid }" className="${ accordionDetailsClass }" open="open">`,
           accordionSummaryHtml,
           accordionBodyHtml,
           `</details>`

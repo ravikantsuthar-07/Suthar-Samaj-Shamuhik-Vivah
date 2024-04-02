@@ -86,7 +86,7 @@ h2 {
 
 
 
-.carousel-item img {
+.carousel img {
 	width: 100%;
 }
 
@@ -201,6 +201,27 @@ h3 {
 #gallery .under {
 	width: 130px;
 	margin: -40px 45% 5px 45%;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+
+/* Gallery */
+#gallerys {
+	margin-top: 130px;
+}
+
+#gallerys h1 {
+	padding: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #D61C4E;
+	text-align: center;
+}
+
+
+#gallerys .under {
+	width: 510px;
+	margin: -10px 45% 5px 30%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
@@ -355,13 +376,20 @@ label {
 	box-shadow: 0px 0px 5px 1px #999;
 }
 
+.card-body h4{
+	font-size: 16px;
+	color: #D61C4E;
+}
 @media screen and (max-width: 480px) {
 	.logos {
-		font-size: 9px;
+		font-size: 10px;
 	}
 
-	img {
+	.logos img {
+		padding: 0;
 		margin: 0;
+		width: 40px;
+		height: 60px;
 	}
 
 	.logos h1 {
@@ -383,8 +411,9 @@ label {
 	}
 
 
-	.carousel-item {
-		top: 50px;
+	.carousel {
+		margin-top: 130px;
+		height: 100%;
 	}
 
 	/* About Section */
@@ -433,6 +462,18 @@ label {
 	#gallery .under {
 		width: 90px;
 		margin: -20px 45% 5px 40%;
+	}
+
+	/* Galler Year */
+
+	#gallerys h1 {
+		font-size: 25px;
+	}
+
+
+	#gallerys .under {
+		width: 270px;
+		margin: -30px 45% 5px 13%;
 	}
 
 	/* Team */
@@ -519,5 +560,34 @@ label {
 		font-size: 12px;
 	}
 
+
+}
+
+
+@media screen and  (max-width: 1166px) {
+	.logos {
+		font-size: 20px;
+		text-align: center;
+		align-items: center;
+	}
+
+	.logos img {
+		padding: 0;
+		margin: 0;
+		width: 40px;
+		height: 60px;
+	}
+
+	.logos h1 {
+		padding: 0px;
+		font-size: 25px;
+		align-items: center;
+	}
+
+
+	.carousel {
+		margin-top: 120px;
+		height: 100%;
+	}
 
 }

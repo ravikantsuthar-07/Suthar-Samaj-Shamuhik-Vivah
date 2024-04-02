@@ -475,7 +475,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The editor focused via the `auto_focus` option was not scrolled into the viewport. #TINY-8785
 - Adding spaces immediately after a `contenteditable="false"` block did not work properly in some circumstances. #TINY-8814
 - Elements with only `data-*` custom attributes were sometimes removed when they should not be removed. #TINY-8755
-- Selecting a figure with `class="image"` incorrectly highlighted the link toolbar button. #TINY-8832
+- Selecting a figure with `className="image"` incorrectly highlighted the link toolbar button. #TINY-8832
 - Specifying a single, non-default list style for the `advlist_bullet_styles` and `advlist_number_styles` options was not respected. #TINY-8721
 - Fixed multiple issues that occurred when formatting `contenteditable` elements. #TINY-8905
 - Spaces could be incorrectly added to `urlinput` dialog components (commonly but not exclusively presented in the *Insert/Edit Link* dialog) in certain cases. #TINY-8775

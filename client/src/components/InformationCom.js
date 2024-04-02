@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Frist from '../img/1.jpg'
 import under from '../img/Under.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

@@ -447,7 +447,7 @@
           for (var name in env.attributes) {
             attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
           }
-          return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+          return '<' + env.tag + ' className="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
         };
         function matchPattern(pattern, pos, text, lookbehind) {
           pattern.lastIndex = pos;
@@ -2223,7 +2223,7 @@
         const node = getSelectedCodeSample(editor);
         code = global$1.DOM.encode(code);
         return node.fold(() => {
-          editor.insertContent('<pre id="__new" class="language-' + language + '">' + code + '</pre>');
+          editor.insertContent('<pre id="__new" className="language-' + language + '">' + code + '</pre>');
           const newPre = dom.select('#__new')[0];
           dom.setAttrib(newPre, 'id', null);
           editor.selection.select(newPre);

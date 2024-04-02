@@ -7,14 +7,14 @@ const PageNotFound = () => {
     return (
         <Layout>
             <main style={{marginTop: '50px'}}>
-                <div class="container">
+                <div className="container">
 
-                    <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+                    <section className="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
                         <h1 style={{overflow: 'hidden'}}>404</h1>
                         <h2>The page you are looking for doesn't exist.</h2>
-                        <NavLink class="btn btn-primary" to="/">Back to home</NavLink>
-                        <img src={PageNot} class="img-fluid py-5" alt="Page Not Found" />
-                        <div class="credits">
+                        <NavLink className="btn btn-primary" to="/">Back to home</NavLink>
+                        <img src={PageNot} className="img-fluid py-5" alt="Page Not Found" />
+                        <div className="credits">
                             Designed by Ravikant Suthar
                         </div>
                     </section>

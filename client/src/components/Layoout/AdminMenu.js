@@ -131,8 +131,26 @@ const AdminMenu = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/admin/team">
+                                <NavLink to="/dashboard/admin/news">
                                     <i className="bi bi-circle"></i><span>News</span>
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                            <i className="bi bi-layout-text-window-reverse"></i><span>Gallery</span><i className="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="icons-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
+                            <li>
+                                <NavLink to="/dashboard/admin/add_gallery_image">
+                                    <i className="bi bi-circle"></i><span>Add Gallery</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/admin/gallery">
+                                    <i className="bi bi-circle"></i><span>Gallery</span>
                                 </NavLink>
                             </li>
                         </ul>

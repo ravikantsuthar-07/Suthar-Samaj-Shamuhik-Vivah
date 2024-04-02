@@ -1,29 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layoout/Layout'
-import Frist from '../img/1.jpg';
-
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import Under from '../img/Under.png';
 const GalleryYear = () => {
+    const params = useParams();
+    const [getGallery, setGetGallery] = useState([]);
+    const get = async () => {
+        try {
+            const { data } = await axios.get(`/api/v1/gallery/get-images/${params.year}`);
+            if (data?.success) {
+                setGetGallery(data.results);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(()=>{
+        get();
+        // eslint-disable-next-line
+    },[]);
     return (
         <Layout>
-            <section id="gallery">
-                <h1>फोटो 2023 सामूहिक विवाह</h1>
-                <hr />
+            <section id="gallerys">
+                <h1>फोटो {params.year} सामूहिक विवाह</h1>
+                <img className='under' src={Under} alt="" />
                 <div className="row ">
-                    <div className="col-md-4 col-sm-12">
-                        <div className="card infoCard">
-                            <img src={Frist} className="card-img-top" alt="..." />
+                    {getGallery?.map((c, i) => (
+                        <div className="col-md-2 col-sm-4 col-3 ">
+                            <div className="card infoCard">
+                                <img src={require(`../img/gallery/${c.img}`)} className="card-img-top" alt="Gallery" />
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-md-4 col-sm-12">
-                        <div className="card infoCard">
-                            <img src={Frist} className="card-img-top" alt="..." />
-                        </div>
-                    </div>      
-                    <div className="col-md-4 col-sm-12">
-                        <div className="card infoCard">
-                            <img src={Frist} className="card-img-top" alt="..." />
-                        </div>
-                    </div>
+                    ))}
+
                 </div>
             </section>
         </Layout>

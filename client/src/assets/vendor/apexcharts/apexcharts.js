@@ -5401,7 +5401,7 @@
     end = formatter.yLbFormatter(end);
     var val = formatter.yLbFormatter(opts.w.globals.series[seriesIndex][dataPointIndex]);
     var valueHTML = '';
-    var rangeValues = "<span class=\"value start-value\">\n  ".concat(start, "\n  </span> <span class=\"separator\">-</span> <span class=\"value end-value\">\n  ").concat(end, "\n  </span>");
+    var rangeValues = "<span className=\"value start-value\">\n  ".concat(start, "\n  </span> <span className=\"separator\">-</span> <span className=\"value end-value\">\n  ").concat(end, "\n  </span>");
 
     if (opts.w.globals.comboCharts) {
       if (opts.w.config.series[seriesIndex].type === 'rangeArea' || opts.w.config.series[seriesIndex].type === 'rangeBar') {
@@ -5413,7 +5413,7 @@
       valueHTML = rangeValues;
     }
 
-    return '<div class="apexcharts-tooltip-rangebar">' + '<div> <span class="series-name" style="color: ' + color + '">' + (seriesName ? seriesName : '') + '</span></div>' + '<div> <span class="category">' + ylabel + ': </span> ' + valueHTML + ' </div>' + '</div>';
+    return '<div className="apexcharts-tooltip-rangebar">' + '<div> <span className="series-name" style="color: ' + color + '">' + (seriesName ? seriesName : '') + '</span></div>' + '<div> <span className="category">' + ylabel + ': </span> ' + valueHTML + ' </div>' + '</div>';
   };
 
   var Defaults = /*#__PURE__*/function () {
@@ -6390,9 +6390,9 @@
         var c = w.globals.seriesCandleC[seriesIndex][dataPointIndex];
 
         if (w.config.series[seriesIndex].type && w.config.series[seriesIndex].type !== chartType) {
-          return "<div class=\"apexcharts-custom-tooltip\">\n          ".concat(w.config.series[seriesIndex].name ? w.config.series[seriesIndex].name : 'series-' + (seriesIndex + 1), ": <strong>").concat(w.globals.series[seriesIndex][dataPointIndex], "</strong>\n        </div>");
+          return "<div className=\"apexcharts-custom-tooltip\">\n          ".concat(w.config.series[seriesIndex].name ? w.config.series[seriesIndex].name : 'series-' + (seriesIndex + 1), ": <strong>").concat(w.globals.series[seriesIndex][dataPointIndex], "</strong>\n        </div>");
         } else {
-          return "<div class=\"apexcharts-tooltip-box apexcharts-tooltip-".concat(w.config.chart.type, "\">") + "<div>".concat(labels[0], ": <span class=\"value\">") + o + '</span></div>' + "<div>".concat(labels[1], ": <span class=\"value\">") + h + '</span></div>' + (m ? "<div>".concat(labels[2], ": <span class=\"value\">") + m + '</span></div>' : '') + "<div>".concat(labels[3], ": <span class=\"value\">") + l + '</span></div>' + "<div>".concat(labels[4], ": <span class=\"value\">") + c + '</span></div>' + '</div>';
+          return "<div className=\"apexcharts-tooltip-box apexcharts-tooltip-".concat(w.config.chart.type, "\">") + "<div>".concat(labels[0], ": <span className=\"value\">") + o + '</span></div>' + "<div>".concat(labels[1], ": <span className=\"value\">") + h + '</span></div>' + (m ? "<div>".concat(labels[2], ": <span className=\"value\">") + m + '</span></div>' : '') + "<div>".concat(labels[3], ": <span className=\"value\">") + l + '</span></div>' + "<div>".concat(labels[4], ": <span className=\"value\">") + c + '</span></div>' + '</div>';
         }
       }
     }]);
@@ -16932,7 +16932,7 @@
             var gLabels = '<div >';
             var gVals = '<div>';
             goalVals.forEach(function (goal, gi) {
-              gLabels += " <div style=\"display: flex\"><span class=\"apexcharts-tooltip-marker\" style=\"background-color: ".concat(goal.attrs.strokeColor, "; height: 3px; border-radius: 0; top: 5px;\"></span> ").concat(goal.attrs.name, "</div>");
+              gLabels += " <div style=\"display: flex\"><span className=\"apexcharts-tooltip-marker\" style=\"background-color: ".concat(goal.attrs.strokeColor, "; height: 3px; border-radius: 0; top: 5px;\"></span> ").concat(goal.attrs.name, "</div>");
               gVals += "<div>".concat(goal.val, "</div>");
             });
             ttGLabel.innerHTML = gLabels + "</div>";

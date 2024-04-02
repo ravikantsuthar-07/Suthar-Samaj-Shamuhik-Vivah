@@ -367,7 +367,7 @@
 
     const getRaw = element => element.dom.contentEditable;
 
-    const wrapCharWithSpan = value => '<span data-mce-bogus="1" class="mce-' + charMap[value] + '">' + value + '</span>';
+    const wrapCharWithSpan = value => '<span data-mce-bogus="1" className="mce-' + charMap[value] + '">' + value + '</span>';
 
     const isWrappedNbsp = node => node.nodeName.toLowerCase() === 'span' && node.classList.contains('mce-nbsp-wrap');
     const isMatch = n => {

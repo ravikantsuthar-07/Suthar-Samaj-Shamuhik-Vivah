@@ -26,7 +26,7 @@ const TeamCom = () => {
                             <img src={require(`../img/team/${t.img}`)} className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title">{t.Name}</h5>
-                                <h5 className="card-title">{t.PostOn}</h5>
+                                <h5 className="card-text">{t.PostOn}</h5>
                             </div>
                         </div>
                     </div>

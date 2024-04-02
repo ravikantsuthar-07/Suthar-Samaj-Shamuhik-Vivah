@@ -9,7 +9,7 @@ const NewsPage = () => {
 
     const details = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('/api/v1/news/get-news');
             if (data.success) {
                 setNews(data.results)
             }
@@ -30,10 +30,11 @@ const NewsPage = () => {
                     {news.map((n, i) => (
                         <div className="col-md-4 col-sm-12" key={i}>
                             <div className="card infoCard">
-                                <img src={require(`../img/sliders/${n.path}`)} className="card-img-top" alt="..." />
+                                <img src={require(`../img/news/${n.Image}`)} className="card-img-top" alt="news" />
                                 <div className="card-body">
-                                    <h5 className="card-title">समाचार - {n.Year}</h5>
-                                    <Link to="/wedding/1" className="btn btn-outline-danger">सभी समाचार</Link>
+                                    <h5 className="card-title">{n.Title}</h5>
+                                    <h4 className="card-text">{n.S_Description}</h4>
+                                    <Link to="/news/1" className="btn btn-outline-danger">अधिक जानकारी</Link>
                                 </div>
                             </div>
                         </div>

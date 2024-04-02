@@ -8,6 +8,9 @@ import Slider from './Routes/sliderRoutes.js'
 import wedding from "./Routes/weddingRoutes.js";
 import team from './Routes/teamRouters.js';
 import contact from './Routes/contactRouter.js';
+import news from './Routes/newsRouter.js';
+import gallery from './Routes/galleryRouter.js';
+import Sutradhar from './Routes/sutradharRouter.js'
 
 // Environment Configuration
 dotenv.config();
@@ -28,9 +31,12 @@ app.use('/api/v1/slider', Slider);
 app.use('/api/v1/wedding', wedding);
 app.use('/api/v1/team', team);
 app.use('/api/v1/contact', contact);
+app.use('/api/v1/news', news);
+app.use('/api/v1/gallery', gallery);
+app.use('/api/v1/sutradhar', Sutradhar);
 
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
 	console.log(`Server running on ${PORT}`);
-})
+});

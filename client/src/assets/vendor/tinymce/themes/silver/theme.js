@@ -11602,7 +11602,7 @@
       const encoded = encodeText(translated);
       if (matchText.length > 0) {
         const escapedMatchRegex = new RegExp(escape(matchText), 'gi');
-        return encoded.replace(escapedMatchRegex, match => `<span class="tox-autocompleter-highlight">${ match }</span>`);
+        return encoded.replace(escapedMatchRegex, match => `<span className="tox-autocompleter-highlight">${ match }</span>`);
       } else {
         return encoded;
       }
@@ -12665,7 +12665,7 @@
         isEnabled: () => !Disabling.isDisabled(component),
         setEnabled: state => Disabling.set(component, !state),
         setIconFill: (id, value) => {
-          descendant(component.element, `svg path[class="${ id }"], rect[class="${ id }"]`).each(underlinePath => {
+          descendant(component.element, `svg path[className="${ id }"], rect[className="${ id }"]`).each(underlinePath => {
             set$9(underlinePath, 'fill', value);
           });
         },
@@ -14330,8 +14330,8 @@
       const setContents = (comp, items) => {
         const htmlLines = map$2(items, item => {
           const itemText = global$8.translate(item.text);
-          const textContent = spec.columns === 1 ? `<div class="tox-collection__item-label">${ itemText }</div>` : '';
-          const iconContent = `<div class="tox-collection__item-icon">${ getIcon(item.icon) }</div>`;
+          const textContent = spec.columns === 1 ? `<div className="tox-collection__item-label">${ itemText }</div>` : '';
+          const iconContent = `<div className="tox-collection__item-icon">${ getIcon(item.icon) }</div>`;
           const mapItemName = {
             '_': ' ',
             ' - ': ' ',
@@ -14339,10 +14339,10 @@
           };
           const ariaLabel = itemText.replace(/\_| \- |\-/g, match => mapItemName[match]);
           const disabledClass = providersBackstage.isDisabled() ? ' tox-collection__item--state-disabled' : '';
-          return `<div class="tox-collection__item${ disabledClass }" tabindex="-1" data-collection-item-value="${ global$3.encodeAllRaw(item.value) }" title="${ ariaLabel }" aria-label="${ ariaLabel }">${ iconContent }${ textContent }</div>`;
+          return `<div className="tox-collection__item${ disabledClass }" tabindex="-1" data-collection-item-value="${ global$3.encodeAllRaw(item.value) }" title="${ ariaLabel }" aria-label="${ ariaLabel }">${ iconContent }${ textContent }</div>`;
         });
         const chunks = spec.columns !== 'auto' && spec.columns > 1 ? chunk$1(htmlLines, spec.columns) : [htmlLines];
-        const html = map$2(chunks, ch => `<div class="tox-collection__group">${ ch.join('') }</div>`);
+        const html = map$2(chunks, ch => `<div className="tox-collection__group">${ ch.join('') }</div>`);
         set$6(comp.element, html.join(''));
       };
       const onClick = runOnItem((comp, se, tgt, itemValue) => {
@@ -15804,7 +15804,7 @@
           tag: 'div',
           attributes: { role: 'presentation' },
           classes: [getClass('sv-palette-thumb')],
-          innerHtml: `<div class=${ getClass('sv-palette-inner-thumb') } role="presentation"></div>`
+          innerHtml: `<div className=${ getClass('sv-palette-inner-thumb') } role="presentation"></div>`
         }
       });
       const setColour = (canvas, rgba) => {
@@ -21530,7 +21530,7 @@
         },
         classes: ['tox-throbber__busy-spinner']
       },
-      components: [{ dom: fromHtml('<div class="tox-spinner"><div></div><div></div><div></div></div>') }]
+      components: [{ dom: fromHtml('<div className="tox-spinner"><div></div><div></div><div></div></div>') }]
     });
     const focusBusyComponent = throbber => Composing.getCurrent(throbber).each(comp => focus$3(comp.element, true));
     const toggleEditorTabIndex = (editor, state) => {
@@ -24397,7 +24397,7 @@
         isEnabled: () => !Disabling.isDisabled(comp),
         setEnabled: state => Disabling.set(comp, !state),
         setIconFill: (id, value) => {
-          descendant(comp.element, `svg path[class="${ id }"], rect[class="${ id }"]`).each(underlinePath => {
+          descendant(comp.element, `svg path[className="${ id }"], rect[className="${ id }"]`).each(underlinePath => {
             set$9(underlinePath, 'fill', value);
           });
         },
@@ -29559,7 +29559,7 @@
         ],
         parts: {
           blocker: {
-            dom: fromHtml(`<div class="${ blockerClass }"></div>`),
+            dom: fromHtml(`<div className="${ blockerClass }"></div>`),
             components: [{
                 dom: {
                   tag: 'div',
@@ -29648,9 +29648,9 @@
           })])
       };
     };
-    const renderDragHandle = () => ({ dom: fromHtml('<div class="tox-dialog__draghandle"></div>') });
+    const renderDragHandle = () => ({ dom: fromHtml('<div className="tox-dialog__draghandle"></div>') });
     const renderInlineHeader = (spec, dialogId, titleId, providersBackstage) => Container.sketch({
-      dom: fromHtml('<div class="tox-dialog__header"></div>'),
+      dom: fromHtml('<div className="tox-dialog__header"></div>'),
       components: [
         renderTitle(spec, dialogId, Optional.some(titleId), providersBackstage),
         renderDragHandle(),
@@ -29675,7 +29675,7 @@
       const pClose = ModalDialog.parts.close(renderClose(providersBackstage));
       const components = [pTitle].concat(spec.draggable ? [pHandle] : []).concat([pClose]);
       return Container.sketch({
-        dom: fromHtml('<div class="tox-dialog__header"></div>'),
+        dom: fromHtml('<div className="tox-dialog__header"></div>'),
         components
       });
     };
@@ -29698,7 +29698,7 @@
         }
       },
       behaviours: bs,
-      components: [{ dom: fromHtml('<div class="tox-spinner"><div></div><div></div><div></div></div>') }]
+      components: [{ dom: fromHtml('<div className="tox-spinner"><div></div><div></div><div></div></div>') }]
     });
     const getEventExtras = (lazyDialog, providers, extra) => ({
       onClose: () => extra.closeWindow(),
@@ -29921,7 +29921,7 @@
         });
       };
       return {
-        dom: fromHtml('<div class="tox-dialog__footer"></div>'),
+        dom: fromHtml('<div className="tox-dialog__footer"></div>'),
         components: [],
         behaviours: derive$1([Reflecting.config({
             channel: `${ footerChannel }-${ dialogId }`,

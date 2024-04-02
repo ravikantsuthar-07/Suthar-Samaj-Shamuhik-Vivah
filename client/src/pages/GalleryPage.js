@@ -33,7 +33,7 @@ const GalleryPage = () => {
                                 <img src={require(`../img/sliders/${g.path}`)} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">सामूहिक विवाह - {g.Year}</h5>
-                                    <button type='button' onClick={()=>navigate(`/gallery/${g.id}`)} className="btn btn-danger">अधिक तस्वीरें</button>
+                                    <button type='button' onClick={()=>navigate(`/gallery/${g.Year}`)} className="btn btn-danger">अधिक तस्वीरें</button>
                                 </div>
                             </div>
                         </div>

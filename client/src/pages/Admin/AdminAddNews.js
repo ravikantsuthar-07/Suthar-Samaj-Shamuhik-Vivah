@@ -6,31 +6,29 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminAddNews = () => {
     const navigate = useNavigate();
-    const [name, setName] = useState(null);
-    const [post, setPost] = useState(null);
-    const [mobile, setMobile] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [s_Description, setS_Description] = useState(null);
+    const [l_Description, setL_Description] = useState(null);
     const [img, setImg] = useState(null);
-    const [address, setAddress] = useState(null);
     const [auth] = useAuth();
 
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            const teamData = new FormData();
-            teamData.append('Name', name);
-            teamData.append('PostOn', post);
-            teamData.append('Mobile', mobile);
-            teamData.append('Address', address);
-            teamData.append('img', img);
-            const {data} = await axios.post(`/api/v1/team/create-team`, teamData, {
+            const newsData = new FormData();
+            newsData.append('Title', title);
+            newsData.append('S_Description', s_Description);
+            newsData.append('L_Description', l_Description);
+            newsData.append('img', img);
+            const {data} = await axios.post(`/api/v1/news/create-news`, newsData, {
                 headers:{
                     'Authorization' : auth.token
                 }
             });
             if (data?.success) {
-                navigate(`/dashboard/admin/team`);
+                navigate(`/dashboard/admin/news`);
             } else {
-                navigate(`/dashboard/admin/add_team`);
+                navigate(`/dashboard/admin/add_news`);
             }
         } catch (error) {
             console.log(error);
@@ -50,34 +48,22 @@ const AdminAddNews = () => {
                                     <form onSubmit={handleCreate} encType="multipart/form-data">
 
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Name</label>
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Title</label>
                                             <div className="col-sm-10">
-                                                <input type="text" name='SrNo' value={name} onChange={(e) => setName(e.target.value)} className="form-control" id="inputName" />
+                                                <input type="text" name='Title' value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" id="inputName" />
                                             </div>
                                         </div>
 
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Post</label>
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Short Description</label>
                                             <div className="col-sm-10">
-                                                <select onChange={(e) => setPost(e.target.value)} value={post} className="form-control" >
-                                                    <option value={''} >--- पोस्ट चुनिए ---</option>
-                                                    <option value={'मंत्री'}>  मंत्री </option>
-                                                    <option value={'अध्यक्ष'} > अध्यक्ष</option>
-                                                    <option value={'कोषाध्यक्ष'} > कोषाध्यक्ष </option>
-                                                    <option value={'प्रणेता'} >प्रणेता </option>
-                                                </select>
+                                                <input type="text" name='S_Description' value={s_Description} placeholder='Enter Short Description' className="form-control" id="inputMobile" onChange={(e) => setS_Description(e.target.value)} />
                                             </div>
                                         </div>
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Mobile</label>
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">News </label>
                                             <div className="col-sm-10">
-                                                <input type="text" name='Mobile' value={mobile} placeholder='Enter Mobile Number' className="form-control" id="inputMobile" onChange={(e) => setMobile(e.target.value)} />
-                                            </div>
-                                        </div>
-                                        <div className="row mb-3">
-                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Address</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" name='Address' value={address} placeholder='Enter Address' className="form-control" id="inputMobile" onChange={(e) => setAddress(e.target.value)} />
+                                                <textarea name='L_Description' value={l_Description} placeholder='Full News' className="form-control" id="inputMobile" onChange={(e) => setL_Description(e.target.value)} > </textarea>
                                             </div>
                                         </div>
                                         <div className="row mb-3">

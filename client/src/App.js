@@ -30,6 +30,12 @@ import AdminContact from './pages/Admin/AdminContact';
 import PageNotFound from './pages/PageNotFound';
 import AdminUpdateTeam from './pages/Admin/AdminUpdateTeam';
 import AdminAddNews from './pages/Admin/AdminAddNews';
+import AdminNews from './pages/Admin/AdminNews';
+import NewDetails from './pages/NewDetails';
+import AdminUpdateNews from './pages/Admin/AdminUpdateNews';
+import AdminAddGalleryImage from './pages/Admin/AdminAddGalleryImage';
+import AdminGallery from './pages/Admin/AdminGallery';
+import AdminGalleryImage from './pages/Admin/AdminGalleryImage';
 
 function App() {
     return (
@@ -37,11 +43,11 @@ function App() {
             <Route exact path='/' element={<HomePage />} />
             <Route exact path='/about' element={<AboutPage />} />
             <Route exact path='/gallery' element={<GalleryPage />} />
-            <Route exact path='/gallery/:id' element={<GalleryYear />} />
+            <Route exact path='/gallery/:year' element={<GalleryYear />} />
             <Route exact path='/wedding' element={<InformationPage />} />
             <Route exact path='/wedding/:year' element={<InforMationPerYear />} />
             <Route exact path='/news' element={<NewsPage />} />
-            <Route exact path='/news/:slug' element={<InforMationPerYear />} />
+            <Route exact path='/news/:id' element={<NewDetails />} />
             <Route exact path='/contact' element={<ContactPage />} />
             <Route exact path='/sutradhar' element={<SutradharPage />} />
             <Route exact path='/register' element={<Register />} />
@@ -62,6 +68,11 @@ function App() {
                 <Route exact path='admin/update_team/:id' element={<AdminUpdateTeam />} />
                 <Route exact path='admin/team' element={<AdminTeams />} />
                 <Route exact path='admin/add_news' element={<AdminAddNews />} />
+                <Route exact path='admin/news' element={<AdminNews />} />
+                <Route exact path='admin/update_news/:id' element={<AdminUpdateNews />} />
+                <Route exact path='admin/add_gallery_image' element={<AdminAddGalleryImage />} />
+                <Route exact path='admin/gallery' element={<AdminGallery />} />
+                <Route exact path='admin/gallery_image/:year' element={<AdminGalleryImage />} />
                 <Route exact path='admin/contact' element={<AdminContact />} />
             </Route>
             <Route exact path='/login' element={<LoginPage /> } />
