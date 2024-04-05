@@ -15,7 +15,6 @@ const InforMationPerYear = () => {
     const [imgWed, setImgWed] = useState('');
     const [dates, setDates] = useState('');
     const [sr, setSr] = useState('');
-    console.log(imgWed);
 
     const gettAllWedding = async () => {
         try {
@@ -70,11 +69,11 @@ const InforMationPerYear = () => {
         return `${formattedDay}/${formattedMonth}/${year}`;
     };
 
-
     useEffect(() => {
         info();
         // eslint-disable-next-line
     }, []);
+
     return (
         <Layout>
             <section id='wedding'>
@@ -127,7 +126,6 @@ const InforMationPerYear = () => {
                             </div>
                         </div>
                     ))}
-
                 </div>
 
                 <div className="container">

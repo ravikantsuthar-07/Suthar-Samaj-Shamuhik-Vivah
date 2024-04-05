@@ -38,10 +38,8 @@ const AdminUpdateTeam = () => {
         }
     }
 
-
     const data = async () => {
         try {
-
             const { data } = await axios.get(`/api/v1/team/get-member/${params.id}`, {
                 headers: {
                     'Authorization': auth.token
@@ -60,13 +58,15 @@ const AdminUpdateTeam = () => {
             console.log(error);
         }
     }
+
     useEffect(() => {
         data();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <>
             <AdminMenu />
-
             <main id="main" className="main">
                 <section className="section">
                     <div className="row">
@@ -75,14 +75,12 @@ const AdminUpdateTeam = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">सदस्य अपडेट</h5>
                                     <form onSubmit={handleCreate} encType="multipart/form-data">
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Name</label>
                                             <div className="col-sm-10">
                                                 <input type="text" name='SrNo' value={name} onChange={(e) => setName(e.target.value)} className="form-control" id="inputName" />
                                             </div>
                                         </div>
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Post</label>
                                             <div className="col-sm-10">

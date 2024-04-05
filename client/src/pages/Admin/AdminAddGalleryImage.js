@@ -29,7 +29,6 @@ const AdminAddGalleryImage = () => {
             for(var x = 0; x < photo.length; x++) {
                 weddingData.append('Photo', photo[x]);
             }
-
             const { data } = await axios.post('/api/v1/gallery/create',
                 weddingData, {
                 headers: {
@@ -45,8 +44,6 @@ const AdminAddGalleryImage = () => {
             console.log(error);
         }
     }
-
-
 
     useEffect(() => {
         getYear();

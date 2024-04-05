@@ -77,6 +77,33 @@ export const getSingleWeddingController = async (req, res) => {
     }
 };
 
+export const getWeddingYearController = async(req, res) => {
+    try {
+        const sql = `SELECT DISTINCT weddings.year, sliders.path FROM weddings INNER JOIN sliders ON weddings.year = sliders.Year`;
+        DB.query(sql, (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error in Getting Year from table',
+                    err
+                });
+            } else {
+                return res.status(200).json({
+                    success: true,
+                    message: 'Getting Wedding Sucessfully',
+                    results
+                });
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error in Getting Year Of Wedding',
+            error
+        });
+    }
+}
+
 export const createWeddingController = async (req, res) => {
     try {
         const { year, M_name, MF_Name, MG_Name, M_Address, M_Mobile, F_Name, FF_Name, FG_Name, F_Address, F_Mobile } = req.body;

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 const NewDetails = () => {
     const [news, setNews] = useState([])
     const params = useParams();
+    
     const singleNews = async () => {
         try {
             const {data} = await axios.get(`/api/v1/news/get-single-news/${params.id}`);
@@ -16,9 +17,12 @@ const NewDetails = () => {
             console.log(error);
         }
     }
+
     useEffect(()=> {
         singleNews();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <Layout>
             {console.log(news.Image)}

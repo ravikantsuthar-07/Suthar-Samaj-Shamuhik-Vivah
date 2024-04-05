@@ -1,13 +1,7 @@
-@font-face {
-	font-family: myFirstFont;
-	src: url(Fonts/A_Anubhuti\ Normal.ttf);
-}
-
 * {
 	margin: 0;
 	overflow-x: hidden;
 	padding: 0;
-	/* background-color: #D61C4E; */
 
 }
 
@@ -70,8 +64,6 @@ h2 {
 
 .links li a:hover {
 	color: #91640F;
-	/* border: 2px solid #607d8b !important; */
-
 }
 
 .navbar {
@@ -94,6 +86,12 @@ h2 {
 /* About Section */
 #about {
 	margin-top: 130px;
+	text-align: center;
+}
+
+#abouts {
+	margin-top: 10px;
+	text-align: center;
 }
 
 #about h1 {
@@ -108,7 +106,6 @@ h2 {
 	color: #D61C4E;
 	border-width: 2px;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
-	margin: -20px 40% 5px 40%;
 }
 
 .aboutImg {
@@ -121,18 +118,36 @@ h2 {
 }
 
 #aboutText {
+	text-align: start;
+	margin-right: 15px;
 	margin-top: 10px;
 	font-size: 16px;
+}
+
+
+#abouts h1 {
+	font-size: 45px;
+	text-align: center;
+	font-weight: bold;
+	color: #D61C4E;
+}
+
+#abouts .under {
+	width: 250px;
+	color: #D61C4E;
+	border-width: 2px;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
 /* Informarion */
 
 #info {
 	margin-top: 130px;
+	text-align: center;
 }
 
 #info h1 {
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 45px;
 	font-weight: bold;
 	color: #D61C4E;
@@ -143,7 +158,6 @@ h2 {
 #info .under {
 	width: 440px;
 	color: #FEF9A7;
-	margin: -20px 20% 5px 33%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
@@ -166,6 +180,35 @@ h2 {
 
 
 
+#infos {
+	margin-top: 10px;
+	text-align: center;
+}
+
+#infos h1 {
+	padding-top: 20px;
+	font-size: 45px;
+	font-weight: bold;
+	color: #D61C4E;
+	text-align: center;
+}
+
+
+#infos .under {
+	width: 480px;
+	color: #FEF9A7;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
+
+#contactForm h1 {
+	color: #D61C4E;
+	font-size: 35px;
+	text-align: center;
+	margin-top: 25px;
+	font-weight: bold;
+}
+
 
 /* Footer */
 #footers {
@@ -186,10 +229,11 @@ h3 {
 /* Gallery */
 #gallery {
 	margin-top: 130px;
+	text-align: center;
 }
 
 #gallery h1 {
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 45px;
 	font-weight: bold;
 	color: #D61C4E;
@@ -199,7 +243,6 @@ h3 {
 
 #gallery .under {
 	width: 130px;
-	margin: -40px 45% 5px 45%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
@@ -207,10 +250,11 @@ h3 {
 /* Gallery */
 #gallerys {
 	margin-top: 130px;
+	text-align: center;
 }
 
 #gallerys h1 {
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 45px;
 	font-weight: bold;
 	color: #D61C4E;
@@ -220,7 +264,6 @@ h3 {
 
 #gallerys .under {
 	width: 510px;
-	margin: -10px 45% 5px 30%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
@@ -233,12 +276,11 @@ h3 {
 
 #wedding .under {
 	width: 650px;
-	margin: -40px 24% 5px 24%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
 #wedding h3 {
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 45px;
 	font-weight: bold;
 	color: #D61C4E;
@@ -312,10 +354,11 @@ h3 {
 /* News */
 #news {
 	margin-top: 130px;
+	text-align: center;
 }
 
 #news h1 {
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 45px;
 	font-weight: bold;
 	color: #D61C4E;
@@ -325,8 +368,6 @@ h3 {
 
 #news .under {
 	width: 180px;
-	height: 18px;
-	margin: -50px 45% 0px 43%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
@@ -337,10 +378,11 @@ h3 {
 
 #teamCom {
 	margin-top: 10px;
+	text-align: center;
 }
 
 #teamCom h1 {
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 45px;
 	font-weight: bold;
 	color: #FEF9A7;
@@ -350,7 +392,6 @@ h3 {
 
 #teamCom .under {
 	width: 130px;
-	margin: -40px 45% 5px 45%;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
@@ -368,17 +409,18 @@ h3 {
 
 label {
 	font-weight: 600;
-	color: #666;
+	color: #D61C4E;
 }
 
 .box8 {
 	box-shadow: 0px 0px 5px 1px #999;
 }
 
-.card-body h4{
+.card-body h4 {
 	font-size: 16px;
 	color: #D61C4E;
 }
+
 @media screen and (max-width: 480px) {
 	.logos {
 		font-size: 10px;
@@ -419,19 +461,30 @@ label {
 
 	#about .under {
 		width: 130px;
-		margin: -20px 34% 5px 34%;
 	}
 
 	#about h1 {
 		font-size: 25px;
-		color: #FEF9A7;
+		color: #D61C4E;
+	}
+
+
+	#abouts .under {
+		width: 130px;
+	}
+
+	#abouts h1 {
+		font-size: 25px;
+		color: #D61C4E;
 	}
 
 
 	#aboutText {
 		margin-top: 10px;
 		font-size: 14px;
-		color: #FEF9A7;
+		color: #D61C4E;
+		margin-left: 20px;
+		margin-right: 15px;
 	}
 
 	#aboutImg {
@@ -447,7 +500,15 @@ label {
 
 	#info .under {
 		width: 250px;
-		margin: -20px 34% 5px 20%;
+
+	}
+
+	#infos h1 {
+		font-size: 25px;
+	}
+
+	#infos .under {
+		width: 250px;
 
 	}
 
@@ -460,7 +521,6 @@ label {
 
 	#gallery .under {
 		width: 90px;
-		margin: -20px 45% 5px 40%;
 	}
 
 	/* Galler Year */
@@ -472,7 +532,6 @@ label {
 
 	#gallerys .under {
 		width: 270px;
-		margin: -30px 45% 5px 17%;
 	}
 
 	/* Team */
@@ -492,7 +551,6 @@ label {
 
 	#teamCom .under {
 		width: 90px;
-		margin: -20px 45% 5px 40%;
 	}
 
 	#news h1 {
@@ -501,7 +559,6 @@ label {
 
 	#news .under {
 		width: 110px;
-		margin: -20px 38% 5px 38%;
 	}
 
 
@@ -509,7 +566,6 @@ label {
 
 	#wedding .under {
 		width: 350px;
-		margin: -40px 24% 5px 8%;
 	}
 
 	#wedding .mainImg {
@@ -517,7 +573,7 @@ label {
 	}
 
 	#wedding h3 {
-		font-size: 25px;
+		font-size: 21px;
 	}
 
 	#wedding h4 {
@@ -562,107 +618,3 @@ label {
 
 }
 
-
-@media screen and  (max-width: 1166px) {
-	.logos {
-		font-size: 20px;
-		text-align: center;
-		align-items: center;
-	}
-
-	.logos img {
-		padding: 0;
-		margin: 0;
-		width: 40px;
-		height: 60px;
-	}
-
-	.logos h1 {
-		padding: 0px;
-		font-size: 25px;
-		align-items: center;
-	}
-
-
-	.carousel {
-		margin-top: 120px;
-		height: 100%;
-	}
-
-	
-	/* About Section */
-
-	#about .under {
-		width: 130px;
-		margin: -20px 34% 5px 50%;
-	}
-
-	#about h1 {
-		font-size: 27px;
-		color: #FEF9A7;
-	}
-
-
-	#aboutText {
-		margin-top: 10px;
-		font-size: 14px;
-		color: #FEF9A7;
-	}
-
-	#aboutImg {
-		width: 50%;
-		height: 200px;
-	}
-
-}
-
-@media screen and  (max-width: 2000px) {
-	.logos {
-		font-size: 30px;
-		text-align: center;
-		align-items: center;
-	}
-
-	.logos img {
-		padding: 0;
-		margin: 0;
-		width: 40px;
-		height: 60px;
-	}
-
-	.logos h1 {
-		padding: 0px;
-		font-size: 35px;
-		align-items: center;
-	}
-
-
-	.carousel {
-		margin-top: 120px;
-		height: 100%;
-	}
-
-	
-	/* About Section */
-
-	#about .under {
-		width: 170px;
-		margin: -20px 34% 5px 45%;
-	}
-
-	#about h1 {
-		font-size: 35px;
-	}
-
-
-	#aboutText {
-		margin-top: 10px;
-		font-size: 22px;
-	}
-
-	#aboutImg {
-		width: 50%;
-		height: 400px;
-	}
-
-}

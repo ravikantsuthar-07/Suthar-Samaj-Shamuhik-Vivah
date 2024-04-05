@@ -39,6 +39,7 @@ const AdminUpdateWeddingMember = () => {
             setWoMenMobile(data.results[0].F_Mobile);
         }
     }
+
     const yy = async () => {
         try {
 
@@ -86,8 +87,6 @@ const AdminUpdateWeddingMember = () => {
             console.log(error);
         }
     }
-
-
 
     useEffect(() => {
         dd();

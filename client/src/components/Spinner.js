@@ -11,9 +11,10 @@ const Spinner = ({path = "login"}) => {
         }, 1000);
         count === 0 &&  navigate(`/${path}`);
         return () => clearInterval(interval)
-    }, [count, navigate, path])
+    }, [count, navigate, path]);
+
     return (
-        <div>
+        <div style={{width: '100%', height: '100%'}}>
             <div className="text-center align-items-center">
                 <div className="spinner-border" role="status">
                     <span className="visually-hidden">Loading...</span>

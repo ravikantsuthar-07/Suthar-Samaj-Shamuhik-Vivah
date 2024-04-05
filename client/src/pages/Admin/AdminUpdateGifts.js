@@ -54,8 +54,6 @@ const AdminUpdateGifts = () => {
         }
     }
 
-
-
     useEffect(() => {
         dd();
         yy();

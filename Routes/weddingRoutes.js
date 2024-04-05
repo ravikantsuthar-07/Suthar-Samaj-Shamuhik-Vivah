@@ -8,6 +8,7 @@ import {
     getGiftController,
     getSingleGiftController,
     getSingleWeddingController,
+    getWeddingYearController,
     updateGiftController,
     updateWeddingController,
 } from "../Controller/weddingController.js";
@@ -36,6 +37,7 @@ const upload = multer({ storage: storage });
 
 router.get('/gettAllWedding/:year', getAllWeddingController);
 router.get('/gettSingleWedding/:id', getSingleWeddingController);
+router.get('/get-Wedding-year', getWeddingYearController);
 
 router.post('/createWedding', requireSignIn, isAdmin, upload.array('Photo', 2), createWeddingController);
 router.put('/updateWedding/:id', requireSignIn, isAdmin, upload.array('Photo', 2), updateWeddingController);

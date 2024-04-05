@@ -179,6 +179,12 @@ const AdminMenu = () => {
                             <span>Contact</span>
                         </NavLink>
                     </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link collapsed" to="/dashboard/admin/book">
+                            <i className="bi bi-file-earmark"></i>
+                            <span>Sutradhar</span>
+                        </NavLink>
+                    </li>
 
                 </ul>
 

@@ -3,7 +3,7 @@ import logo from '../img/logo.png';
 import under from '../img/Under.png';
 const AboutCom = () => {
     return (
-        <section id="about">
+        <section id="abouts">
             <h1>हमारे बारे में</h1>
                 <img className='under' src={under} alt="" />
                 <div className="row">

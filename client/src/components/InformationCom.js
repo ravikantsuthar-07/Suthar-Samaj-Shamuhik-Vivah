@@ -7,9 +7,9 @@ const InformationCom = () => {
     const [info, setInfo] = useState([]);
     const navigate = useNavigate()
 
-    const getSlider = async () => {
+    const getWeddings = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-slider-last');
+            const { data } = await axios.get('/api/v1/wedding/get-Wedding-year');
             console.log(data);
             if (data.success) {
                 setInfo(data.results)
@@ -20,10 +20,11 @@ const InformationCom = () => {
     }
 
     useEffect(() => {
-        getSlider();
+        getWeddings();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <section id="info">
+        <section id="infos">
             <h1>आयोजित सामूहिक विवाह</h1>
             <img className='under' src={under} alt="" />
             <div className="row ">
@@ -32,8 +33,8 @@ const InformationCom = () => {
                     <div className="card infoCard">
                         <img src={require(`../img/sliders/${info.path}`)} className="card-img-top" alt="..." />
                         <div className="card-body">
-                            <h5 className="card-title">सामूहिक विवाह - {info.Year}</h5>
-                            <button onClick={() => navigate(`/wedding/${info.Year}`)} className="btn btn-outline-danger">अधिक जानकारी</button>
+                            <h5 className="card-title">सामूहिक विवाह - {info.year}</h5>
+                            <button onClick={() => navigate(`/wedding/${info.year}`)} className="btn btn-outline-danger">अधिक जानकारी</button>
                         </div>
                     </div>
                 </div>

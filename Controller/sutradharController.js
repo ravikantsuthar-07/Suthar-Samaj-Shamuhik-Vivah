@@ -1,8 +1,10 @@
 import DB from '../DB/connection.js';
 export const getSutradharController = async (req, res) => {
     try {
-        const sql = `SELECT * FROM book WHERE status = 1 ORDER BY id DESC`;
-        await DB.query(sql, (err, results) => {
+        const d = new Date();
+        const year = d.getFullYear();
+        const sql = `SELECT * FROM book WHERE status = 1 AND year = ? ORDER BY id DESC`;
+        await DB.query(sql, [year], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,

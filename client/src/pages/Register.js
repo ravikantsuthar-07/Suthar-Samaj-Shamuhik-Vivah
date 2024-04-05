@@ -9,7 +9,7 @@ const Register = () => {
                 <form>
                     <div className="row jumbotron box8">
                         <div className="col-sm-12 mb-4">
-                            <h2 className="text-center text-info">Register</h2>
+                            <h2 className="text-center">Register</h2>
                         </div>
                         <div className="col-sm-6 form-group">
                             <label htmlFor="name-f">First Name</label>

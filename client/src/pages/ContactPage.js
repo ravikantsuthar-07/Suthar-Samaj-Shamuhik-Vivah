@@ -8,6 +8,7 @@ const ContactPage = () => {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    
     const handleContact = async (e) => {
         e.preventDefault();
         try {
@@ -17,6 +18,7 @@ const ContactPage = () => {
             console.log(error);
         }
     }
+
     return (
         <Layout>
             <div id='contactForm' className="row">

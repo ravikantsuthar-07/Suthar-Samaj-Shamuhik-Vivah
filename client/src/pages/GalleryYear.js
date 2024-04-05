@@ -6,6 +6,7 @@ import Under from '../img/Under.png';
 const GalleryYear = () => {
     const params = useParams();
     const [getGallery, setGetGallery] = useState([]);
+
     const get = async () => {
         try {
             const { data } = await axios.get(`/api/v1/gallery/get-images/${params.year}`);
@@ -16,10 +17,12 @@ const GalleryYear = () => {
             console.log(error);
         }
     }
+
     useEffect(()=>{
         get();
         // eslint-disable-next-line
     },[]);
+
     return (
         <Layout>
             <section id="gallerys">
@@ -33,7 +36,6 @@ const GalleryYear = () => {
                             </div>
                         </div>
                     ))}
-
                 </div>
             </section>
         </Layout>

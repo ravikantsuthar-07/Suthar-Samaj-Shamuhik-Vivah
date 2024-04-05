@@ -45,11 +45,9 @@ const AdminGiftsList = () => {
         <>
             <AdminMenu />
             <main id="main" className="main">
-
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
-
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Gifts</h5>

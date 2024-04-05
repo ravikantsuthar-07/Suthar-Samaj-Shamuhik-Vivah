@@ -16,7 +16,6 @@ const AdminAddGifts = () => {
 
     const yy = async () => {
         try {
-
             const { data } = await axios.get('/api/v1/slider/get-slider');
             if (data.success) {
                 setSYear(data.results)
@@ -25,7 +24,6 @@ const AdminAddGifts = () => {
             console.log(error);
         }
     }
-
 
     const handleCreate = async (e) => {
         e.preventDefault();
@@ -44,8 +42,6 @@ const AdminAddGifts = () => {
             console.log(error);
         }
     }
-
-
 
     useEffect(() => {
         yy();

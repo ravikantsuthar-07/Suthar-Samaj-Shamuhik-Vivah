@@ -28,7 +28,7 @@ const AdminWeddingList = () => {
                     "Authorization": auth.token
                 }
             });
-            if (data.success) {
+            if (data?.success) {
                 console.log(data.message);
             }
         } catch (error) {
@@ -38,38 +38,35 @@ const AdminWeddingList = () => {
 
     useEffect(() => {
         gettingweddingYear();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     return (
         <>
             <AdminMenu />
             <main id="main" className="main">
-
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
-
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Wedding</h5>
-
                                     <table className="table">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Father Name</th>
-                                                <th scope="col">Grandfather Name</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Mobile Number</th>
-                                                <th scope="col">Action</th>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Father Name</th>
+                                                <th>Grandfather Name</th>
+                                                <th>Address</th>
+                                                <th>Mobile Number</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {wedding?.map((c, i) => (
                                                 <>
-                                                    <td scope="row" key={c.id}>{i + 1}</td>
+                                                    <td key={c.id}>{i + 1}</td>
                                                     <tr key={i}>
                                                         <td>Male</td>
                                                         <td>{c.M_Name}</td>

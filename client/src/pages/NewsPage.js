@@ -21,6 +21,7 @@ const NewsPage = () => {
     useEffect(() => {
         details();
     }, []);
+    
     return (
         <Layout>
             <section id="news">
@@ -39,7 +40,6 @@ const NewsPage = () => {
                             </div>
                         </div>
                     ))}
-
                 </div>
             </section>
         </Layout>

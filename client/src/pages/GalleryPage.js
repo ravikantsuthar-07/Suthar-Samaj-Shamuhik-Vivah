@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 const GalleryPage = () => {
     const [gallery, setGallery] = useState([]);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const gall = async () => {
         try {
             const { data } = await axios.get('/api/v1/slider/get-slider');
@@ -19,8 +20,10 @@ const GalleryPage = () => {
     }
 
     useEffect(() => {
-        gall()
+        gall();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <Layout>
             <section id="gallery">
@@ -38,7 +41,6 @@ const GalleryPage = () => {
                             </div>
                         </div>
                     ))}
-
                 </div>
             </section>
         </Layout>

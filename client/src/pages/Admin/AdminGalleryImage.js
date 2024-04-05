@@ -18,12 +18,12 @@ const AdminGalleryImage = () => {
     }
     useEffect(() => {
         gettingImage();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
             <AdminMenu />
             <main id='main' className='main'>
-
                 <div className='container'>
                     <div className='row'>
                         {getImage?.map((c, i) => (
@@ -33,7 +33,6 @@ const AdminGalleryImage = () => {
                                 </div>
                             </div>
                         ))}
-
                     </div>
                 </div>
             </main>

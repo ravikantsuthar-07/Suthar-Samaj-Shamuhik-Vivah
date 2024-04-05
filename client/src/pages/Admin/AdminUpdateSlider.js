@@ -13,7 +13,6 @@ const AdminUpdateSlider = () => {
     const [date, setDate] = useState("");
     const [auth] = useAuth();
 
-
     const getSingleSlider = async () => {
         try {
             const {data} = await axios.get(`/api/v1/slider/get-single-slider/${params.id}`);
@@ -28,8 +27,6 @@ const AdminUpdateSlider = () => {
             console.log(error);
         }
     }
-
-
 
     const handleCreate = (e) => {
         e.preventDefault();
@@ -60,8 +57,6 @@ const AdminUpdateSlider = () => {
         }
     }
 
-
-    
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = date.getDate();
@@ -74,8 +69,8 @@ const AdminUpdateSlider = () => {
 
     useEffect(()=>{
         getSingleSlider();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     return (
         <>
@@ -88,14 +83,12 @@ const AdminUpdateSlider = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">स्लाइडर जोड़ें</h5>
                                     <form method='post' onSubmit={handleCreate} encType="multipart/form-data">
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Number Of wedding</label>
                                             <div className="col-sm-10">
                                                 <input type="text" name='SrNo' value={srNo} onChange={(e) => setSrNo(e.target.value)} className="form-control" id="inpuSrNo" />
                                             </div>
                                         </div>
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Date</label>
                                             <div className="col-sm-10">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import AdminMenu from '../../components/Layoout/AdminMenu'
-import { useAuth } from '../../context/auth'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,29 +7,19 @@ import { useNavigate } from 'react-router-dom'
 const AdminGifts = () => {
     const navigate = useNavigate()
     const [wedding, setWedding] = useState([]);
-    const [auth] = useAuth();
-
-    const gettingwedding = async () => {
+    const gettingGiftWedding = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-admin-slider', {
-                headers: {
-                    "Authorization": auth.token
-                }
-            });
-
+            const { data } = await axios.get('/api/v1/wedding/get-Wedding-year');
             if (data?.success) {
                 setWedding(data?.results);
             }
-
-
         } catch (error) {
             console.log(error);
         }
     }
 
-
     useEffect(() => {
-        gettingwedding();
+        gettingGiftWedding();
         // eslint-disable-next-line
     }, []);
 
@@ -39,15 +28,12 @@ const AdminGifts = () => {
         <>
             <AdminMenu />
             <main id="main" className="main">
-
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
-
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Gift</h5>
-
                                     <table className="table">
                                         <thead>
                                             <tr>
@@ -61,7 +47,7 @@ const AdminGifts = () => {
                                             {wedding?.map((c, i) => (
                                                 <tr key={i}>
                                                     <th scope="row">{i + 1}</th>
-                                                    <td>{c.Year}</td>
+                                                    <td>{c.year}</td>
                                                     <td><img src={require(`../../img/sliders/${c.path}`)} width={120} height={50} alt={c.id} /></td>
                                                     <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/gifts_year/${c.Year}`)}>See Wedding in {c.Year}</button></td>
                                                 </tr>
@@ -74,7 +60,6 @@ const AdminGifts = () => {
                     </div>
                 </section>
             </main>
-
         </>
     )
 }

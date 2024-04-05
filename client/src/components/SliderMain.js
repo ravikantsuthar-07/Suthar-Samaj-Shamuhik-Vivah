@@ -17,6 +17,7 @@ const SliderMain = () => {
     useEffect(() => {
         getSlider();
     }, []);
+    
     return (
         <div id="carouselExample" className="carousel slide">
             <div className="carousel-inner">
@@ -24,7 +25,6 @@ const SliderMain = () => {
                     <div className="carousel-item active">
                         <img src={require(`../img/sliders/${sli.path}`)} className="d-block w-100" alt="..." />
                     </div>
-
                 ))}
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

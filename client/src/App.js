@@ -36,6 +36,8 @@ import AdminUpdateNews from './pages/Admin/AdminUpdateNews';
 import AdminAddGalleryImage from './pages/Admin/AdminAddGalleryImage';
 import AdminGallery from './pages/Admin/AdminGallery';
 import AdminGalleryImage from './pages/Admin/AdminGalleryImage';
+import AdminAddBook from './pages/Admin/AdminAddBook';
+import AdminBooks from './pages/Admin/AdminBooks';
 
 function App() {
     return (
@@ -74,6 +76,8 @@ function App() {
                 <Route exact path='admin/gallery' element={<AdminGallery />} />
                 <Route exact path='admin/gallery_image/:year' element={<AdminGalleryImage />} />
                 <Route exact path='admin/contact' element={<AdminContact />} />
+                <Route exact path='admin/add_book' element={<AdminAddBook />} />
+                <Route exact path='admin/book' element={<AdminBooks />} />
             </Route>
             <Route exact path='/login' element={<LoginPage /> } />
             <Route exact path='/*' element={<PageNotFound />} />

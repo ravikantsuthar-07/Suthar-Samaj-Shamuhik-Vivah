@@ -16,13 +16,11 @@ const AdminAddSlider = () => {
     const handleCreate = (e) => {
         e.preventDefault();
         try {
-
             const slider = new FormData();
             slider.append('year', year);
             slider.append('img', img);
             slider.append('date', date);
             slider.append('SrNo', srNo);
-
             const { data } = axios.post('/api/v1/slider/create-slider',
                 slider,
                 {
@@ -31,13 +29,11 @@ const AdminAddSlider = () => {
                     }
                 }
             );
-
             if (data.success) {
                 navigate('/dashboard/admin/slider')
             } else {
                 navigate('/dashboard/admin/add_slider')
             }
-
         } catch (error) {
             console.log(error);
         }
@@ -54,14 +50,12 @@ const AdminAddSlider = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">स्लाइडर जोड़ें</h5>
                                     <form method='post' onSubmit={handleCreate} encType="multipart/form-data">
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Number Of wedding</label>
                                             <div className="col-sm-10">
                                                 <input type="text" name='SrNo' value={srNo} onChange={(e) => setSrNo(e.target.value)} className="form-control" id="inpuSrNo" />
                                             </div>
                                         </div>
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Date</label>
                                             <div className="col-sm-10">

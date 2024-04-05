@@ -11,37 +11,30 @@ const AdminGallery = () => {
     const gettingGallery = async () => {
         try {
             const { data } = await axios.get('/api/v1/gallery/get-year');
-
             if (data?.success) {
                 setGallery(data?.results);
             }
-
-
         } catch (error) {
             console.log(error);
         }
     }
 
-
     useEffect(() => {
         gettingGallery();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    // eslint-disable-next-line
 
 
     return (
         <>
             <AdminMenu />
             <main id="main" className="main">
-
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
-
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">Slider</h5>
-
+                                    <h5 className="card-title">Gallery</h5>
                                     <table className="table">
                                         <thead>
                                             <tr>
@@ -66,7 +59,6 @@ const AdminGallery = () => {
                     </div>
                 </section>
             </main>
-
         </>
     )
 }

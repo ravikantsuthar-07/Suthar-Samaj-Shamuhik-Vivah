@@ -24,7 +24,6 @@ const AdminSlider = () => {
         }
     }
 
-
     const updateStatusSlider = async (status, id) => {
         try {
             const { data } = await axios.put(`/api/v1/slider/update-status-slider/${id}`,
@@ -64,6 +63,7 @@ const AdminSlider = () => {
             console.log(error);
         }
     }
+
     useEffect(() => {
         sli()
         // eslint-disable-next-line
@@ -72,15 +72,12 @@ const AdminSlider = () => {
         <>
             <AdminMenu />
             <main id="main" className="main">
-
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
-
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Slider</h5>
-
                                     <table className="table">
                                         <thead>
                                             <tr>

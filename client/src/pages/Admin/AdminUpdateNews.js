@@ -27,7 +27,6 @@ const AdminUpdateNews = () => {
         }
     }
 
-    
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
@@ -50,13 +49,14 @@ const AdminUpdateNews = () => {
             console.log(error);
         }
     }
+
     useEffect(()=>{
         getSingleNews();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     return (
         <>
             <AdminMenu />
-            
             <main id="main" className="main">
                 <section className="section">
                     <div className="row">
@@ -65,14 +65,12 @@ const AdminUpdateNews = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">समाचार जोड़ें</h5>
                                     <form onSubmit={handleCreate} encType="multipart/form-data">
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Title</label>
                                             <div className="col-sm-10">
                                                 <input type="text" name='Title' value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" id="inputName" />
                                             </div>
                                         </div>
-
                                         <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Short Description</label>
                                             <div className="col-sm-10">
