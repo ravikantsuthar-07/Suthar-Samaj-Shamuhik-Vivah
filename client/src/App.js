@@ -38,6 +38,14 @@ import AdminGallery from './pages/Admin/AdminGallery';
 import AdminGalleryImage from './pages/Admin/AdminGalleryImage';
 import AdminAddBook from './pages/Admin/AdminAddBook';
 import AdminBooks from './pages/Admin/AdminBooks';
+import KarmawatiPage from './pages/KarmawatiPage';
+import KarmawatiYearPage from './pages/KarmawatiYearPage';
+import RegisterKarmawatiPage from './pages/RegisterKarmawatiPage';
+import AdminKarmawati from './pages/Admin/AdminKarmawati';
+import AdminKarmawatiList from './pages/Admin/AdminKarmawatiList';
+import AdminKarma from './pages/Admin/AdminKarma';
+import AdminKarmaList from './pages/Admin/AdminKarmaList';
+import AdminAddKarmawati from './pages/Admin/AdminAddKarmawati';
 
 function App() {
     return (
@@ -53,6 +61,9 @@ function App() {
             <Route exact path='/contact' element={<ContactPage />} />
             <Route exact path='/sutradhar' element={<SutradharPage />} />
             <Route exact path='/register' element={<Register />} />
+            <Route exact path='/karmawati' element={<KarmawatiPage />} />
+            <Route exact path='/registerkarmawati' element={<RegisterKarmawatiPage />} />
+            <Route exact path='/karmawati/:year' element={<KarmawatiYearPage />} />
             <Route exact path='/dashboard' element={<AdminRoute />}>
                 <Route exact path='admin' element={<AdminDashboard />} />
                 <Route exact path='admin/add_slider' element={<AdminAddSlider />} />
@@ -77,6 +88,11 @@ function App() {
                 <Route exact path='admin/gallery_image/:year' element={<AdminGalleryImage />} />
                 <Route exact path='admin/contact' element={<AdminContact />} />
                 <Route exact path='admin/add_book' element={<AdminAddBook />} />
+                <Route exact path='admin/karmawati' element={<AdminKarmawati />} />
+                <Route exact path='admin/karmawati/:year' element={<AdminKarmawatiList />} />
+                <Route exact path='admin/karma' element={<AdminKarma />} />
+                <Route exact path='admin/karma/:year' element={<AdminKarmaList />} />
+                <Route exact path='admin/add_karma' element={<AdminAddKarmawati />} />
                 <Route exact path='admin/book' element={<AdminBooks />} />
             </Route>
             <Route exact path='/login' element={<LoginPage /> } />

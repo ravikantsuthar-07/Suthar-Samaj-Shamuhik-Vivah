@@ -14,7 +14,7 @@ const NewsPage = () => {
                 setNews(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     };
 
@@ -31,11 +31,10 @@ const NewsPage = () => {
                     {news.map((n, i) => (
                         <div className="col-md-4 col-sm-12" key={i}>
                             <div className="card infoCard">
-                                <img src={require(`../img/news/${n.Image}`)} className="card-img-top" alt="news" />
-                                <div className="card-body">
+                                <div className="card-body blog-body">
                                     <h5 className="card-title">{n.Title}</h5>
-                                    <h4 className="card-text">{n.S_Description}</h4>
-                                    <Link to="/news/1" className="btn btn-outline-danger">अधिक जानकारी</Link>
+                                    <h4 className="card-text">{n.S_Description}... <Link to={`/news/${n.id}`} >अधिक जानिए</Link></h4>
+                                    
                                 </div>
                             </div>
                         </div>

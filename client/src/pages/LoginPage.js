@@ -13,25 +13,26 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post('/api/v1/rgister/login', { email, password });
-            if (res.data.success) {
+            const { data } = await axios.post('/api/v1/rgister/login', { email, password });
+            if (data?.success) {
                 setAuth({
                     ...auth,
-                    user: res.data.user,
-                    token: res.data.token
+                    user: data?.user,
+                    token: data?.token
                 })
-                localStorage.setItem('auth', JSON.stringify(res.data))
-                navigate("/dashboard/admin")
+                localStorage.setItem('auth', JSON.stringify(data));
+                alert(data?.message);
+                navigate("/dashboard/admin");
             } else {
-                console.log(res.data.message);
+                alert(data?.message);
             }
         } catch (error) {
-            console.log(error);
+            alert(error?.response?.data?.message);
         }
     }
 
     return (
-        <main style={{background: '#fff'}}>
+        <main style={{ background: '#fff' }}>
             <div className="container">
                 <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
                     <div className="container">
@@ -49,9 +50,9 @@ const LoginPage = () => {
                                             <h5 className="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                             <p className="text-center small">Enter your username & password to login</p>
                                         </div>
-                                        <form method='post' onSubmit={handleSubmit} className="row g-3 needs-validation" novalidate>
+                                        <form method='post' onSubmit={handleSubmit} className="row g-3 needs-validation" noValidate>
                                             <div className="col-12">
-                                                <label for="yourUsername" className="form-label">Username</label>
+                                                <label htmlFor="yourUsername" className="form-label">Username</label>
                                                 <div className="input-group has-validation">
                                                     <span className="input-group-text" id="inputGroupPrepend">@</span>
                                                     <input
@@ -65,7 +66,7 @@ const LoginPage = () => {
                                                 </div>
                                             </div>
                                             <div className="col-12">
-                                                <label for="yourPassword" className="form-label">Password</label>
+                                                <label htmlFor="yourPassword" className="form-label">Password</label>
                                                 <input
                                                     type="password"
                                                     name="password"
@@ -78,7 +79,7 @@ const LoginPage = () => {
                                             <div className="col-12">
                                                 <div className="form-check">
                                                     <input className="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe" />
-                                                    <label className="form-check-label" for="rememberMe">Remember me</label>
+                                                    <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
                                                 </div>
                                             </div>
                                             <div className="col-12">

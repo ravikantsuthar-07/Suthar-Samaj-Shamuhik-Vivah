@@ -1,10 +1,12 @@
+import { exit } from 'process';
 import DB from '../DB/connection.js';
+import fs from 'fs'
 export const getSutradharController = async (req, res) => {
     try {
         const d = new Date();
         const year = d.getFullYear();
-        const sql = `SELECT * FROM book WHERE status = 1 AND year = ? ORDER BY id DESC`;
-        await DB.query(sql, [year], (err, results) => {
+        const sql = `SELECT * FROM book WHERE year = ? OR year = ? ORDER BY id DESC`;
+        await DB.query(sql, [year, year-1], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -105,23 +107,15 @@ export const deleteSutradharController = async (req, res) => {
                 message: 'Id is Required!'
             });
         }
-        const sql = `DELETE FROM WHERE id = ?`;
-        const deleteImage = async (id) => {
-            let imgname;
-            const sqlDelete = `SELECT img FROM book WHERE id = ?`
-            await DB.query(sqlDelete, [id], (err, results) => {
-                if (err) {
-                    return res.status(500).json({
-                        success: false,
-                        message: 'Error in Getting Image',
-                        err
-                    });
-                } else {
-                    imgname = results[0].img;
-                }
-            })
-            await fs.unlink(process.cwd() + '/client/src/img/sutradhar/' + imgname);
+        const sql = `DELETE FROM book WHERE id = ?`;
+        let imgname = req.body.file;
+        if (!imgname) {
+            return res.status(400).json({
+                success: false,
+                message: 'File is Requied'
+            });
         }
+        fs.unlinkSync(process.cwd() + '/client/src/sutradhar/' + imgname);
         await DB.query(sql, [id], (err, results) => {
             if (err) {
                 return res.status(500).json({
@@ -130,7 +124,6 @@ export const deleteSutradharController = async (req, res) => {
                     err
                 });
             } else {
-                deleteImage(id)
                 return res.status(200).json({
                     success: true,
                     message: 'Deleting Book Successfully',

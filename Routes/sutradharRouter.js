@@ -13,7 +13,7 @@ const router = express.Router();
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (file.fieldname === 'file' ) {
-            cb(null, process.cwd() + '/client/src/img/sutradhar/');
+            cb(null, process.cwd() + '/client/src/sutradhar/');
         } else {
             cb(new Error('Invalid field name'));
         }
@@ -27,6 +27,6 @@ const upload = multer({ storage: storage });
 router.get('/get-book', getSutradharController);
 router.get('/get-admin-book', requireSignIn, isAdmin, getAdminSutradharController);
 router.post('/create', requireSignIn, isAdmin, upload.single('file'), createSutradharController);
-router.delete('/delete/:id', requireSignIn, isAdmin, upload.single('file'), deleteSutradharController);
+router.post('/delete/:id', requireSignIn, isAdmin, deleteSutradharController);
 
 export default router;

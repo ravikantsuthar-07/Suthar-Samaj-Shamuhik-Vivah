@@ -13,7 +13,7 @@ const AdminAddSlider = () => {
     const [auth] = useAuth()
     console.log(img);
 
-    const handleCreate = (e) => {
+    const handleCreate = async (e) => {
         e.preventDefault();
         try {
             const slider = new FormData();
@@ -21,7 +21,7 @@ const AdminAddSlider = () => {
             slider.append('img', img);
             slider.append('date', date);
             slider.append('SrNo', srNo);
-            const { data } = axios.post('/api/v1/slider/create-slider',
+            const { data } = await axios.post('/api/v1/slider/create-slider',
                 slider,
                 {
                     headers: {
@@ -29,13 +29,15 @@ const AdminAddSlider = () => {
                     }
                 }
             );
-            if (data.success) {
-                navigate('/dashboard/admin/slider')
+            if (data?.success) {
+                alert(data?.message);
+                navigate('/dashboard/admin/slider');
             } else {
-                navigate('/dashboard/admin/add_slider')
+                alert(data?.message);
+                navigate('/dashboard/admin/add_slider');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

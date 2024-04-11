@@ -26,12 +26,14 @@ const AdminAddNews = () => {
                 }
             });
             if (data?.success) {
+                alert(data?.message);
                 navigate(`/dashboard/admin/news`);
             } else {
+                alert(data?.message);
                 navigate(`/dashboard/admin/add_news`);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
     return (

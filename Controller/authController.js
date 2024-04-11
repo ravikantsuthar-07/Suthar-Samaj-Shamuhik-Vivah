@@ -116,7 +116,7 @@ export const loginController = async (req, res) => {
                 })
             }
         }
-        const user =  DB.query(
+        await DB.query(
             `SELECT * From admins WHERE email = ?`, [email], (err, results) => {
                 if (err) {
                     return res.status(500).json({
@@ -128,10 +128,11 @@ export const loginController = async (req, res) => {
                     if (results.length === 0) {
                         return res.status(401).json({
                             success: false,
-                            message: "Email is Not Registered"
+                            message: `${email} is Not Registered`
                         });
+                    } else {
+                        abc(password, results);
                     }
-                    abc(password, results);
                 }
             }
         );

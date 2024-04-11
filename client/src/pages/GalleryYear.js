@@ -14,7 +14,7 @@ const GalleryYear = () => {
                 setGetGallery(data.results);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

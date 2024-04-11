@@ -15,20 +15,19 @@ const AdminUpdateSlider = () => {
 
     const getSingleSlider = async () => {
         try {
-            const {data} = await axios.get(`/api/v1/slider/get-single-slider/${params.id}`);
+            const { data } = await axios.get(`/api/v1/slider/get-single-slider/${params.id}`);
             if (data?.success) {
-                console.log(data.results[0].Dates);
                 setYear(data.results[0].Year);
                 setImg(data.results[0].path);
                 setSrNo(data.results[0].SrNo);
                 setDate(formatDate(data.results[0].Dates));
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
-    const handleCreate = (e) => {
+    const handleCreate = async (e) => {
         e.preventDefault();
         try {
             const slider = new FormData();
@@ -37,7 +36,7 @@ const AdminUpdateSlider = () => {
             slider.append('date', date);
             slider.append('SrNo', srNo);
 
-            const { data } = axios.put(`/api/v1/slider/update-slider/${params.id}`,
+            const { data } = await axios.put(`/api/v1/slider/update-slider/${params.id}`,
                 slider,
                 {
                     headers: {
@@ -47,30 +46,32 @@ const AdminUpdateSlider = () => {
             );
 
             if (data?.success) {
+                alert(data?.message);
                 navigate(`/dashboard/admin/slider/`);
             } else {
+                alert(data?.message);
                 navigate(`/dashboard/admin/update_slider/${params.id}`);
             }
 
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = date.getDate();
-        const month = date.getMonth() + 1; 
+        const month = date.getMonth() + 1;
         const year = date.getFullYear();
         const formattedDay = day < 10 ? `0${day}` : day;
         const formattedMonth = month < 10 ? `0${month}` : month;
         return `${year}-${formattedMonth}-${formattedDay}`;
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         getSingleSlider();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    }, []);
 
     return (
         <>

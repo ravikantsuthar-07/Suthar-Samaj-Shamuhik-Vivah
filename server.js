@@ -10,7 +10,9 @@ import team from './Routes/teamRouters.js';
 import contact from './Routes/contactRouter.js';
 import news from './Routes/newsRouter.js';
 import gallery from './Routes/galleryRouter.js';
-import Sutradhar from './Routes/sutradharRouter.js'
+import Sutradhar from './Routes/sutradharRouter.js';
+import sammanit from './Routes/sammanitRouter.js';
+import karmawati from './Routes/karmawatiRouter.js';
 
 // Environment Configuration
 dotenv.config();
@@ -29,6 +31,8 @@ app.use(
 app.use('/api/v1/rgister', register);
 app.use('/api/v1/slider', Slider);
 app.use('/api/v1/wedding', wedding);
+app.use('/api/v1/sammanit', sammanit);
+app.use('/api/v1/karmawati', karmawati);
 app.use('/api/v1/team', team);
 app.use('/api/v1/contact', contact);
 app.use('/api/v1/news', news);

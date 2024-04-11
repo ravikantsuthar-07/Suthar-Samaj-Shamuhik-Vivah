@@ -10,44 +10,63 @@ const AdminTeams = () => {
     const navigate = useNavigate();
 
     const teamData = async () => {
-        const {data } = await axios.get(`/api/v1/team/get-admin-team`, {
-            headers:{
+        const { data } = await axios.get(`/api/v1/team/get-admin-team`, {
+            headers: {
                 "Authorization": auth.token
             }
         });
         if (data?.success) {
             setTeam(data?.results);
-        } 
-    }
-    
-    const updateStatusTeam = async (sta, id) => {
-        if (sta === 0) {
-            sta = 1;
-        } else {
-            sta = 0;
         }
-        console.log(sta);
-        await axios.put(`/api/v1/team/update-status-team/${id}`, 
-        { status: sta }, {
-            headers:{
-                "Authorization": auth.token
+    }
+
+    const updateStatusTeam = async (sta, id) => {
+        try {
+            if (sta === 0) {
+                sta = 1;
+            } else {
+                sta = 0;
             }
-        });
+            const { data } = await axios.put(`/api/v1/team/update-status-team/${id}`,
+                { status: sta }, {
+                headers: {
+                    "Authorization": auth.token
+                }
+            });
+            if (data?.success) {
+                alert(data?.message);
+                window.location.reload();
+            } else {
+                alert(data?.message);
+            }
+        } catch (error) {
+            alert(error?.response?.data?.message);
+        }
     }
 
     const deleteTeamMember = async (id) => {
-        await axios.delete(`/api/v1/team/delete-team/${id}`, {
-            headers:{
-                "Authorization": auth.token
+        try {
+            const { data } = await axios.delete(`/api/v1/team/delete-team/${id}`, {
+                headers: {
+                    "Authorization": auth.token
+                }
+            });
+            if (data?.success) {
+                alert(data?.message);
+                window.location.reload();
+            } else {
+                alert(data?.message);
             }
-        });
+        } catch (error) {
+            alert(error?.response?.data?.message)
+        }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         teamData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
-    
+    }, []);
+
     return (
         <>
             <AdminMenu />
@@ -78,11 +97,11 @@ const AdminTeams = () => {
                                                     <td>{t.PostOn}</td>
                                                     <td>{t.Mobile}</td>
                                                     <td>{t.Address}</td>
-                                                    <td><img src={require(`../../img/team/${t.img}`)} width={150} height={120} alt='team' /></td>
+                                                    <td><img src={require(`../../img/team/${t.img}`)} width={100} height={80} alt='team' /></td>
                                                     <td>
-                                                        <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_team/${t.id}`)} >Update</button>
-                                                        <button className='btn btn-primary m-2' onClick={() => updateStatusTeam(t.status, t.id)}>{t.status ? "Active" : "Deactive"}</button>
-                                                        <button className='btn btn-danger m-2' onClick={() => deleteTeamMember(t.id)}>Delete</button>
+                                                        <button className='btn btn-primary m-1' onClick={() => navigate(`/dashboard/admin/update_team/${t.id}`)} >Update</button>
+                                                        <button className='btn btn-primary m-1' onClick={() => updateStatusTeam(t.status, t.id)}>{t.status ? "Active" : "Deactive"}</button>
+                                                        <button className='btn btn-danger m-1' onClick={() => deleteTeamMember(t.id)}>Delete</button>
                                                     </td>
                                                 </tr>
                                             ))}

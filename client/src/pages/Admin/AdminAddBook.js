@@ -1,33 +1,35 @@
-import axios from 'axios';
 import React, { useState } from 'react'
 import { useAuth } from '../../context/auth';
 import { useNavigate } from 'react-router-dom';
 import AdminMenu from '../../components/Layoout/AdminMenu';
+import axios from 'axios';
 
 const AdminAddBook = () => {
     const navigate = useNavigate();
     const [year, setYear] = useState("");
     const [file, setFile] = useState("");
     const [auth] = useAuth();
-    
-    const handleCreate = async () => {
+
+    const handleCreate = async (e) => {
+        e.preventDefault();
         try {
             const sutradharData = new FormData();
             sutradharData.append('year', year)
             sutradharData.append('file', file)
 
-            const {data} = await axios.post('/api/v1/sutradhar/create', sutradharData, {
+            const { data } = await axios.post('/api/v1/sutradhar/create', sutradharData, {
                 headers: {
-                    "Authorization" : auth.token
+                    "Authorization": auth.token
                 }
             });
             if (data?.success) {
-                navigate('/admin/book');
+                alert(data?.message)
+                navigate('/dashboard/admin/book');
             } else {
-                navigate('/admin/add_book');
+                alert(data?.message);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -49,7 +51,7 @@ const AdminAddBook = () => {
                                             </div>
                                         </div>
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Image</label>
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Book <small>(only pdf)</small></label>
                                             <div className="col-sm-10">
                                                 <input type="file" name='file' accept='.pdf' onChange={(e) => setFile(e.target.files[0])} className="form-control" id="inputPDF" />
                                             </div>

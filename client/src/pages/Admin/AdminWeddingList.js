@@ -17,7 +17,7 @@ const AdminWeddingList = () => {
                 setWedding(data?.results);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -29,10 +29,13 @@ const AdminWeddingList = () => {
                 }
             });
             if (data?.success) {
-                console.log(data.message);
+                alert(data?.message);
+                window.location.reload();
+            } else {
+                alert(data?.message);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

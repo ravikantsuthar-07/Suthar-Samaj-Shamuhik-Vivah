@@ -29,12 +29,14 @@ const AdminUpdateTeam = () => {
                 }
             });
             if (data?.success) {
+                alert(data?.message);
                 navigate(`/dashboard/admin/team`);
             } else {
+                alert(data?.message);
                 navigate(`/dashboard/admin/add_team`);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -55,7 +57,7 @@ const AdminUpdateTeam = () => {
                 navigate(`/dashboard/admin/team`);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

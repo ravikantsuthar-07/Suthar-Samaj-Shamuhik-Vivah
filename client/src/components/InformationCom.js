@@ -15,7 +15,7 @@ const InformationCom = () => {
                 setInfo(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -31,7 +31,7 @@ const InformationCom = () => {
                 {info.map((info, i) => ( 
                 <div className="col-md-4 col-sm-12" key={i}>
                     <div className="card infoCard">
-                        <img src={require(`../img/sliders/${info.path}`)} className="card-img-top" alt="..." />
+                        <img src={require(`../img/sliders/${info.path}`)} className="card-img-top" alt="Wedding" height={170} />
                         <div className="card-body">
                             <h5 className="card-title">सामूहिक विवाह - {info.year}</h5>
                             <button onClick={() => navigate(`/wedding/${info.year}`)} className="btn btn-outline-danger">अधिक जानकारी</button>

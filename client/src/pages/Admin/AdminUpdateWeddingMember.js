@@ -48,7 +48,7 @@ const AdminUpdateWeddingMember = () => {
                 setSYear(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -79,12 +79,14 @@ const AdminUpdateWeddingMember = () => {
                 }
             });
             if (data?.success) {
+                alert(data?.message);
                 navigate('/dashboard/admin/wedding');
             } else {
+                alert(data?.message);
                 navigate(`/dashboard/admin/wedding_update/${params.id}`);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

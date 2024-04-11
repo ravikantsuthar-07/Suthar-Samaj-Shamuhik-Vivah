@@ -20,7 +20,7 @@ const AdminNews = () => {
                 setNews(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -43,16 +43,19 @@ const AdminNews = () => {
 
     const deleteNews = async (id) => {
         try {
-            const {data} = await axios.delete(`/api/v1/slider/delete-news/${id}`, {
+            const {data} = await axios.delete(`/api/v1/news/delete-news/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }
             });
             if (data.success) {
+                alert(data?.message);
                 window.location.reload();
+            } else {
+                alert(data?.message);
             }
         } catch (error) {
-            console.log(error);
+            alert(error?.response?.data?.message);
         }
     }
     useEffect(() => {

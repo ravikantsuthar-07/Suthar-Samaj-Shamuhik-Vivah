@@ -16,11 +16,11 @@ const AdminSlider = () => {
                     "Authorization": auth.token
                 }
             });
-            if (data.success) {
-                setSlider(data.results)
+            if (data?.success) {
+                setSlider(data?.results);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -32,11 +32,14 @@ const AdminSlider = () => {
                     "Authorization": auth.token
                 }
             })
-            if (data.success) {
+            if (data?.success) {
+                alert(data?.message);
                 window.location.reload();
+            } else {
+                alert(data?.message);
             }
         } catch (error) {
-
+            alert(error?.response?.data?.message);
         }
     }
     const formatDate = (dateString) => {
@@ -56,11 +59,12 @@ const AdminSlider = () => {
                     "Authorization": auth.token
                 }
             });
-            if (data.success) {
+            if (data?.success) {
+                alert(data?.message);
                 window.location.reload();
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -71,7 +75,7 @@ const AdminSlider = () => {
     return (
         <>
             <AdminMenu />
-            <main id="main" className="main">
+            <main id="main" className="main bg-light">
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">

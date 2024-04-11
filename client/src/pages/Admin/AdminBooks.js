@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import AdminMenu from '../../components/Layoout/AdminMenu'
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
+import { useNavigate } from 'react-router-dom';
 
 const AdminBooks = () => {
     const [book, setBook] = useState([]);
     const [auth] = useAuth();
+    const navigate = useNavigate();
 
     const getBookData = async () => {
         const { data } = await axios.get(`/api/v1/sutradhar/get-admin-book`, {
@@ -18,12 +20,18 @@ const AdminBooks = () => {
         }
     }
 
-    const deleteSutradharBook = async (id) => {
-        await axios.delete(`/api/v1/team/delete-team/${id}`, {
+    const deleteSutradharBook = async (id, file) => {
+        const { data } = await axios.post(`/api/v1/sutradhar/delete/${id}`, { file: file }, {
             headers: {
                 "Authorization": auth.token
             }
         });
+        if (data?.success) {
+            alert(data?.message);
+            window.location.reload();
+        } else {
+            alert(data?.message);
+        }
     }
 
     useEffect(() => {
@@ -41,6 +49,9 @@ const AdminBooks = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Sutradhar Book </h5>
+                                    <div className='add_book'>
+                                        <button className='btn btn-primary' onClick={() => navigate('/dashboard/admin/add_book')}>Add Book</button>
+                                    </div>
                                     <table className="table">
                                         <thead>
                                             <tr>
@@ -55,9 +66,9 @@ const AdminBooks = () => {
                                                 <tr key={i}>
                                                     <th scope="row">{i + 1}</th>
                                                     <td>{b.year}</td>
-                                                    <td><img src={require(`../../sutradhar${b.file}`)} width={150} height={120} alt='team' /></td>
+                                                    <td>{b.file}</td>
                                                     <td>
-                                                        <button className='btn btn-danger m-2' onClick={() => deleteSutradharBook(b.id)}>Delete</button>
+                                                        <button className='btn btn-danger m-2' onClick={() => deleteSutradharBook(b.id, b.file)}>Delete</button>
                                                     </td>
                                                 </tr>
                                             ))}

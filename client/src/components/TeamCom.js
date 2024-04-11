@@ -23,7 +23,7 @@ const TeamCom = () => {
                 {team?.map((t, i) => (
                     <div className="col-md-3 col-sm-6 col-6">
                         <div className="card infoCard team">
-                            <img src={require(`../img/team/${t.img}`)} className="card-img-top" alt="..." />
+                            <img src={require(`../img/team/${t.img}`)} className="card-img-top" height={170} alt="Team" />
                             <div className="card-body">
                                 <h5 className="card-title">{t.Name}</h5>
                                 <h5 className="card-text">{t.PostOn}</h5>

@@ -22,7 +22,7 @@ const AdminUpdateGifts = () => {
                 setSYear(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -45,12 +45,14 @@ const AdminUpdateGifts = () => {
                 }
             });
             if (data?.success) {
+                alert(data?.message);
                 navigate('/dashboard/admin/gift');
             } else {
+                alert(data?.message);
                 navigate(`/dashboard/admin/gifts_update/${params.id}`);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

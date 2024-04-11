@@ -34,6 +34,7 @@ export const getTeamController = async (req, res) => {
         })
     }
 }
+
 export const getSingleTeamController = async (req, res) => {
     try {
         const sql = `SELECT * FROM teams WHERE status > 0 AND id = ${req.params.id}`;
@@ -69,6 +70,7 @@ export const getSingleTeamController = async (req, res) => {
         })
     }
 }
+
 export const getAdminTeamController = async (req, res) => {
     try {
         const sql = `SELECT * FROM teams`;
@@ -182,11 +184,19 @@ export const updateStatusTeamController = async (req, res) => {
                         err
                     });
                 } else {
-                    return res.status(200).json({
-                        success: true,
-                        message: 'Stutus update Successfully',
-                        results
-                    });
+                    if (status == 1) {
+                        return res.status(200).json({
+                            success: true,
+                            message: 'Team Member is Activate',
+                            results
+                        });
+                    } else {
+                        return res.status(200).json({
+                            success: true,
+                            message: 'Team Member is DeActivate',
+                            results
+                        });
+                    }
                 }
             }
         );

@@ -1,5 +1,4 @@
 import DB from "../DB/connection.js";
-import sharp from 'sharp';
 
 export const getSliderController = async (req, res) => {
     try {
@@ -33,7 +32,7 @@ export const getSliderController = async (req, res) => {
 export const getSingleSliderController = async (req, res) => {
     try {
         const id = req.params.id
-        const sql = `SELECT * FROM sliders WHERE status > 0 AND (id = ${id} OR Year = ${id}) ORDER BY Year DESC`;
+        const sql = `SELECT * FROM sliders WHERE id = ${id} OR Year = ${id} ORDER BY Year DESC`;
         await DB.query(
             sql, (err, results) => {
                 if (err) {
@@ -94,34 +93,32 @@ export const createSliderController = async (req, res) => {
         const { year, date, SrNo } = req.body;
         const img = req.file;
         if (!img.originalname) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Image is Required"
             });
         }
 
         if (!year) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Year is Required"
             });
         }
         if (!date) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Date is Required"
             });
         }
         if (!SrNo) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Number of Wedding is Required"
             });
         }
         const sql = `INSERT INTO sliders(Year, path, Dates, SrNo) VALUES(?, ?, ?, ?)`;
-        const up = async (id) => {
-            await sharp(req.file.buffer).toFile(process.cwd() + `/client/src/img/sliders/${id}`)
-        }
+
         await DB.query(
             sql, [year, img.originalname, date, SrNo], (err, results) => {
                 if (err) {
@@ -131,10 +128,9 @@ export const createSliderController = async (req, res) => {
                         err
                     });
                 } else {
-                    up(img.originalname);
                     return res.status(201).json({
                         success: true,
-                        message: 'Getting Sliders Successfully',
+                        message: 'Slider Add Successfully',
                         results
                     });
                 }
@@ -193,11 +189,19 @@ export const updateStatusSliderController = async (req, res) => {
                         err
                     });
                 } else {
-                    return res.status(200).json({
-                        success: true,
-                        message: 'Update Status of Slider',
-                        results
-                    });
+                    if (status == 0) {
+                        return res.status(200).json({
+                            success: true,
+                            message: `Your Slider is DeActivate`,
+                            results
+                        });
+                    } else {
+                        return res.status(200).json({
+                            success: true,
+                            message: `Your Slider is Activate`,
+                            results
+                        });
+                    }
                 }
             }
         )
@@ -219,25 +223,25 @@ export const updateSliderController = async (req, res) => {
 
         
         if (!img) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Image is Required"
             });
         }
         if (!year) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Year is Required"
             });
         }
         if (!date) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Date is Required"
             });
         }
         if (!SrNo) {
-            return res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Number of Wedding is Required"
             });
@@ -256,7 +260,7 @@ export const updateSliderController = async (req, res) => {
                 } else {
                     return res.status(200).json({
                         success: true,
-                        message: 'Update Status of Slider',
+                        message: 'Slider Update Successfully',
                         results
                     });
                 }
@@ -288,7 +292,7 @@ export const deleteSliderController = async (req, res) => {
                 } else {
                     return res.status(200).json({
                         success: true,
-                        message: 'Deleted Successfully of Slider',
+                        message: 'Slider Deleted Successfully',
                         results
                     });
                 }

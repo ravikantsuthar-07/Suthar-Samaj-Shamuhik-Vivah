@@ -26,7 +26,7 @@ const InforMationPerYear = () => {
                 navigate('/wedding');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -39,7 +39,7 @@ const InforMationPerYear = () => {
                 navigate('/wedding');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -55,7 +55,7 @@ const InforMationPerYear = () => {
                 navigate('/wedding');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

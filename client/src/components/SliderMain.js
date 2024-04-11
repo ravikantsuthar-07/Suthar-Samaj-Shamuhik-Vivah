@@ -10,20 +10,21 @@ const SliderMain = () => {
                 setSlider(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
     useEffect(() => {
         getSlider();
     }, []);
-    
+
     return (
-        <div id="carouselExample" className="carousel slide">
+        <div id="carouselExample" className="carousel slide" style={{marginTop: '135px'}}>
             <div className="carousel-inner">
+
                 {slider.map((sli, i) => (
-                    <div className="carousel-item active">
-                        <img src={require(`../img/sliders/${sli.path}`)} className="d-block w-100" alt="..." />
+                    <div className={i === 0 ? "carousel-item active" : "carousel-item"}>
+                        <img src={require(`../img/sliders/${sli.path}`)} className="d-block w-100" alt='Sliders' />
                     </div>
                 ))}
             </div>

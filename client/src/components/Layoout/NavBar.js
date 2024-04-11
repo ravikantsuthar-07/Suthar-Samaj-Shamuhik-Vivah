@@ -1,41 +1,38 @@
-import React from 'react'
-import Header from './Header'
-import { NavLink } from 'react-router-dom'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Header from './Header';
 
-const NavBar = () => {
+function NavBar() {
     return (
         <>
             <Header />
-            <div className="navbar">
-                <ul className="links">
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/">Home</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/about">About</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/gallery">Gallery</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/wedding">Wedding</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/news">News</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/sutradhar">Sutradhar</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/register">Register</NavLink>
-                    </li>
-                    <li className="nav-link" >
-                        <NavLink className="nav-link" to="/contact">Contact</NavLink>
-                    </li>
-                </ul>
-            </div>
+            <Navbar expand="lg" className="bg-body-tertiary">
+                <Container>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/wedding">Wedding</Nav.Link>
+                            <Nav.Link href="/karmawati">Karmawati Pansion</Nav.Link>
+                            <Nav.Link href="/">Saman Samarow</Nav.Link>
+                            <Nav.Link href="/news">Blogs</Nav.Link>
+                            <Nav.Link href="/sutradhar">Sutradhar</Nav.Link>
+                            <Nav.Link href="/gallery">Gallery</Nav.Link>
+                            <NavDropdown title="Registraction" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="/register">Samuhik Vivah</NavDropdown.Item>
+                                <NavDropdown.Item href="/registerkarmawati">Karmavati Pansion</NavDropdown.Item>
+                                <NavDropdown.Item href="/">Varisth Nagrik Saman Samroh</NavDropdown.Item>
+                            </NavDropdown>
+                            <Nav.Link href="/about">About</Nav.Link>
+                            <Nav.Link href="/contact">Contact</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </>
-    )
+    );
 }
 
-export default NavBar
+export default NavBar;

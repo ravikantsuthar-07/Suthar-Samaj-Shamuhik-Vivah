@@ -17,7 +17,7 @@ const AdminAddGalleryImage = () => {
                 setGetYears(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -36,12 +36,14 @@ const AdminAddGalleryImage = () => {
                 }
             });
             if (data?.success) {
-                navigate('/dashboard/admin/gallery')
+                alert(data?.message);
+                navigate('/dashboard/admin/gallery');
             } else {
-                navigate('/dashboard/admin/add_gallery_image')
+                alert(data?.message);
+                navigate('/dashboard/admin/add_gallery_image');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

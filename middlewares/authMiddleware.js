@@ -8,8 +8,7 @@ export const requireSignIn = async (req, res, next) => {
         next();
     } catch (error) {
         console.log(error);
-        return res.send({
-            status: 500,
+        return res.status(500).json({
             success: false,
             message: "Error in Signed",
             error

@@ -27,7 +27,7 @@ const AdminAddWeddingMember = () => {
                 setSYear(data.results)
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
@@ -58,12 +58,14 @@ const AdminAddWeddingMember = () => {
                 }
             });
             if (data?.success) {
-                navigate('/dashboard/admin/wedding')
+                alert(data?.message);
+                navigate('/dashboard/admin/wedding');
             } else {
-                navigate('/dashboard/admin/add_wedding_member')
+                alert(data?.message);
+                navigate('/dashboard/admin/add_wedding_member');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 

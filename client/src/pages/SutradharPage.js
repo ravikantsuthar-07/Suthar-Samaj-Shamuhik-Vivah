@@ -12,18 +12,18 @@ const SutradharPage = () => {
                 setBook(data?.results[0].file);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error?.response?.data?.message);
         }
     }
 
     useEffect(()=> {
         gettingBook();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line
     }, []);
 
     return (
         <Layout>
-            {book ? <iframe src={require(`../sutradhar/${book}`)} title='Book' id='sutradhar' width="100%" height="500px" /> : "Not Book Found"}
+            {book ? <iframe src={require(`../sutradhar/${book}`)} title='Book' id='sutradhar' width="100%" height="900px" style={{marginTop: '130px'}} /> : "Not Book Found"}
         </Layout>
     )
 }

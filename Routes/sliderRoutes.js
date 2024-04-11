@@ -15,27 +15,28 @@ import multer from 'multer';
 const router = express.Router();
 
 
-const upload = multer({
-    limits: {
-        fileSize: 1000000000
-    },
-    fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-            return cb(new Error('Please upload a valid image file'))
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        if (file.fieldname === 'img' ) {
+            cb(null, process.cwd() + '/client/src/img/sliders/');
+        } else {
+            cb(new Error('Invalid field name'));
         }
-        cb(undefined, true)
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
     }
-})
-
+});
+const upload = multer({ storage: storage });
 
 router.get('/get-slider', getSliderController);
 router.get('/get-single-slider/:id', getSingleSliderController);
+router.get('/get-slider-last', getSliderLastController);
 router.get('/get-admin-slider', requireSignIn, isAdmin, getAdminSliderController);
-router.put('/update-status-slider/:id', requireSignIn, isAdmin, updateStatusSliderController);
-router.put('/update-slider/:id', requireSignIn, isAdmin, upload.single('img'), updateSliderController);
-router.delete('/delete-slider/:id', requireSignIn, isAdmin, deleteSliderController);
 router.post('/create-slider', requireSignIn, isAdmin, upload.single('img'), createSliderController);
-router.get('/get-slider-last', getSliderLastController)
+router.put('/update-slider/:id', requireSignIn, isAdmin, upload.single('img'), updateSliderController);
+router.put('/update-status-slider/:id', requireSignIn, isAdmin, updateStatusSliderController);
+router.delete('/delete-slider/:id', requireSignIn, isAdmin, deleteSliderController);
 
 
 export default router;
