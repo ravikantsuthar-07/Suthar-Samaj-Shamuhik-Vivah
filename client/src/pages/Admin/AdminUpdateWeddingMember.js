@@ -24,19 +24,19 @@ const AdminUpdateWeddingMember = () => {
 
     const dd = async () => {
         const { data } = await axios.get(`/api/v1/wedding/gettSingleWedding/${params.id}`)
-        if (data.success) {
-            setYear(data.results[0].year);
-            setPhoto(data.results[0].M_Photo);
-            setMenName(data.results[0].M_Name);
-            setMenFatName(data.results[0].MF_Name);
-            setMenGFatName(data.results[0].MG_Name);
-            setMenAddress(data.results[0].M_Address);
-            setMenMobile(data.results[0].M_Mobile);
-            setWoMenName(data.results[0].F_Name);
-            setWoMenFatName(data.results[0].FF_Name);
-            setWoMenGFatName(data.results[0].FG_Name);
-            setWoMenAddress(data.results[0].F_Name);
-            setWoMenMobile(data.results[0].F_Mobile);
+        if (data?.success) {
+            setYear(data?.results[0].year);
+            setPhoto(data?.results[0].M_Photo);
+            setMenName(data?.results[0].M_Name);
+            setMenFatName(data?.results[0].MF_Name);
+            setMenGFatName(data?.results[0].MG_Name);
+            setMenAddress(data?.results[0].M_Address);
+            setMenMobile(data?.results[0].M_Mobile);
+            setWoMenName(data?.results[0].F_Name);
+            setWoMenFatName(data?.results[0].FF_Name);
+            setWoMenGFatName(data?.results[0].FG_Name);
+            setWoMenAddress(data?.results[0].F_Name);
+            setWoMenMobile(data?.results[0].F_Mobile);
         }
     }
 
@@ -44,19 +44,17 @@ const AdminUpdateWeddingMember = () => {
         try {
 
             const { data } = await axios.get('/api/v1/slider/get-slider');
-            if (data.success) {
-                setSYear(data.results)
+            if (data?.success) {
+                setSYear(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            // const img = photo[0] + photo[1];
-            console.log(photo);
             const weddingData = new FormData();
             weddingData.append('year', year);
             weddingData.append('M_name', menName);
@@ -86,7 +84,7 @@ const AdminUpdateWeddingMember = () => {
                 navigate(`/dashboard/admin/wedding_update/${params.id}`);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

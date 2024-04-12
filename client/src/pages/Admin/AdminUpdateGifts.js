@@ -18,21 +18,21 @@ const AdminUpdateGifts = () => {
         try {
 
             const { data } = await axios.get('/api/v1/slider/get-slider');
-            if (data.success) {
-                setSYear(data.results)
+            if (data?.success) {
+                setSYear(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
     const dd = async () => {
         const { data } = await axios.get(`/api/v1/wedding/getSingleGift/${params.id}`)
-        if (data.success) {
-            setYear(data.results[0].year);
-            setName(data.results[0].Name);
-            setNumber(data.results[0].Numbers);
-            setPrice(data.results[0].Price);
+        if (data?.success) {
+            setYear(data?.results[0].year);
+            setName(data?.results[0].Name);
+            setNumber(data?.results[0].Numbers);
+            setPrice(data?.results[0].Price);
         }
     }
 
@@ -52,7 +52,7 @@ const AdminUpdateGifts = () => {
                 navigate(`/dashboard/admin/gifts_update/${params.id}`);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

@@ -36,7 +36,7 @@ export const getSingleNewsController = async (req, res) => {
             });
         }
         const sql = `SELECT * FROM news WHERE id = ? `;
-        await DB.query(sql, [id],(err, results) => {
+        await DB.query(sql, [id], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -222,7 +222,7 @@ export const deleteNewsController = async (req, res) => {
                     message: 'Error in Sql Command for delele',
                     err
                 });
-            } else  {
+            } else {
                 return res.status(200).json({
                     success: true,
                     message: 'Deleted a news Successfully',
@@ -234,6 +234,47 @@ export const deleteNewsController = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: 'Error in Deleting News',
+            error
+        });
+    }
+}
+
+export const updateStatusNewsController = async (req, res) => {
+    try {
+        const { status } = req.body;
+        const id = req.params.id;
+        if (!id) {
+            return res.status(400).json({
+                success: false,
+                message: 'Id is Required'
+            });
+        }
+        if (!status) {
+            return res.status(400).json({
+                success: false,
+                message: 'Status is Required'
+            });
+        }
+        const sql = `UPDATE  news SET status = ? WHERE id = ?`;
+        await DB.query(sql, [status, id], (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error in Update Status of News',
+                    err
+                });
+            } else {
+                return res.status(200).json({
+                    success: true,
+                    message: 'Status updated Successfully',
+                    results
+                });
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error in Updating Status',
             error
         });
     }

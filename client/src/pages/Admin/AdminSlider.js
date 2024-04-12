@@ -20,7 +20,7 @@ const AdminSlider = () => {
                 setSlider(data?.results);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -45,7 +45,7 @@ const AdminSlider = () => {
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = date.getDate();
-        const month = date.getMonth() + 1; 
+        const month = date.getMonth() + 1;
         const year = date.getFullYear();
         const formattedDay = day < 10 ? `0${day}` : day;
         const formattedMonth = month < 10 ? `0${month}` : month;
@@ -54,7 +54,7 @@ const AdminSlider = () => {
 
     const deleteSlider = async (id) => {
         try {
-            const {data} = await axios.delete(`/api/v1/slider/delete-slider/${id}`, {
+            const { data } = await axios.delete(`/api/v1/slider/delete-slider/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -64,7 +64,7 @@ const AdminSlider = () => {
                 window.location.reload();
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -102,9 +102,9 @@ const AdminSlider = () => {
                                                     <td>{c.SrNo}</td>
                                                     <td><img src={require(`../../img/sliders/${c.path}`)} width={150} height={120} alt='Slider' /></td>
                                                     <td>
-                                                        <button className='btn btn-primary m-2' onClick={()=> navigate(`/dashboard/admin/update_slider/${c.id}`)} >Update</button> 
-                                                        <button className='btn btn-primary m-2' onClick={() => updateStatusSlider(c.status, c.id)}>{c.status ? "Active" : "Deactive"}</button> 
-                                                        <button className='btn btn-danger m-2' onClick={() => deleteSlider(c.id)}>Delete</button> 
+                                                        <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_slider/${c.id}`)} >Update</button>
+                                                        <button className='btn btn-primary m-2' onClick={() => updateStatusSlider(c.status, c.id)}>{c.status ? "Active" : "Deactive"}</button>
+                                                        <button className='btn btn-danger m-2' onClick={() => deleteSlider(c.id)}>Delete</button>
                                                     </td>
                                                 </tr>
                                             ))}

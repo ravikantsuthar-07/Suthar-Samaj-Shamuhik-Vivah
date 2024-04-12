@@ -68,7 +68,7 @@ export const getAdminSammanitController = async (req, res) => {
 
 export const createSammanitController = async (req, res) => { 
     try {                                                                
-        const { name, address, dob, mob, year } = req.body;
+        const { name, fName, address, dob, mob } = req.body;
         const img = req.file;
         if (!img) {
             return res.status(400).json({
@@ -80,6 +80,12 @@ export const createSammanitController = async (req, res) => {
             return res.status(400).json({
                 success: false,
                 message: 'Name is Required'
+            });
+        }
+        if (!fName) {
+            return res.status(400).json({
+                success: false,
+                message: 'Father or Husband Name is Required'
             });
         }
         if (!address) {
@@ -100,14 +106,10 @@ export const createSammanitController = async (req, res) => {
                 message: 'Mobile Number is Required'
             });
         }
-        if (!year) {
-            return res.status(400).json({
-                success: false,
-                message: 'Year is Required'
-            })
-        }
-        const sql = `INSERT INTO Sammanit (name, address, Date_of_birth, Mobile, Image, year) VALUES (?, ?, ?, ?, ?, ?)`;
-        await DB.query(sql, [name, address, dob, mob, img.originalname, year], (err, results) => {
+        const d = new Date();
+        let year = d.getFullYear();
+        const sql = `INSERT INTO Sammanit (name, FName, address, Date_of_birth, Mobile, Image, year) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+        await DB.query(sql, [name, fName, address, dob, mob, img.originalname, year], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -141,13 +143,7 @@ export const updateStatusSammanitController = async (req, res) => {
                 message: 'Id is Required'
             });
         }
-        if (!status) {
-            return res.status(400).json({
-                success: false,
-                message: 'Status is Required'
-            });
-        }
-        const sql = `UPDATE Sammanit status = ? WHERE id = ?`;
+        const sql = `UPDATE Sammanit SET status = ? WHERE id = ?`;
         await DB.query(sql, [status, id], (err, results) => {
             if (err) {
                 return res.status(500).json({

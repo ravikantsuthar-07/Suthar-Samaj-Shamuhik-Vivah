@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
             const passeData = JSON.parse(data);
             setAuth({
                 ...auth,
-                user: passeData.results,
+                user: passeData?.results,
                 token: passeData.token
             })
         }

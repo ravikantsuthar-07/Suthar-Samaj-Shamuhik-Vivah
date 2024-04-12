@@ -11,10 +11,10 @@ const GalleryYear = () => {
         try {
             const { data } = await axios.get(`/api/v1/gallery/get-images/${params.year}`);
             if (data?.success) {
-                setGetGallery(data.results);
+                setGetGallery(data?.results);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

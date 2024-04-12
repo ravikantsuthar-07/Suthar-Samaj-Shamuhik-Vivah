@@ -17,7 +17,7 @@ const AdminGiftsList = () => {
                 setGift(data?.results);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -28,14 +28,14 @@ const AdminGiftsList = () => {
                     "Authorization": auth.token
                 }
             });
-            if (data.success) {
+            if (data?.success) {
                 alert(data?.message);
                 window.location.reload();
             } else {
                 alert(data?.message);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

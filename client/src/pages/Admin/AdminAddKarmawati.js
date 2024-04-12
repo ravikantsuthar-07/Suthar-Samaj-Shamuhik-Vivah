@@ -39,7 +39,7 @@ const AdminAddKarmawati = () => {
                 navigate(`/dashboard/admin/add_karma`);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
     return (

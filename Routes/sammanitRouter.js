@@ -13,8 +13,8 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        if (file.fieldname === 'file' ) {
-            cb(null, process.cwd() + '/client/src/sammanit/');
+        if (file.fieldname === 'img' ) {
+            cb(null, process.cwd() + '/client/src/img/sammanit/');
         } else {
             cb(new Error('Invalid field name'));
         }
@@ -28,7 +28,7 @@ const upload = multer({ storage: storage });
 router.get('/get/:year', getSammanitController);
 router.get('/get-year', getYearSammanitController);
 router.get('/get-admin/:year', requireSignIn, isAdmin, getAdminSammanitController);
-router.post('/create', requireSignIn, isAdmin, upload.single('img'), createSammanitController);
+router.post('/create', upload.single('img'), createSammanitController);
 router.put('/update-status/:id', requireSignIn, isAdmin, updateStatusSammanitController);
 
 export default router;

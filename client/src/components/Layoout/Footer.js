@@ -36,13 +36,12 @@ const Footer = () => {
                 <MDBContainer className='text-center text-md-start mt-5'>
                     <MDBRow className='mt-3'>
                         <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
-                            <h6 className='text-uppercase fw-bold mb-4'>
+                            <h6 className='text-uppercase fw-bold mb-2'>
                                 <img src={logo} width={50} height={50} alt='logo' />
                                 श्री विश्वकर्मा सुथार समाज सामूहिक विवाह समिति, बीकानेर
                             </h6>
                             <p>
-                                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
-                                amet, consectetur adipisicing elit.
+                                हमें गर्व है कि हम इस परमपिता महान वास्तुविज्ञ शिल्पकार की संताने हैं। जिन्हें इस धरती का सौन्दर्य व आधुनिकीकरण का कार्य सौंपा।
                             </p>
                         </MDBCol>
 
@@ -59,7 +58,7 @@ const Footer = () => {
                                 </Link>
                             </p>
                             <p>
-                                <Link to='/' className='text-reset'>
+                                <Link to='/saman' className='text-reset'>
                                     75+ Saman Samarow
                                 </Link>
                             </p>

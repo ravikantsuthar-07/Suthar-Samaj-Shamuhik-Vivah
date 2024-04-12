@@ -11,10 +11,14 @@ const InformationPage = () => {
         try {
             const { data } = await axios.get('/api/v1/wedding/get-Wedding-year');
             if (data?.success) {
-                setData(data?.results)
+                if (data?.results?.length) {
+                    setData(data?.results);
+                } else {
+                    alert("No Data Found")
+                }
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

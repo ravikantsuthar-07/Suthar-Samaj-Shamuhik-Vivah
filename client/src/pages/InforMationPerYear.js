@@ -21,25 +21,28 @@ const InforMationPerYear = () => {
             const { data } = await axios.get(`/api/v1/wedding/gettAllWedding/${params.year}`);
             if (data?.success) {
                 setWedding(data?.results);
+                if (data?.results.length === 0) {
+                    navigate('/wedding');
+                }
                 giftsAll();
             } else {
                 navigate('/wedding');
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
     const giftsAll = async () => {
         try {
             const { data } = await axios.get(`/api/v1/wedding/gifts/${params.year}`)
-            if (data.success) {
-                setGifts(data.results);
+            if (data?.success) {
+                setGifts(data?.results);
             } else {
                 navigate('/wedding');
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -47,15 +50,18 @@ const InforMationPerYear = () => {
         try {
             const { data } = await axios.get(`/api/v1/slider/get-single-slider/${params.year}`);
             if (data?.success) {
-                setImgWed(data.results[0].path);
-                setDates(data.results[0].Dates);
-                setSr(data.results[0].SrNo);
+                if (data?.results?.length === 0) {
+                    navigate('/wedding');
+                }
+                setImgWed(data?.results[0].path);
+                setDates(data?.results[0].Dates);
+                setSr(data?.results[0].SrNo);
                 gettAllWedding();
             } else {
                 navigate('/wedding');
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

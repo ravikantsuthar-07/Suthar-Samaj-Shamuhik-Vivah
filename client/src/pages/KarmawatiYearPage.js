@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../components/Layoout/Layout'
 import axios from 'axios';
 import under from '../img/Under.png'
 
 const KarmawatiYearPage = () => {
     const params = useParams();
+    const navigate = useNavigate();
     const [karma, setKarma] = useState([]);
     const [karmawati, setKarmawati] = useState([]);
 
@@ -14,6 +15,9 @@ const KarmawatiYearPage = () => {
             const { data } = await axios.get(`/api/v1/karmawati/get-by-year/${params.year}`);
             if (data?.success) {
                 setKarma(data?.results);
+                if (data?.results.length === 0) {
+                    navigate('/karmawati');
+                }
                 gettingkarmawati();
             }
         } catch (error) {
@@ -26,6 +30,9 @@ const KarmawatiYearPage = () => {
             const { data } = await axios.get(`/api/v1/karmawati/get-by-year-whom/${params.year}`);
             if (data?.success) {
                 setKarmawati(data?.results);
+                if (data?.results.length === 0) {
+                    navigate('/karmawati');
+                }
             }
         } catch (error) {
             alert(error?.response?.data?.message);

@@ -7,7 +7,7 @@ const TeamCom = () => {
     const teamData = async () => {
         const { data } = await axios.get(`/api/v1/team/get-team`);
         if (data?.success) {
-            setTeam(data.results);
+            setTeam(data?.results);
         } 
     }
 

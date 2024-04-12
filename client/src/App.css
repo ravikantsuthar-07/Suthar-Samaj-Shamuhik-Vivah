@@ -148,7 +148,7 @@ body {
 
 
 #info .under {
-	width: 440px;
+	width: 480px;
 	color: #FEF9A7;
 	margin-bottom: 20px;
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
@@ -166,6 +166,7 @@ body {
 
 
 .infoCard h5 {
+	line-height: normal;
 	color: #D61C4E;
 	font-weight: bolder;
 }
@@ -210,9 +211,9 @@ body {
 	line-height: normal;
 }
 
-.footerHead p {
+#footers p {
 	line-height: normal;
-	font-size: small;
+	font-size: 14px;
 }
 
 /* Gallery */

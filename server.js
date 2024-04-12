@@ -13,6 +13,7 @@ import gallery from './Routes/galleryRouter.js';
 import Sutradhar from './Routes/sutradharRouter.js';
 import sammanit from './Routes/sammanitRouter.js';
 import karmawati from './Routes/karmawatiRouter.js';
+import weddingRegister from './Routes/weddingRegisterRouter.js';
 
 // Environment Configuration
 dotenv.config();
@@ -33,6 +34,7 @@ app.use('/api/v1/slider', Slider);
 app.use('/api/v1/wedding', wedding);
 app.use('/api/v1/sammanit', sammanit);
 app.use('/api/v1/karmawati', karmawati);
+app.use('/api/v1/weddingRegister', weddingRegister);
 app.use('/api/v1/team', team);
 app.use('/api/v1/contact', contact);
 app.use('/api/v1/news', news);

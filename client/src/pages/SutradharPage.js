@@ -12,7 +12,7 @@ const SutradharPage = () => {
                 setBook(data?.results[0].file);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

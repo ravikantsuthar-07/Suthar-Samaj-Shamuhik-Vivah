@@ -5,7 +5,6 @@ export const createController = async (req, res) => {
     try {
 
         const { name, mobileNo, email, password } = req.body;
-        console.log(req.body);
         if (!name) {
             return res.status(400).send({
                 success: false,
@@ -35,7 +34,6 @@ export const createController = async (req, res) => {
         await DB.query(
             `SELECT email, name From admins WHERE email = '${email}'`, (err, results) => {
                 if (err) {
-                    console.log('ERR');
                     return res.status(500).json({
                         success: false,
                         message: 'Error in Insert User in Table',

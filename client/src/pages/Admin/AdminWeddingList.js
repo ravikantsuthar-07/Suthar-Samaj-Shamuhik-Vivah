@@ -17,7 +17,7 @@ const AdminWeddingList = () => {
                 setWedding(data?.results);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -35,7 +35,7 @@ const AdminWeddingList = () => {
                 alert(data?.message);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

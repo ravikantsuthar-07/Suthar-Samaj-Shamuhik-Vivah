@@ -23,11 +23,11 @@ const AdminAddWeddingMember = () => {
     const yy = async () => {
         try {
             const { data } = await axios.get('/api/v1/slider/get-slider');
-            if (data.success) {
-                setSYear(data.results)
+            if (data?.success) {
+                setSYear(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -65,7 +65,7 @@ const AdminAddWeddingMember = () => {
                 navigate('/dashboard/admin/add_wedding_member');
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

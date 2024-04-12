@@ -348,7 +348,6 @@ export const updateGiftController = async (req, res) => {
     try {
         const id = req.params.id;
         const { year, Name, Number, Price } = req.body;
-        console.log(req.body);
         if (!year) return res.status(400).json({ success: false, message: "Year is Required" });
         if (!Name) return res.status(400).json({ success: false, message: "Name of Gift is Required" });
         if (!Number) return res.status(400).json({ success: false, message: "Quantity of Gift is Required" });

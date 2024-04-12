@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import AdminMenu from '../../components/Layoout/AdminMenu'
-import { useAuth } from '../../context/auth'
+import AdminMenu from '../../components/Layoout/AdminMenu';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 
-const AdminKarmawati = () => {
+const AdminSamanSamaroh = () => {
     const navigate = useNavigate()
-    const [karmawati, setKarmawati] = useState([]);
-    const [auth] = useAuth();
+    const [saman, setSaman] = useState([]);
 
-    const gettingKarmawati = async () => {
+    const gettingSamanYear = async () => {
         try {
-            const { data } = await axios.get('/api/v1/karmawati/admin-get-year', {
-                headers: {
-                    "Authorization": auth.token
-                }
-            });
+            const { data } = await axios.get('/api/v1/sammanit/get-year');
 
             if (data?.success) {
-                setKarmawati(data?.results);
+                setSaman(data?.results);
             }
         } catch (error) {
             alert(error?.response?.data?.message);
@@ -27,7 +21,7 @@ const AdminKarmawati = () => {
     }
 
     useEffect(() => {
-        gettingKarmawati();
+        gettingSamanYear();
         // eslint-disable-next-line
     }, []);
 
@@ -40,7 +34,7 @@ const AdminKarmawati = () => {
                         <div className="col-lg-12">
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">Karmavati Pansior</h5>
+                                    <h5 className="card-title">Saman Samaroh</h5>
                                     <table className="table">
                                         <thead>
                                             <tr>
@@ -50,11 +44,11 @@ const AdminKarmawati = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {karmawati?.map((c, i) => (
+                                            {saman?.map((c, i) => (
                                                 <tr key={i}>
                                                     <th scope="row">{i + 1}</th>
                                                     <td>{c.year}</td>
-                                                    <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/karmawati/${c.year}`)}>See Wedding in {c.year}</button></td>
+                                                    <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/saman/${c.year}`)}>See Samanit in {c.year}</button></td>
                                                 </tr>
                                             ))}
                                         </tbody>
@@ -69,4 +63,4 @@ const AdminKarmawati = () => {
     )
 }
 
-export default AdminKarmawati
+export default AdminSamanSamaroh

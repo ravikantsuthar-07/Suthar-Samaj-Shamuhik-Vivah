@@ -224,7 +224,7 @@ export const updateStatusKarmawatiController = async (req, res) => {
 export const getYearByWhomKarmawatiController = async (req, res) => {
     try {
         const year = req.params.year;
-        const sql = `SELECT * FROM givekarmawati WHERE year = ?`
+        const sql = `SELECT * FROM givekarmawati WHERE year = ? ORDER BY Amount DESC`
         await DB.query(sql, [year], (err, results) => {
             if (err) {
                 return res.status(500).json({

@@ -36,7 +36,7 @@ const AdminUpdateTeam = () => {
                 navigate(`/dashboard/admin/add_team`);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -48,16 +48,16 @@ const AdminUpdateTeam = () => {
                 }
             });
             if (data?.success) {
-                setName(data.results[0].Name);
-                setPost(data.results[0].PostOn);
-                setMobile(data.results[0].Mobile);
-                setAddress(data.results[0].Address);
-                setImg(data.results[0].img);
+                setName(data?.results[0].Name);
+                setPost(data?.results[0].PostOn);
+                setMobile(data?.results[0].Mobile);
+                setAddress(data?.results[0].Address);
+                setImg(data?.results[0].img);
             } else {
                 navigate(`/dashboard/admin/team`);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

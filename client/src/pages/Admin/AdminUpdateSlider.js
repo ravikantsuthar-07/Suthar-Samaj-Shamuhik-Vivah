@@ -17,13 +17,13 @@ const AdminUpdateSlider = () => {
         try {
             const { data } = await axios.get(`/api/v1/slider/get-single-slider/${params.id}`);
             if (data?.success) {
-                setYear(data.results[0].Year);
-                setImg(data.results[0].path);
-                setSrNo(data.results[0].SrNo);
-                setDate(formatDate(data.results[0].Dates));
+                setYear(data?.results[0].Year);
+                setImg(data?.results[0].path);
+                setSrNo(data?.results[0].SrNo);
+                setDate(formatDate(data?.results[0].Dates));
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -54,7 +54,7 @@ const AdminUpdateSlider = () => {
             }
 
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

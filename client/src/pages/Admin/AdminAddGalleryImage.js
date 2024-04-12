@@ -13,11 +13,11 @@ const AdminAddGalleryImage = () => {
     const getYear = async () => {
         try {
             const { data } = await axios.get('/api/v1/slider/get-slider');
-            if (data.success) {
-                setGetYears(data.results)
+            if (data?.success) {
+                setGetYears(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -43,7 +43,7 @@ const AdminAddGalleryImage = () => {
                 navigate('/dashboard/admin/add_gallery_image');
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

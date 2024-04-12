@@ -29,7 +29,7 @@ const AdminAddBook = () => {
                 alert(data?.message);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

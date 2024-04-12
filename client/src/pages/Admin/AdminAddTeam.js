@@ -35,7 +35,7 @@ const AdminAddTeam = () => {
                 navigate(`/dashboard/admin/add_team`);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
     return (

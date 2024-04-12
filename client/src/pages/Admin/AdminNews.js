@@ -16,39 +16,45 @@ const AdminNews = () => {
                     "Authorization": auth.token
                 }
             });
-            if (data.success) {
-                setNews(data.results)
+            if (data?.success) {
+                setNews(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
 
-    // const updateStatusNews = async (status, id) => {
-    //     try {
-    //         const { data } = await axios.put(`/api/v1/slider/update-status-slider/${id}`,
-    //             { status: !status }, {
-    //             headers: {
-    //                 "Authorization": auth.token
-    //             }
-    //         })
-    //         if (data.success) {
-    //             window.location.reload();
-    //         }
-    //     } catch (error) {
-
-    //     }
-    // }
+    const updateStatusNews = async (status, id) => {
+        try {
+            if (status) {
+                status = 0;
+            } else {
+                status = 1;
+            }
+            const { data } = await axios.put(`/api/v1/news/update-status/${id}`,
+                { status: status }, {
+                headers: {
+                    "Authorization": auth.token
+                }
+            })
+            if (data?.success) {
+                alert(data?.message)
+                window.location.reload();
+            }
+        } catch (error) {
+            alert(error?.response?.data?.message);
+        }
+    }
 
     const deleteNews = async (id) => {
         try {
-            const {data} = await axios.delete(`/api/v1/news/delete-news/${id}`, {
+            const { data } = await axios.delete(`/api/v1/news/delete-news/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }
             });
-            if (data.success) {
+            if (data?.success) {
                 alert(data?.message);
                 window.location.reload();
             } else {
@@ -95,9 +101,9 @@ const AdminNews = () => {
                                                     <td>{n.Time}</td>
                                                     <td><img src={require(`../../img/news/${n.Image}`)} width={150} height={120} alt='News' /></td>
                                                     <td>
-                                                        <button className='btn btn-primary m-2' onClick={()=> navigate(`/dashboard/admin/update_news/${n.id}`)} >Update</button> 
-                                                        {/* <button className='btn btn-primary m-2' onClick={() => updateStatusNews(n.status, n.id)}>{n.status ? "Active" : "Deactive"}</button>  */}
-                                                        <button className='btn btn-danger m-2' onClick={() => deleteNews(n.id)}>Delete</button> 
+                                                        <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_news/${n.id}`)} >Update</button>
+                                                        <button className='btn btn-primary m-2' onClick={() => updateStatusNews(n.status, n.id)}>{n.status ? "Active" : "Deactive"}</button> 
+                                                        <button className='btn btn-danger m-2' onClick={() => deleteNews(n.id)}>Delete</button>
                                                     </td>
                                                 </tr>
                                             ))}

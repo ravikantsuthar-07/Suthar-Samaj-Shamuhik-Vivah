@@ -11,7 +11,6 @@ const AdminAddSlider = () => {
     const [srNo, setSrNo] = useState("");
     const [date, setDate] = useState("");
     const [auth] = useAuth()
-    console.log(img);
 
     const handleCreate = async (e) => {
         e.preventDefault();
@@ -37,7 +36,7 @@ const AdminAddSlider = () => {
                 navigate('/dashboard/admin/add_slider');
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

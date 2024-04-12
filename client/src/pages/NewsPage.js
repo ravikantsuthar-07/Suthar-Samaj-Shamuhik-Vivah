@@ -10,11 +10,11 @@ const NewsPage = () => {
     const details = async () => {
         try {
             const { data } = await axios.get('/api/v1/news/get-news');
-            if (data.success) {
-                setNews(data.results)
+            if (data?.success) {
+                setNews(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     };
 

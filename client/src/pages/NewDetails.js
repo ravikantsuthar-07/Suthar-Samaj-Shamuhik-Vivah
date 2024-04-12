@@ -13,10 +13,9 @@ const NewDetails = () => {
             const { data } = await axios.get(`/api/v1/news/get-single-news/${params.id}`);
             if (data?.success) {
                 setNews(data?.results[0]);
-                console.log(news);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -33,7 +32,6 @@ const NewDetails = () => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-md-6 col-sm-6 col-12 col-lg-6'>
-                            {console.log(news?.Image)}
                             <img src={require(`../img/news/${news.Image ? news.Image : "3.png"}`)} width={'100%'} alt='newsImage' />
                         </div>
                         <div className='col-md-6 col-sm-6 col-12 col-lg-6'>

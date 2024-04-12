@@ -40,7 +40,7 @@ const AdminKarmaList = () => {
                 setKarma(data?.results);
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 
@@ -82,7 +82,7 @@ const AdminKarmaList = () => {
                                                     <td>{c.mobile}</td>
                                                     <td>{c.Amount}</td>
                                                     <td><img src={require(`../../img/karmawati/${c.img}`)} width={50} height={50} alt='karmawati' /></td>
-                                                    {/* <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, !c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td> */}
+                                                    <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, !c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                 </tr>
                                             ))}
                                         </tbody>

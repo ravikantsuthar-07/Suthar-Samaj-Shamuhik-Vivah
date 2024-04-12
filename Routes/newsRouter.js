@@ -5,7 +5,8 @@ import {
     getAdminNewsContoller,
     getNewsController, 
     getSingleNewsController, 
-    updateNewsController
+    updateNewsController,
+    updateStatusNewsController
 } from '../Controller/newsController.js';
 import { isAdmin, requireSignIn } from '../middlewares/authMiddleware.js';
 import multer from 'multer';
@@ -32,5 +33,6 @@ router.get('/get-admin-news', requireSignIn, isAdmin, getAdminNewsContoller);
 router.post('/create-news', requireSignIn, isAdmin, upload.single('img'), createNewsController);
 router.put('/update-news/:id', requireSignIn, isAdmin,  upload.single('img'), updateNewsController);
 router.delete('/delete-news/:id', requireSignIn, isAdmin, deleteNewsController);
+router.put('/update-status/:id', requireSignIn, isAdmin, updateStatusNewsController);
 
 export default router;

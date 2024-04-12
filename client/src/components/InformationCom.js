@@ -10,12 +10,11 @@ const InformationCom = () => {
     const getWeddings = async () => {
         try {
             const { data } = await axios.get('/api/v1/wedding/get-Wedding-year');
-            console.log(data);
-            if (data.success) {
-                setInfo(data.results)
+            if (data?.success) {
+                setInfo(data?.results)
             }
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            alert(error?.response?.data?.message);
         }
     }
 

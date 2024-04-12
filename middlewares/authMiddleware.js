@@ -7,7 +7,6 @@ export const requireSignIn = async (req, res, next) => {
         req.user = decode;
         next();
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success: false,
             message: "Error in Signed",
@@ -39,6 +38,10 @@ export const isAdmin = async (req, res, next) => {
             }
         )
     } catch (error) {
-        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'You Not A Authrise User',
+            error
+        });
     }
 }
