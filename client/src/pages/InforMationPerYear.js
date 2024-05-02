@@ -156,7 +156,6 @@ const InforMationPerYear = () => {
                                         <td>{c.Price}</td>
                                     </tr>
                                 ))}
-
                             </tbody>
                         </table>
                     </div>
