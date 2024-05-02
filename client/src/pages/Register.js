@@ -3,6 +3,7 @@ import Layout from '../components/Layoout/Layout'
 import under from '../img/Under.png'
 import '../Styles/Register.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     const [groomName, setGroomName] = useState(null);
@@ -29,14 +30,14 @@ const Register = () => {
             formData.append('groomMobile', groomMobile);
             formData.append('groomAddress', groomAddress);
             formData.append('groomDOB', groomDOB);
-            formData.append('groom', groomImg);
+            formData.append('img', groomImg);
             formData.append('BrideName', brideName);
             formData.append('BrideFatherName', brideFatherName);
             formData.append('BrideGrandFatherName', brideGrandFatherName);
             formData.append('BrideMobile', brideMobile);
             formData.append('BrideAddress', brideAddress);
             formData.append('BrideDOB', brideDOB);
-            formData.append('bride', brideImg);
+            formData.append('img', brideImg);
             const { data } = await axios.post('/api/v1/weddingRegister/create', formData);
             if (data?.success) {
                 alert(data?.message);
@@ -50,12 +51,12 @@ const Register = () => {
         <Layout>
             <div id='registerUser' className="container">
                 <div className="col-sm-12 mb-4">
-                    <h2 className="text-center">कर्मावती पैंशन के लिए फॉर्म भरे</h2>
+                    <h2 className="text-center">सामूहिक विवाह के लिए फॉर्म भरे</h2>
                     <img src={under} className='under' alt='under' />
                 </div>
                 <form method='post' onSubmit={handleCreate} encType="multipart/form-data">
                     <div className="row jumbotron box8">
-                    <div className="col-sm-6 form-group">
+                        <div className="col-sm-6 form-group">
                             <label htmlFor="name-f">Groom Name</label>
                             <input
                                 type="text"
@@ -127,7 +128,7 @@ const Register = () => {
                                 name="groom"
                                 className="form-control"
                                 accept='image/*'
-                                onChange={(e) => setGroomImg(e.target.files)}
+                                onChange={(e) => setGroomImg(e.target.files[0])}
                             />
                         </div>
                         <div className="col-sm-6 form-group">
@@ -208,7 +209,7 @@ const Register = () => {
                         <div className="col-sm-12">
                             <input type="checkbox" className="form-check d-inline" id="chb" required />
                             <label htmlFor="chb" className="form-check-label">
-                                &nbsp;I accept all terms and conditions .
+                                &nbsp;I accept all <Link to={'/terms'}> <small>Terms and Conditions</small> </Link> .
                             </label>
                         </div>
 

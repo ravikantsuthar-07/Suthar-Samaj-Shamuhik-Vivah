@@ -66,11 +66,10 @@ const AdminTeams = () => {
         teamData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
     return (
         <>
             <AdminMenu />
-            <main id="main" className="main">
+            <main id="main" className="main" style={{ background: '#fff', overflowX: 'visible' }}>
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
@@ -97,12 +96,13 @@ const AdminTeams = () => {
                                                     <td>{t.PostOn}</td>
                                                     <td>{t.Mobile}</td>
                                                     <td>{t.Address}</td>
-                                                    <td><img src={require(`../../img/team/${t.img}`)} width={100} height={80} alt='team' /></td>
+                                                    <td><img src={require(`../../img/team/${t.img}`) ? require(`../../img/team/${t.img}`) : require('../../img/logo.png')} width={100} height={80} alt='team' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-1' onClick={() => navigate(`/dashboard/admin/update_team/${t.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-1' onClick={() => updateStatusTeam(t.status, t.id)}>{t.status ? "Active" : "Deactive"}</button>
                                                         <button className='btn btn-danger m-1' onClick={() => deleteTeamMember(t.id)}>Delete</button>
                                                     </td>
+                                                    {console.log(t.img)}
                                                 </tr>
                                             ))}
                                         </tbody>

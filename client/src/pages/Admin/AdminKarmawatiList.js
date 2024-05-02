@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AdminMenu from '../../components/Layoout/AdminMenu'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useAuth } from '../../context/auth'
 
 const AdminKarmawatiList = () => {
     const params = useParams();
+    const navigate = useNavigate();
     const [karmawati, setKarmawati] = useState([]);
     const [auth] = useAuth()
 
@@ -41,6 +42,9 @@ const AdminKarmawatiList = () => {
                 }
             });
             if (data?.success) {
+                if (data?.results?.length === 0) {
+                    navigate('/dashboard/admin/karmawati/')
+                }
                 setKarmawati(data?.results);
             }
         } catch (error) {

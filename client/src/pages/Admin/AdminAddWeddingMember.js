@@ -8,7 +8,9 @@ const AdminAddWeddingMember = () => {
     const navigate = useNavigate();
     const [syear, setSYear] = useState([]);
     const [year, setYear] = useState('');
-    const [photo, setPhoto] = useState('');
+    const [srNo, setSrNo] = useState('');
+    const [mPhoto, setMPhoto] = useState('');
+    const [fPhoto, setFPhoto] = useState('');
     const [menName, setMenName] = useState('');
     const [menFatName, setMenFatName] = useState('');
     const [menGFatName, setMenGFatName] = useState('');
@@ -37,9 +39,9 @@ const AdminAddWeddingMember = () => {
 
             const weddingData = new FormData();
             weddingData.append('year', year);
-            for(var x = 0; x < photo.length; x++) {
-                weddingData.append('Photo', photo[x]);
-            }
+            weddingData.append('srNo', srNo);
+            weddingData.append('Photo', fPhoto);
+            weddingData.append('Photo', mPhoto);
             weddingData.append('M_name', menName);
             weddingData.append('MF_Name', menFatName);
             weddingData.append('MG_Name', menGFatName);
@@ -97,9 +99,9 @@ const AdminAddWeddingMember = () => {
                                             </div>
                                         </div>
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Image</label>
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Serial Number</label>
                                             <div className="col-sm-10">
-                                                <input type="file" name='img' accept='image/*' onChange={(e) => setPhoto(e.target.files)} className="form-control" id="inputFile" multiple />
+                                                <input type="text" name='SrNo' value={srNo} onChange={(e) => setSrNo(e.target.value)} className="form-control" id="inputMName" />
                                             </div>
                                         </div>
                                         <div className="row mb-3">
@@ -133,6 +135,12 @@ const AdminAddWeddingMember = () => {
                                             </div>
                                         </div>
                                         <div className="row mb-3">
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Groom Picture</label>
+                                            <div className="col-sm-10">
+                                                <input type="file" name='img' accept='image/*' onChange={(e) => setMPhoto(e.target.files[0])} className="form-control" id="inputFile" />
+                                            </div>
+                                        </div>
+                                        <div className="row mb-3">
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Woman Name</label>
                                             <div className="col-sm-10">
                                                 <input type="text" name='F_name' value={woMenName} onChange={(e) => setWoMenName(e.target.value)} className="form-control" id="inputFName" />
@@ -160,6 +168,12 @@ const AdminAddWeddingMember = () => {
                                             <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Woman Mobile Number</label>
                                             <div className="col-sm-10">
                                                 <input type="text" name='F_Mobile' value={woMenMobile} onChange={(e) => setWoMenMobile(e.target.value)} className="form-control" id="inputWomanMobile" />
+                                            </div>
+                                        </div>
+                                        <div className="row mb-3">
+                                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Bride Picture</label>
+                                            <div className="col-sm-10">
+                                                <input type="file" name='img' accept='image/*' onChange={(e) => setFPhoto(e.target.files[0])} className="form-control" id="inputFile" />
                                             </div>
                                         </div>
                                         <div className="text-center">

@@ -54,7 +54,6 @@ const LoginPage = () => {
                                             <div className="col-12">
                                                 <label htmlFor="yourUsername" className="form-label">Username</label>
                                                 <div className="input-group has-validation">
-                                                    <span className="input-group-text" id="inputGroupPrepend">@</span>
                                                     <input
                                                         type="email"
                                                         name="email"

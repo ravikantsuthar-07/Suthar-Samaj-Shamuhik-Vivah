@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
         }
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname);
+        cb(null, Date.now() + file.originalname);
     }
 });
 const upload = multer({ storage: storage });
@@ -41,7 +41,7 @@ router.get('/get-Wedding-year', getWeddingYearController);
 
 router.post('/createWedding', requireSignIn, isAdmin, upload.array('Photo', 2), createWeddingController);
 router.put('/updateWedding/:id', requireSignIn, isAdmin, upload.array('Photo', 2), updateWeddingController);
-router.delete('/deleteWedding/:id', requireSignIn, isAdmin, deleteWeddingController);
+router.post('/deleteWedding/:id', requireSignIn, isAdmin, deleteWeddingController);
 
 router.get('/getSingleGift/:id', getSingleGiftController);
 router.get('/gifts/:year', getGiftController);

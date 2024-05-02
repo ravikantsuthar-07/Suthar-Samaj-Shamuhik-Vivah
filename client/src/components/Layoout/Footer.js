@@ -5,48 +5,24 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
-            {/* <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
-                <div className='me-5 d-none d-lg-block'>
-                    <span>Get connected with us on social networks:</span>
-                </div>
-
-                <div>
-                    <Link to='' className='me-4 text-reset'>
-                        <MDBIcon color='secondary' fab icon='facebook-f' />
-                    </Link>
-                    <Link to='' className='me-4 text-reset'>
-                        <MDBIcon color='secondary' fab icon='twitter' />
-                    </Link>
-                    <Link to='' className='me-4 text-reset'>
-                        <MDBIcon color='secondary' fab icon='google' />
-                    </Link>
-                    <Link to='' className='me-4 text-reset'>
-                        <MDBIcon color='secondary' fab icon='instagram' />
-                    </Link>
-                    <Link to='' className='me-4 text-reset'>
-                        <MDBIcon color='secondary' fab icon='linkedin' />
-                    </Link>
-                    <Link to='' className='me-4 text-reset'>
-                        <MDBIcon color='secondary' fab icon='github' />
-                    </Link>
-                </div>
-            </section> */}
 
             <section id='footers'>
                 <MDBContainer className='text-center text-md-start mt-5'>
                     <MDBRow className='mt-3'>
-                        <MDBCol md='3' lg='4' xl='3' className='mx-auto mb-4'>
-                            <h6 className='text-uppercase fw-bold mb-2'>
-                                <img src={logo} width={50} height={50} alt='logo' />
-                                श्री विश्वकर्मा सुथार समाज सामूहिक विवाह समिति, बीकानेर
-                            </h6>
-                            <p>
+                        <MDBCol md='4' lg='4' xl='4' className='mx-auto mb-4'>
+                            <div style={{ display: 'flex', alignItems: 'center', lineHeight: 'normal' }}>
+                                <img src={logo} width={65} alt='logo' />
+                                <h6 className='text-uppercase fw-bold m-2' style={{ lineHeight: 'normal' }}>
+                                    श्री विश्वकर्मा सुथार समाज सामूहिक विवाह समिति, बीकानेर
+                                </h6>
+                            </div>
+                            <p className='mt-3'>
                                 हमें गर्व है कि हम इस परमपिता महान वास्तुविज्ञ शिल्पकार की संताने हैं। जिन्हें इस धरती का सौन्दर्य व आधुनिकीकरण का कार्य सौंपा।
                             </p>
                         </MDBCol>
 
                         <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4'>
-                            <h6 className='text-uppercase fw-bold mb-4'>Our Services</h6>
+                            <h6 className='text-uppercase fw-bold mb-3'>Our Services</h6>
                             <p>
                                 <Link to='/wedding' className='text-reset'>
                                     Wedding
@@ -64,8 +40,9 @@ const Footer = () => {
                             </p>
                         </MDBCol>
 
-                        <MDBCol md='3' lg='2' xl='2' className='mx-auto mb-4'>
-                            <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
+                        <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4'>
+                            <h6 className='text-uppercase fw-bold mb-3'>Useful links</h6>
+                             
                             <p>
                                 <Link to='/about' className='text-reset'>
                                     About Us
@@ -76,38 +53,30 @@ const Footer = () => {
                                     Contact Us
                                 </Link>
                             </p>
-                            <p>
-                                <Link to='/' className='text-reset'>
-                                    Orders
-                                </Link>
-                            </p>
-                            <p>
-                                <Link to='/' className='text-reset'>
-                                    Help
-                                </Link>
-                            </p>
                         </MDBCol>
 
-                        <MDBCol md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
-                            <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
+                        <MDBCol md='4' lg='4' xl='4' className='mx-auto mb-md-0 mb-4'>
+                            <h6 className=' fw-bold mb-3'>Contact</h6>
                             <p>
                                 <MDBIcon color='secondary' icon='home' className='me-2' />
                                 C-187 Antodaya Nagar, Bikaner
                             </p>
                             <p>
-                                <MDBIcon color='secondary' icon='envelope' className='me-3' />
-                                info@example.com
+                                <Link to='#' className='text-reset' onClick={() => window.location = 'mailto:svsbkn@gmail.com'}>
+                                    <MDBIcon color='secondary' icon='envelope' className='me-3' />
+                                    svsbkn@gmail.com
+                                </Link>
                             </p>
                             <p>
-                                <MDBIcon color='secondary' icon='phone' className='me-3' /> + 01 234 567 88
-                            </p>
-                            <p>
-                                <MDBIcon color='secondary' icon='print' className='me-3' /> + 01 234 567 89
+                                <Link to='#' className='text-reset' onClick={() => window.open("tel:+91 8949384032")}>
+                                    <MDBIcon color='secondary' icon='phone' className='me-3' /> +91 894 938 4032
+                                </Link>
+
                             </p>
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-                <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+                <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)', fontSize: 'small' }}>
                     © 2024 Copyright:
                     <span className='text-reset fw-bold'>
                         Ravikant Suthar

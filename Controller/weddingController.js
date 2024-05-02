@@ -1,4 +1,5 @@
 import DB from "../DB/connection.js";
+import fs from 'fs';
 export const getAllWeddingController = async (req, res) => {
     try {
         const year_id = req.params.year;
@@ -77,7 +78,7 @@ export const getSingleWeddingController = async (req, res) => {
     }
 };
 
-export const getWeddingYearController = async(req, res) => {
+export const getWeddingYearController = async (req, res) => {
     try {
         const sql = `SELECT DISTINCT weddings.year, sliders.path FROM weddings INNER JOIN sliders ON weddings.year = sliders.Year`;
         DB.query(sql, (err, results) => {
@@ -106,9 +107,10 @@ export const getWeddingYearController = async(req, res) => {
 
 export const createWeddingController = async (req, res) => {
     try {
-        const { year, M_name, MF_Name, MG_Name, M_Address, M_Mobile, F_Name, FF_Name, FG_Name, F_Address, F_Mobile } = req.body;
+        const { year, srNo, M_name, MF_Name, MG_Name, M_Address, M_Mobile, F_Name, FF_Name, FG_Name, F_Address, F_Mobile } = req.body;
         const Photo = req.files;
         if (!year) return res.status(400).json({ success: false, message: "Year is Required" });
+        if (!srNo) return res.status(400).json({ success: false, message: "Serial Number is Required" });
         if (!M_name) return res.status(400).json({ success: false, message: "Male Name is Required" });
         if (!MF_Name) return res.status(400).json({ success: false, message: "Male Father Name is Required" });
         if (!MG_Name) return res.status(400).json({ success: false, message: "Male Grandfather Name is Required" });
@@ -121,24 +123,23 @@ export const createWeddingController = async (req, res) => {
         if (!F_Address) return res.status(400).json({ success: false, message: "Female Address is Required" });
         if (!F_Mobile) return res.status(400).json({ success: false, message: "Female Mobile Number is Required" });
 
-        const sql = `INSERT INTO weddings (year, M_Name, MF_Name, MG_Name, M_Address, M_Mobile, M_Photo, F_Name, FF_Name, FG_Name, F_Address, F_Mobile) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? )`;
-        let image = Photo[0].originalname + " " + Photo[1].originalname
-        DB.query(
-            sql, [year, M_name, MF_Name, MG_Name, M_Address, M_Mobile, image, F_Name, FF_Name, FG_Name, F_Address, F_Mobile], (err, results) => {
-                if (err) {
-                    return res.status(500).json({
-                        success: false,
-                        message: "Error in Inserting Data in Table",
-                        err
-                    });
-                } else {
-                    return res.status(201).json({
-                        success: true,
-                        message: "Inserting Data Successfully",
-                        results
-                    });
-                }
+        let image = Photo[0].filename + " " + Photo[1].filename
+        const sql = `INSERT INTO weddings (year, SrNo, M_Name, MF_Name, MG_Name, M_Address, M_Mobile, M_Photo, F_Name, FF_Name, FG_Name, F_Address, F_Mobile) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ? )`;
+        DB.query(sql, [year, srNo, M_name, MF_Name, MG_Name, M_Address, M_Mobile, image, F_Name, FF_Name, FG_Name, F_Address, F_Mobile], (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: "Error in Inserting Data in Table",
+                    err
+                });
+            } else {
+                return res.status(201).json({
+                    success: true,
+                    message: "Inserting Data Successfully",
+                    results
+                });
             }
+        }
         );
 
 
@@ -170,7 +171,7 @@ export const updateWeddingController = async (req, res) => {
         if (!F_Mobile) return res.status(400).json({ success: false, message: "Female Mobile Number is Required" });
 
         const sql = `UPDATE weddings SET year = ?, M_Name = ?, MF_Name = ?, MG_Name = ?, M_Address = ?, M_Mobile = ?, M_Photo = ?, F_Name = ?, FF_Name = ?, FG_Name = ?, F_Address = ?, F_Mobile = ?  WHERE id = ${id}`;
-        let image = Photo[0].originalname + " " + Photo[1].originalname;
+        let image = Photo[0].filename + " " + Photo[1].filename;
 
         DB.query(
             sql, [year, M_name, MF_Name, MG_Name, M_Address, M_Mobile, image, F_Name, FF_Name, FG_Name, F_Address, F_Mobile], (err, results) => {
@@ -200,9 +201,17 @@ export const updateWeddingController = async (req, res) => {
 
 export const deleteWeddingController = async (req, res) => {
     try {
+        const { file } = req.body;
+        if (!file) {
+            return res.status(400).json({
+                success: false,
+                message: 'Reqiured some data for Deleting'
+            });
+        }
+        let img = file.split(" ");
         const id = req.params.id;
         const sql = `DELETE FROM weddings  WHERE id = ${id}`;
-        DB.query(
+        await DB.query(
             sql, (err, results) => {
                 if (err) {
                     return res.status(500).json({
@@ -211,6 +220,9 @@ export const deleteWeddingController = async (req, res) => {
                         err
                     });
                 } else {
+                    for (let i = 0; i < img.length; i++) {
+                        fs.unlinkSync(process.cwd() + `/client/src/img/wedding/${img[i]}`);
+                    }
                     return res.status(201).json({
                         success: true,
                         message: "Deleting Data Successfully",
@@ -228,7 +240,6 @@ export const deleteWeddingController = async (req, res) => {
         });
     }
 };
-
 
 export const getGiftController = async (req, res) => {
     try {
@@ -341,8 +352,6 @@ export const createGiftController = async (req, res) => {
         });
     }
 };
-
-
 
 export const updateGiftController = async (req, res) => {
     try {

@@ -51,6 +51,9 @@ import RegisterSamanSamarohPage from './pages/RegisterSamanSamarohPage';
 import AdminSamanSamaroh from './pages/Admin/AdminSamanSamaroh';
 import AdminSamanList from './pages/Admin/AdminSamanList';
 import SamanYearPage from './pages/SamanYearPage';
+import TermAndConditionPage from './pages/TermAndConditionPage';
+import AdminWeddingRegisterPage from './pages/Admin/AdminWeddingRegisterPage';
+import AdminWeddingRegisterYearPage from './pages/Admin/AdminWeddingRegisterYearPage';
 
 function App() {
     return (
@@ -77,6 +80,8 @@ function App() {
                 <Route exact path='admin/add_slider' element={<AdminAddSlider />} />
                 <Route exact path='admin/slider' element={<AdminSlider />} />
                 <Route exact path='admin/update_slider/:id' element={<AdminUpdateSlider />} />
+                <Route exact path='admin/wedding_register' element={<AdminWeddingRegisterPage />} />
+                <Route exact path='admin/wedding_register/:year' element={<AdminWeddingRegisterYearPage />} />
                 <Route exact path='admin/wedding' element={<AdminWedding />} />
                 <Route exact path='admin/add_wedding_member' element={<AdminAddWeddingMember />} />
                 <Route exact path='admin/wedding_update/:id' element={<AdminUpdateWeddingMember />} />
@@ -107,6 +112,7 @@ function App() {
                 <Route exact path='admin/book' element={<AdminBooks />} />
             </Route>
             <Route exact path='/login' element={<LoginPage /> } />
+            <Route exact path='/terms' element={<TermAndConditionPage />} />
             <Route exact path='/*' element={<PageNotFound />} />
         </Routes>
     );

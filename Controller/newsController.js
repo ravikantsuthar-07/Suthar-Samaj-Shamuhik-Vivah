@@ -249,12 +249,6 @@ export const updateStatusNewsController = async (req, res) => {
                 message: 'Id is Required'
             });
         }
-        if (!status) {
-            return res.status(400).json({
-                success: false,
-                message: 'Status is Required'
-            });
-        }
         const sql = `UPDATE  news SET status = ? WHERE id = ?`;
         await DB.query(sql, [status, id], (err, results) => {
             if (err) {

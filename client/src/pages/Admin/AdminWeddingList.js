@@ -21,9 +21,9 @@ const AdminWeddingList = () => {
         }
     }
 
-    const deleteWedding = async (id) => {
+    const deleteWedding = async (id, file) => {
         try {
-            const { data } = await axios.delete(`/api/v1/wedding/deleteWedding/${id}`, {
+            const { data } = await axios.post(`/api/v1/wedding/deleteWedding/${id}`, {file: file}, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -86,7 +86,7 @@ const AdminWeddingList = () => {
                                                         <td>{c.FG_Name}</td>
                                                         <td>{c.F_Address}</td>
                                                         <td>{c.F_Mobile}</td>
-                                                        <td><button type='button' className='btn btn-danger' onClick={() => deleteWedding(c.id)}>Delete</button></td>
+                                                        <td><button type='button' className='btn btn-danger' onClick={() => deleteWedding(c.id, c.M_Photo)}>Delete</button></td>
                                                     </tr>
                                                 </>
                                             ))}

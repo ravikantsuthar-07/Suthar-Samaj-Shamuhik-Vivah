@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AdminMenu from '../../components/Layoout/AdminMenu'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useAuth } from '../../context/auth'
 
 const AdminKarmaList = () => {
     const params = useParams();
+    const navigate = useNavigate();
     const [karma, setKarma] = useState([]);
     const [auth] = useAuth()
 
@@ -37,7 +38,11 @@ const AdminKarmaList = () => {
         try {
             const { data } = await axios.get(`/api/v1/karmawati/get-by-year-whom/${params.year}`);
             if (data?.success) {
-                setKarma(data?.results);
+                if (data?.results.length === 0) {
+                    navigate('/dashboard/admin/karma');
+                } else {
+                    setKarma(data?.results);
+                }
             }
         } catch (error) {
             alert(error?.response?.data?.message);
@@ -69,7 +74,7 @@ const AdminKarmaList = () => {
                                                 <th>Mobile Number</th>
                                                 <th>Amount</th>
                                                 <th>Image</th>
-                                                {/* <th>Action</th> */}
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>

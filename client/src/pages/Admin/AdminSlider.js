@@ -69,13 +69,13 @@ const AdminSlider = () => {
     }
 
     useEffect(() => {
-        sli()
+        sli();
         // eslint-disable-next-line
     }, [])
     return (
         <>
             <AdminMenu />
-            <main id="main" className="main bg-light">
+            <main id="main" className="main bg-light" style={{background: '#fff'}}>
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">

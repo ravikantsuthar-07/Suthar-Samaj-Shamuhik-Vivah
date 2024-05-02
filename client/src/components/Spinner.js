@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Spinners from 'react-bootstrap/Spinner';
 
-const Spinner = ({path = "login"}) => {
-    const [count, serCount] = useState(5);
+const Spinner = ({ path = "login" }) => {
+    const [count, serCount] = useState(50);
     const navigate = useNavigate()
 
     useEffect(() => {
         const interval = setInterval(() => {
             serCount((prevValue) => --prevValue);
         }, 1000);
-        count === 0 &&  navigate(`/${path}`);
+        count === 0 && navigate(`/${path}`);
         return () => clearInterval(interval)
     }, [count, navigate, path]);
 
     return (
-        <div style={{width: '100%', height: '100%'}}>
-            <div className="text-center align-items-center">
-                <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        </div>
+        <Spinners animation="grow" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinners>
     )
 }
 

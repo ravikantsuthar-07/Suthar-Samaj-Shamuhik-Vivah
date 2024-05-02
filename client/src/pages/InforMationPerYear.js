@@ -24,12 +24,13 @@ const InforMationPerYear = () => {
                 if (data?.results.length === 0) {
                     navigate('/wedding');
                 }
+                console.log(data?.results);
                 giftsAll();
             } else {
                 navigate('/wedding');
             }
         } catch (error) {
-            alert(error?.response?.data?.message);
+            navigate('/wedding');
         }
     }
 
@@ -61,7 +62,7 @@ const InforMationPerYear = () => {
                 navigate('/wedding');
             }
         } catch (error) {
-            alert(error?.response?.data?.message);
+            navigate('/wedding');
         }
     }
 

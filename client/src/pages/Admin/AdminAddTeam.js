@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminAddTeam = () => {
     const navigate = useNavigate();
-    const [name, setName] = useState(null);
-    const [post, setPost] = useState(null);
-    const [mobile, setMobile] = useState(null);
-    const [img, setImg] = useState(null);
-    const [address, setAddress] = useState(null);
+    const [name, setName] = useState('');
+    const [post, setPost] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [img, setImg] = useState('');
+    const [address, setAddress] = useState('');
     const [auth] = useAuth();
 
     const handleCreate = async (e) => {

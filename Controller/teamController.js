@@ -154,7 +154,7 @@ export const createTeamController = async (req, res) => {
                 } else {
                     return res.status(201).json({
                         success: true,
-                        menubar: "Creating Team Successfully",
+                        message: "Creating Team Successfully",
                         results
                     });
                 }

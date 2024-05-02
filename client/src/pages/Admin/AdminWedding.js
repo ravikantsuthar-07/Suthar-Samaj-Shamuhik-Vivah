@@ -12,7 +12,7 @@ const AdminWedding = () => {
 
     const gettingwedding = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-admin-slider', {
+            const { data } = await axios.get('/api/v1/wedding/get-Wedding-year', {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -54,9 +54,9 @@ const AdminWedding = () => {
                                             {wedding?.map((c, i) => (
                                                 <tr key={i}>
                                                     <th scope="row">{i + 1}</th>
-                                                    <td>{c.Year}</td>
+                                                    <td>{c.year}</td>
                                                     <td><img src={require(`../../img/sliders/${c.path}`)} width={120} height={50} alt={c.id} /></td>
-                                                    <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/wedding_year/${c.Year}`)}>See Wedding in {c.Year}</button></td>
+                                                    <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/wedding_year/${c.year}`)}>See Wedding in {c.year}</button></td>
                                                 </tr>
                                             ))}
                                         </tbody>

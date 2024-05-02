@@ -17,6 +17,9 @@ const AdminGiftsList = () => {
                 setGift(data?.results);
             }
         } catch (error) {
+            if (error?.response?.data?.message === `Not Gifts is Added in ${params.year} year`) {
+                navigate('/dashboard/admin/gift');
+            }
             alert(error?.response?.data?.message);
         }
     }
