@@ -109,7 +109,7 @@ export const createSammanitController = async (req, res) => {
         const d = new Date();
         let year = d.getFullYear();
         const sql = `INSERT INTO Sammanit (name, FName, address, Date_of_birth, Mobile, Image, year) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-        await DB.query(sql, [name, fName, address, dob, mob, img.originalname, year], (err, results) => {
+        await DB.query(sql, [name, fName, address, dob, mob, img.filename, year], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,

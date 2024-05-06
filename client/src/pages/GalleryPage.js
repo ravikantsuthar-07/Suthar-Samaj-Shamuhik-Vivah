@@ -33,7 +33,7 @@ const GalleryPage = () => {
                     {gallery?.map((g, i) => (
                         <div className="col-md-4 col-sm-12" key={i}>
                             <div className="card infoCard">
-                                <img src={require(`../img/sliders/${g.path}`)} className="card-img-top" height={200} alt="Gallery" />
+                                <img src={`/static/sliders/${g.path}`} className="card-img-top" height={200} alt="Gallery" />
                                 <div className="card-body">
                                     <h5 className="card-title">सामूहिक विवाह - {g.Year}</h5>
                                     <button type='button' onClick={()=>navigate(`/gallery/${g.Year}`)} className="btn btn-danger">अधिक तस्वीरें</button>

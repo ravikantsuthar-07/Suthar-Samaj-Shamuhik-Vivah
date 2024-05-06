@@ -99,7 +99,7 @@ const AdminNews = () => {
                                                     <td>{n.S_Description}</td>
                                                     <td>{n.L_Description}</td>
                                                     <td>{n.Time}</td>
-                                                    <td><img src={require(`../../img/news/${n.Image}`)} width={150} height={120} alt='News' /></td>
+                                                    <td><img src={`/static/news/${n.Image}`} width={150} height={120} alt='News' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_news/${n.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-2' onClick={() => updateStatusNews(n.status, n.id)}>{n.status ? "Active" : "Deactive"}</button> 

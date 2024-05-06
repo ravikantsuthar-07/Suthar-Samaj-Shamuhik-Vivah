@@ -73,7 +73,7 @@ export const createSutradharController = async (req, res) => {
             });
         }
         const sql = `INSERT INTO book (year, file) VALUES (?, ?)`;
-        await DB.query(sql, [year, file.originalname], (err, results) => {
+        await DB.query(sql, [year, file.filename], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -115,7 +115,7 @@ export const deleteSutradharController = async (req, res) => {
                 message: 'File is Requied'
             });
         }
-        fs.unlinkSync(process.cwd() + '/client/src/sutradhar/' + imgname);
+        fs.unlinkSync(process.cwd() + '/assets/sutradhar/' + imgname);
         await DB.query(sql, [id], (err, results) => {
             if (err) {
                 return res.status(500).json({

@@ -10,7 +10,7 @@ const AdminKarma = () => {
     const [auth] = useAuth();
     const gettingKarmawatiMembergive = async () => {
         try {
-            const { data } = await axios.get('/api/v1/karmawati/admin-get-year', {
+            const { data } = await axios.get('/api/v1/karmawati/get-admin-year', {
                 headers: {
                     "Authorization": auth.token
                 }

@@ -24,7 +24,7 @@ const SliderMain = () => {
 
                 {slider.map((sli, i) => (
                     <div className={i === 0 ? "carousel-item active" : "carousel-item"}>
-                        <img src={require(`../img/sliders/${sli.path}`)} className="d-block w-100" alt='Sliders' />
+                        <img src={`/static/sliders/${sli.path}`} className="d-block w-100" alt='Sliders' />
                     </div>
                 ))}
             </div>

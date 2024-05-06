@@ -32,7 +32,7 @@ const NewDetails = () => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-md-6 col-sm-6 col-12 col-lg-6'>
-                            <img src={require(`../img/news/${news.Image ? news.Image : "3.png"}`)} width={'100%'} alt='newsImage' />
+                            <img src={`/static/news/${news.Image ? news.Image : "3.png"}`} width={'100%'} alt='newsImage' />
                         </div>
                         <div className='col-md-6 col-sm-6 col-12 col-lg-6'>
                             <p id='short'>{news.S_Description}</p>

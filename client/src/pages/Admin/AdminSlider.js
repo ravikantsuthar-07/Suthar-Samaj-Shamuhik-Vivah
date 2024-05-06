@@ -100,7 +100,7 @@ const AdminSlider = () => {
                                                     <td>{c.Year}</td>
                                                     <td>{formatDate(c.Dates)}</td>
                                                     <td>{c.SrNo}</td>
-                                                    <td><img src={require(`../../img/sliders/${c.path}`)} width={150} height={120} alt='Slider' /></td>
+                                                    <td><img src={`/static/sliders/${c.path}`} width={150} height={120} alt='Slider' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_slider/${c.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-2' onClick={() => updateStatusSlider(c.status, c.id)}>{c.status ? "Active" : "Deactive"}</button>

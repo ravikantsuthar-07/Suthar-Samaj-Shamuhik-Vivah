@@ -99,7 +99,7 @@ export const createKarmawatiController = async (req, res) => {
         let year = d.getFullYear();
 
         const sql = `INSERT INTO karmawati (year, name, wifeof, img, address, mobile) VALUES (?, ?, ?, ?, ?, ?)`;
-        await DB.query(sql, [year, name, husbandname, img.originalname, address, mobile], (err, results) => {
+        await DB.query(sql, [year, name, husbandname, img.filename, address, mobile], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -157,7 +157,6 @@ export const getAdminKarmawatiController = async (req, res) => {
     }
 }
 
-
 export const getAdminYearKarmawatiController = async (req, res) => {
     try {
         const sql = `SELECT DISTINCT year FROM karmawati`;
@@ -184,7 +183,6 @@ export const getAdminYearKarmawatiController = async (req, res) => {
         });
     }
 }
-
 
 export const updateStatusKarmawatiController = async (req, res) => {
     try {
@@ -224,7 +222,62 @@ export const updateStatusKarmawatiController = async (req, res) => {
 export const getYearByWhomKarmawatiController = async (req, res) => {
     try {
         const year = req.params.year;
-        const sql = `SELECT * FROM givekarmawati WHERE year = ? ORDER BY Amount DESC`
+        const sql = `SELECT * FROM givekarmawati WHERE year = ? AND status = 1 ORDER BY Amount DESC`
+        await DB.query(sql, [year], (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error in Getting Who give Karmawati Pansion',
+                    err
+                });
+            } else {
+                return res.status(200).json({
+                    success: true,
+                    message: 'Getting Who give Karmawati Pansion',
+                    results
+                });
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error in Gettting Karmawati',
+            error
+        });
+    }
+}
+
+export const getYearAdminKarmawatiController = async (req, res) => {
+    try {
+        const sql = `SELECT DISTINCT year FROM givekarmawati `;
+        await DB.query(sql, (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error in Gettin Data from database',
+                    err
+                });
+            } else {
+                return res.status(200).json({
+                    success: true,
+                    message: 'Getting Karmawati Year Successfully',
+                    results
+                });
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error in Getting Karmawati',
+            error
+        });
+    }
+}
+
+export const getYearByAdminWhomKarmawatiController = async (req, res) => {
+    try {
+        const year = req.params.year;
+        const sql = `SELECT * FROM givekarmawati WHERE year = ?  ORDER BY Amount DESC`
         await DB.query(sql, [year], (err, results) => {
             if (err) {
                 return res.status(500).json({
@@ -293,7 +346,7 @@ export const createWhomKarmawatiController = async (req, res) => {
         }
 
         const sql = `INSERT INTO givekarmawati (name, fatherName, year, address, mobile, Amount, img) VALUES(?, ?, ?, ?, ?, ?, ?)`;
-        await DB.query(sql, [name, fname, year, address, mobile, amount, img.originalname], (err, results) => {
+        await DB.query(sql, [name, fname, year, address, mobile, amount, img.filename], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -314,6 +367,41 @@ export const createWhomKarmawatiController = async (req, res) => {
             success: false,
             message: 'Error in Add Member whose Give Karmavati Pansion',
             results
+        });
+    }
+}
+
+export const updateStatusGiveKarmawatiController = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { status } = req.body;
+        if (!id) {
+            return res.status(400).json({
+                success: false,
+                message: 'Id is Required'
+            });
+        }
+        const sql = `UPDATE givekarmawati SET status = ? WHERE id = ?`;
+        await DB.query(sql, [status, id], (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: 'Error in Update Data in Database',
+                    err
+                });
+            } else {
+                return res.status(200).json({
+                    success: true,
+                    message: 'Status Update Successfully',
+                    results
+                });
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error in Updating Status',
+            error
         });
     }
 }

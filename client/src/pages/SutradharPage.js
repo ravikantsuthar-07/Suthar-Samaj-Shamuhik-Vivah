@@ -23,7 +23,7 @@ const SutradharPage = () => {
 
     return (
         <Layout>
-            {book ? <iframe src={require(`../sutradhar/${book}`)} title='Book' id='sutradhar' width="100%" height="900px" style={{marginTop: '130px'}} /> : "Not Book Found"}
+            {book ? <iframe src={`http://localhost:8080/static/sutradhar/${book}`} title='Book' id='sutradhar' width="100%" height="900px" style={{marginTop: '130px'}} /> : "Not Book Found"}
         </Layout>
     )
 }

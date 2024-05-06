@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import register from './Routes/registerRouter.js';
 import Slider from './Routes/sliderRoutes.js'
@@ -28,6 +29,8 @@ app.use(
 	}),
 );
 
+const __filename = fileURLToPath(import.meta.url); 
+const __dirname = path.dirname(__filename);
 
 app.use('/api/v1/rgister', register);
 app.use('/api/v1/slider', Slider);
@@ -40,6 +43,7 @@ app.use('/api/v1/contact', contact);
 app.use('/api/v1/news', news);
 app.use('/api/v1/gallery', gallery);
 app.use('/api/v1/sutradhar', Sutradhar);
+app.use('/static', express.static(path.join(__dirname, 'assets')));
 
 const PORT = process.env.PORT || 8000;
 

@@ -144,7 +144,7 @@ export const createTeamController = async (req, res) => {
 
         const sql = `INSERT INTO teams (Name, PostOn, Mobile, Address, img) VALUES (?, ?, ?, ?, ?)`;
         await DB.query(
-            sql, [Name, PostOn, Mobile, Address, Img.originalname], (err, results) => {
+            sql, [Name, PostOn, Mobile, Address, Img.filename], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,
@@ -248,7 +248,7 @@ export const updateTeamController = async (req, res) => {
 
         const sql = `UPDATE teams SET Name = ?, PostOn = ?, Mobile = ?, img = ?, Address = ? WHERE id = ? `;
         await DB.query(
-            sql, [Name, PostOn, Mobile, img.originalname, Address, id], (err, results) => {
+            sql, [Name, PostOn, Mobile, img.filename, Address, id], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,

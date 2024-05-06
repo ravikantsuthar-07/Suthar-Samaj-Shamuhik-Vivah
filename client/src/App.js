@@ -105,7 +105,6 @@ function App() {
                 <Route exact path='admin/karmawati/:year' element={<AdminKarmawatiList />} />
                 <Route exact path='admin/karma' element={<AdminKarma />} />
                 <Route exact path='admin/karma/:year' element={<AdminKarmaList />} />
-                <Route exact path='admin/karma/:year' element={<AdminKarmaList />} />
                 <Route exact path='admin/add_karma' element={<AdminAddKarmawati />} />
                 <Route exact path='admin/saman' element={<AdminSamanSamaroh />} />
                 <Route exact path='admin/saman/:year' element={<AdminSamanList />} />

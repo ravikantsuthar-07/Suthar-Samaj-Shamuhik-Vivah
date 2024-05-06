@@ -21,16 +21,20 @@ const AdminBooks = () => {
     }
 
     const deleteSutradharBook = async (id, file) => {
-        const { data } = await axios.post(`/api/v1/sutradhar/delete/${id}`, { file: file }, {
-            headers: {
-                "Authorization": auth.token
+        try {
+            const { data } = await axios.post(`/api/v1/sutradhar/delete/${id}`, { file: file }, {
+                headers: {
+                    "Authorization": auth.token
+                }
+            });
+            if (data?.success) {
+                alert(data?.message);
+                window.location.reload();
+            } else {
+                alert(data?.message);
             }
-        });
-        if (data?.success) {
-            alert(data?.message);
-            window.location.reload();
-        } else {
-            alert(data?.message);
+        } catch (error) {
+            alert(error?.response?.data?.message)
         }
     }
 

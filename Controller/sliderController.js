@@ -120,7 +120,7 @@ export const createSliderController = async (req, res) => {
         const sql = `INSERT INTO sliders(Year, path, Dates, SrNo) VALUES(?, ?, ?, ?)`;
 
         await DB.query(
-            sql, [year, img.originalname, date, SrNo], (err, results) => {
+            sql, [year, img.filename, date, SrNo], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,
@@ -250,7 +250,7 @@ export const updateSliderController = async (req, res) => {
         
         const sql = `UPDATE sliders set Year = ? , path = ?, Dates = ?, SrNo = ?  WHERE id = ?`;
         DB.query(
-            sql, [year, img.originalname, date, SrNo, id], (err, results) => {
+            sql, [year, img.filename, date, SrNo, id], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,

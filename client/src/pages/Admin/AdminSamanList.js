@@ -85,7 +85,7 @@ const AdminSamanList = () => {
                                                     <td>{c.Date_of_birth}</td>
                                                     <td>{c.Mobile}</td>
                                                     <td>{c.address}</td>
-                                                    <td><img src={require(`../../img/sammanit/${c.Image}`)} alt='Saman' width={50} height={50} /></td>
+                                                    <td><img src={`/static/sammanit/${c.Image}`} alt='Saman' width={50} height={50} /></td>
                                                     <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                 </tr>
                                             )) }

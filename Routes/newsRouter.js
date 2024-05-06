@@ -16,13 +16,13 @@ const router = express.Router();
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (file.fieldname === 'img' ) {
-            cb(null, process.cwd() + '/client/src/img/news/');
+            cb(null, process.cwd() + '/assets/news/');
         } else {
             cb(new Error('Invalid field name'));
         }
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname);
+        cb(null, Date.now() + file.originalname);
     }
 });
 const upload = multer({ storage: storage });

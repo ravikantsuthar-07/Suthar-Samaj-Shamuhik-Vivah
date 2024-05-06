@@ -54,7 +54,7 @@ const KarmawatiYearPage = () => {
                         {karma?.map((d, i) => (
                             <div className='col-sm-2 col-md-2 col-lg-2' key={i + 1}>
                                 <div className="card infoCard team">
-                                    <img src={require(`../img/karmawati/${d.img}`)} className="card-img-top" height={120} alt="karmawati" />
+                                    <img src={`/static/karmawati/${d.img}`} className="card-img-top" height={120} alt="karmawati" />
                                     <div className="card-body">
                                         <h5 className="card-title">{d.name}</h5>
                                         <h5 className="card-title">स्व. {d.wifeof}</h5>
@@ -71,7 +71,7 @@ const KarmawatiYearPage = () => {
                     {karmawati?.map((d, i) => (
                             <div className='col-sm-2 col-md-2 col-lg-2' key={i + 1}>
                                 <div className="card infoCard team">
-                                    <img src={require(`../img/karmawati/${d.img}`)} className="card-img-top" height={120} alt="karmawati" />
+                                    <img src={`/static/karmawati/${d.img}`} className="card-img-top" height={120} alt="karmawati" />
                                     <div className="card-body">
                                         <h5 className="card-title">{d.name}</h5>
                                         <h5 className="card-title">{d.fatherName}</h5>

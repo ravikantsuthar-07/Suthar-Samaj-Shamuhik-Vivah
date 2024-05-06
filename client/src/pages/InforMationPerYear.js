@@ -86,7 +86,7 @@ const InforMationPerYear = () => {
             <section id='wedding'>
                 <h3> {sr} सामूहिक विवाह के वैवाहिक जोड़े</h3>
                 <img className='under' src={under} alt="" />
-                <img className='mainImg' src={imgWed ? require(`../img/sliders/${imgWed}`) : Frist} alt="abc" />
+                <img className='mainImg' src={imgWed ? (`/static/sliders/${imgWed}`) : Frist} alt="abc" />
                 <div className="container">
                     {wedding?.map((w, i) => (
                         <div className="row mb-3" key={i}>
@@ -105,7 +105,7 @@ const InforMationPerYear = () => {
                                         </div>
                                     </div>
                                     <div className="Menimage" style={{ alignItems: 'center' }}>
-                                        <img src={require(`../img/wedding/${img[1]}`)} alt="Men" />
+                                        <img src={`/static/wedding/${img[1]}`} alt="Men" />
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ const InforMationPerYear = () => {
                             <div className="col-md-5 col-5 col-sm-5 col-lg-5">
                                 <div className="details">
                                     <div className="Menimage">
-                                        <img src={require(`../img/wedding/${img[0]}`)} alt="Men" />
+                                        <img src={`/static/wedding/${img[0]}`} alt="Men" />
                                     </div>
                                     <div className='col-8 col-sm-8 col-md-8'>
                                         <div className="womenDetail" style={{ color: '#FEF9A7' }}>

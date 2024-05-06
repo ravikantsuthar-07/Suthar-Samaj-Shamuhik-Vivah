@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Spinners from 'react-bootstrap/Spinner';
 
 const Spinner = ({ path = "login" }) => {
-    const [count, serCount] = useState(50);
+    const [count, serCount] = useState(3);
     const navigate = useNavigate()
 
     useEffect(() => {

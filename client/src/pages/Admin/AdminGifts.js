@@ -48,7 +48,7 @@ const AdminGifts = () => {
                                                 <tr key={i}>
                                                     <th scope="row">{i + 1}</th>
                                                     <td>{c.year}</td>
-                                                    <td><img src={require(`../../img/sliders/${c.path}`)} width={120} height={50} alt={c.id} /></td>
+                                                    <td><img src={`/static/sliders/${c.path}`} width={120} height={50} alt={c.id} /></td>
                                                     <td><button className='btn btn-primary' onClick={() => navigate(`/dashboard/admin/gifts_year/${c.year}`)}>See Wedding in {c.year}</button></td>
                                                 </tr>
                                             ))}

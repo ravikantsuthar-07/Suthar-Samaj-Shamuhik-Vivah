@@ -14,12 +14,8 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        if (file.fieldname === 'file1' ) {
-            cb(null, process.cwd() + '/client/src/img/weddingRegister/groom');
-        } else if (file.fieldname === 'bride') {
-            cb(null, process.cwd() + '/client/src/img/weddingRegister/bride/');
-        }else if (file.fieldname === 'img') {
-            cb(null, process.cwd() + '/client/src/img/weddingRegister/');
+        if (file.fieldname === 'img') {
+            cb(null, process.cwd() + '/assets/weddingRegister/');
         } else {
             cb(new Error('Invalid field name'));
         }

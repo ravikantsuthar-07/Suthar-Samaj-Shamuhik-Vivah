@@ -118,7 +118,7 @@ export const createNewsController = async (req, res) => {
 
         const time = new Date();
         const sql = `INSERT INTO news (Title, S_Description, L_Description, Time, Image) VALUES (?, ?, ?, ?, ?)`;
-        await DB.query(sql, [Title, S_Description, L_Description, time, img.originalname], (err, results) => {
+        await DB.query(sql, [Title, S_Description, L_Description, time, img.filename], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -181,7 +181,7 @@ export const updateNewsController = async (req, res) => {
         }
 
         const sql = `UPDATE  news SET Title = ?, S_Description = ?, L_Description = ?, Image = ? WHERE id = ?`;
-        await DB.query(sql, [Title, S_Description, L_Description, img.originalname, id], (err, results) => {
+        await DB.query(sql, [Title, S_Description, L_Description, img.filename, id], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,

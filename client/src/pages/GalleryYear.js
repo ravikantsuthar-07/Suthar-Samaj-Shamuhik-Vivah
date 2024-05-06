@@ -32,7 +32,7 @@ const GalleryYear = () => {
                     {getGallery?.map((c, i) => (
                         <div className="col-md-2 col-sm-4 col-3 ">
                             <div className="card infoCard">
-                                <img src={require(`../img/gallery/${c.img}`)} className="card-img-top" alt="Gallery" />
+                                <img src={`/static/gallery/${c.img}`} className="card-img-top" alt="Gallery" />
                             </div>
                         </div>
                     ))}

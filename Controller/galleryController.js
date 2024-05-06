@@ -74,30 +74,22 @@ export const createImageGalleryController = async (req, res) => {
             });
         }
         const sql = `INSERT INTO gallery (year, img) VALUES (?, ?)`;
-        let isError;
         for (let i = 0; i < img.length; i++) {
-            await DB.query(sql, [year, img[i].originalname], (err, results) => {
+            await DB.query(sql, [year, img[i].filename], (err, results) => {
                 if (err) {
-                    isError = 1;
-                } else {
-                    isError = 0;
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Error in Insterting Data',
+                        err
+                    })
                 }
             });
         }
-        
-        if (isError) {
-            return res.status(500).json({
-                success: false,
-                message: 'Error in Inserting Data in Table',
-            });
-        } else {
-            return res.status(201).json({
-                success: true,
-                message: 'Uploading Image Successfully',
-                results
-            });
-        }
-
+        return res.status(201).json({
+            success: true,
+            message: 'Uploading Image Successfully',
+            results
+        });
     } catch (error) {
         return res.status(500).json({
             success: false,
@@ -131,7 +123,7 @@ export const deleteGalleryImageController = async (req, res) => {
                     imgname = results[0].img;
                 }
             })
-            await fs.unlink(process.cwd() + '/client/src/img/gallery/'+ imgname);
+            await fs.unlink(process.cwd() + '/client/src/img/gallery/' + imgname);
         }
         await DB.query(sql, [id], (err, results) => {
             if (err) {

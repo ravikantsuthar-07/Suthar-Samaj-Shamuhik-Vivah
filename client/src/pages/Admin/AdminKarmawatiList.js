@@ -87,7 +87,7 @@ const AdminKarmawatiList = () => {
                                                     <td>{c.wifeof}</td>
                                                     <td>{c.address}</td>
                                                     <td>{c.mobile}</td>
-                                                    <td><img src={require(`../../img/karmawati/${c.img}`)} width={50} height={50} alt='karmawati' /></td>
+                                                    <td><img src={`/static/karmawati/${c.img}`} width={50} height={50} alt='karmawati' /></td>
                                                     <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, !c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                 </tr>
                                             ))}

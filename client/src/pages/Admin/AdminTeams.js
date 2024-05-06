@@ -96,7 +96,7 @@ const AdminTeams = () => {
                                                     <td>{t.PostOn}</td>
                                                     <td>{t.Mobile}</td>
                                                     <td>{t.Address}</td>
-                                                    <td><img src={require(`../../img/team/${t.img}`) ? require(`../../img/team/${t.img}`) : require('../../img/logo.png')} width={100} height={80} alt='team' /></td>
+                                                    <td><img src={`/static/team/${t.img}`} width={100} height={80} alt='team' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-1' onClick={() => navigate(`/dashboard/admin/update_team/${t.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-1' onClick={() => updateStatusTeam(t.status, t.id)}>{t.status ? "Active" : "Deactive"}</button>

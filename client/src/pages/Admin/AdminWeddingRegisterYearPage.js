@@ -118,7 +118,7 @@ const AdminWeddingRegisterYearPage = () => {
                                                         <td>{c.groomMobile}</td>
                                                         <td>{c.groomAddress}</td>
                                                         <td>{formatDate(c.groomDOB)}</td>
-                                                        <td><img src={require(`../../img/weddingRegister/${img[0]}`)} width={70} alt='groom' /></td>
+                                                        <td><img src={`/static/weddingRegister/${img[0]}`} width={70} alt='groom' /></td>
                                                         <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                     </tr>
                                                     <tr>
@@ -129,7 +129,7 @@ const AdminWeddingRegisterYearPage = () => {
                                                         <td>{c.BrideMobile}</td>
                                                         <td>{c.BrideAddress}</td>
                                                         <td>{formatDate(c.BrideDOB)}</td>
-                                                        <td><img src={require(`../../img/weddingRegister/${img[1]}`)} alt='Bride' width={70} /></td>
+                                                        <td><img src={`/static/weddingRegister/${img[1]}`} alt='Bride' width={70} /></td>
                                                         <td><button type='button' className='btn btn-danger' onClick={() => deleteWedding(c.id, img)}>Delete</button></td>
                                                     </tr>
                                                 </>
