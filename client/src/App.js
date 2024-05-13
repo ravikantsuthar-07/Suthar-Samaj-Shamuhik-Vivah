@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import './App.css';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import GalleryPage from './pages/GalleryPage';
@@ -15,7 +16,6 @@ import LoginPage from './pages/LoginPage';
 import AdminWedding from './pages/Admin/AdminWedding';
 import AdminAddSlider from './pages/Admin/AdminAddSlider';
 import AdminSlider from './pages/Admin/AdminSlider';
-import './App.css';
 import AdminAddWeddingMember from './pages/Admin/AdminAddWeddingMember';
 import AdminWeddingList from './pages/Admin/AdminWeddingList';
 import AdminUpdateWeddingMember from './pages/Admin/AdminUpdateWeddingMember';
@@ -54,6 +54,8 @@ import SamanYearPage from './pages/SamanYearPage';
 import TermAndConditionPage from './pages/TermAndConditionPage';
 import AdminWeddingRegisterPage from './pages/Admin/AdminWeddingRegisterPage';
 import AdminWeddingRegisterYearPage from './pages/Admin/AdminWeddingRegisterYearPage';
+import AdminAdvertisement from './pages/Admin/AdminAdvertisement';
+import AdminAddAdvertisement from './pages/Admin/AdminAddAdvertisement';
 
 function App() {
     return (
@@ -109,6 +111,8 @@ function App() {
                 <Route exact path='admin/saman' element={<AdminSamanSamaroh />} />
                 <Route exact path='admin/saman/:year' element={<AdminSamanList />} />
                 <Route exact path='admin/book' element={<AdminBooks />} />
+                <Route exact path='admin/advertisement' element={<AdminAdvertisement />} />
+                <Route exact path='admin/add_advertisement' element={<AdminAddAdvertisement />} />
             </Route>
             <Route exact path='/login' element={<LoginPage /> } />
             <Route exact path='/terms' element={<TermAndConditionPage />} />

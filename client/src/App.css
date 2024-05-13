@@ -427,6 +427,28 @@ body {
 	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
 }
 
+/* Adversemenmt */
+#advertisement {
+	margin-top: 20px;
+	text-align: center;
+}
+
+#advertisement h1 {
+	font-size: 35px;
+	text-align: center;
+	font-weight: bold;
+	color: #D61C4E;
+	line-height: normal;
+}
+
+#advertisement .under {
+	width: 220px;
+	color: #D61C4E;
+	border-width: 2px;
+	margin-top: -25px;
+	filter: brightness(1.2) sepia(1) hue-rotate(45deg);
+}
+
 /* Contact */
 
 #contactForm {
@@ -785,6 +807,19 @@ label {
 		width: 180px;
 		margin-top: -49px;
 	}
+
+
+	/* Adversemenmt */
+
+	#advertisement h1 {
+		font-size: 25px;
+	}
+
+	#advertisement .under {
+		width: 170px;
+		margin-top: -25px;
+	}
+
 
 	#registerUser .under {
 		width: 350px;

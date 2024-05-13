@@ -12,7 +12,7 @@ const Footer = () => {
                         <MDBCol md='4' lg='4' xl='4' className='mx-auto mb-4'>
                             <div style={{ display: 'flex', alignItems: 'center', lineHeight: 'normal' }}>
                                 <img src={logo} width={65} alt='logo' />
-                                <h6 className='text-uppercase fw-bold m-2' style={{ lineHeight: 'normal' }}>
+                                <h6 className='text-uppercase fw-bold m-2' style={{ lineHeight: 'normal', fontSize: '20px' }}>
                                     श्री विश्वकर्मा सुथार समाज सामूहिक विवाह समिति, बीकानेर
                                 </h6>
                             </div>

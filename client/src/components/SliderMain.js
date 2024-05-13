@@ -23,7 +23,7 @@ const SliderMain = () => {
             <div className="carousel-inner">
 
                 {slider.map((sli, i) => (
-                    <div className={i === 0 ? "carousel-item active" : "carousel-item"}>
+                    <div className={i === 0 ? "carousel-item active" : "carousel-item"} key={i}>
                         <img src={`/static/sliders/${sli.path}`} className="d-block w-100" alt='Sliders' />
                     </div>
                 ))}

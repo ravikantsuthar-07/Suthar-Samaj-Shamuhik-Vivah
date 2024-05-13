@@ -21,7 +21,7 @@ const TeamCom = () => {
             <img className='under' src={under} alt="" />
             <div className="row ">
                 {team?.map((t, i) => (
-                    <div className="col-md-3 col-sm-6 col-6">
+                    <div className="col-md-3 col-sm-6 col-6" key={i}>
                         <div className="card infoCard team">
                             <img src={`/static/team/${t.img}`} className="card-img-top" height={170} alt="Team" />
                             <div className="card-body">

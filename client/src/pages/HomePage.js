@@ -4,6 +4,7 @@ import SliderMain from '../components/SliderMain'
 import AboutCom from '../components/AboutCom'
 import InformationCom from '../components/InformationCom'
 import TeamCom from '../components/TeamCom'
+import Advertisement from '../components/Advertisement'
 
 const HomePage = () => {
     return (
@@ -11,6 +12,7 @@ const HomePage = () => {
             <SliderMain />
             <AboutCom />
             <InformationCom />
+            <Advertisement />
             <TeamCom />
         </Layout>
     )

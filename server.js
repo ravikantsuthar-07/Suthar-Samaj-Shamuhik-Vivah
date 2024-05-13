@@ -15,6 +15,7 @@ import Sutradhar from './Routes/sutradharRouter.js';
 import sammanit from './Routes/sammanitRouter.js';
 import karmawati from './Routes/karmawatiRouter.js';
 import weddingRegister from './Routes/weddingRegisterRouter.js';
+import advertisment from './Routes/advertisementRouter.js'
 
 // Environment Configuration
 dotenv.config();
@@ -43,6 +44,7 @@ app.use('/api/v1/contact', contact);
 app.use('/api/v1/news', news);
 app.use('/api/v1/gallery', gallery);
 app.use('/api/v1/sutradhar', Sutradhar);
+app.use('/api/v1/advertisment', advertisment)
 app.use('/static', express.static(path.join(__dirname, 'assets')));
 
 const PORT = process.env.PORT || 8000;
