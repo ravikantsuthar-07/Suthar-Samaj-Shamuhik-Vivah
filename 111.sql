@@ -57,9 +57,10 @@ CREATE TABLE `advertisement` (
   `mobile` bigint NOT NULL,
   `description` varchar(100) NOT NULL,
   `image` varchar(60) NOT NULL,
+  `img` varchar(60) NOT NULL,
   `status` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +69,7 @@ CREATE TABLE `advertisement` (
 
 LOCK TABLES `advertisement` WRITE;
 /*!40000 ALTER TABLE `advertisement` DISABLE KEYS */;
+INSERT INTO `advertisement` VALUES (3,'Ravikant',8949384032,'RAvikant Suthar','/static/advertisement/1715677688807[000453].jpg','1715677688807[000453].jpg',1),(4,'Ravi',8949384032,'RAvikant Suthar','/static/advertisement/1715677729078[001055].jpg','1715677729078[001055].jpg',1),(5,'RK',9666017132,'RKKKKK','/static/advertisement/1715677892301[001087].jpg','1715677892301[001087].jpg',1),(7,'raiv',8949384032,'raiv','/static/advertisement/1715682658983[001401].jpg','1715682658983[001401].jpg',1),(8,'Raviii',8949384032,'RAvikant Suthar','/static/advertisement/1715682684955[000458].jpg','1715682684955[000458].jpg',1),(9,'Rakk',8949384032,'asdfghjkl','/static/advertisement/1715682790687[000481].jpg','1715682790687[000481].jpg',1);
 /*!40000 ALTER TABLE `advertisement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,4 +440,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-13 19:18:27
+-- Dump completed on 2024-05-14 16:18:55

@@ -59,8 +59,8 @@ export const createAdvertisementController = async (req, res) => {
             });
         }
 
-        const sql = `INSERT INTO advertisement (title, description, image, mobile) VALUES (?, ?, ?, ?)`;
-        await DB.query(sql, [title, description, file.filename, mobile], (err, results) => {
+        const sql = `INSERT INTO advertisement (title, description, image, mobile, img) VALUES (?, ?, ?, ?, ?)`;
+        await DB.query(sql, [title, description, '/static/advertisement/'+file.filename, mobile, file.filename], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,
@@ -141,7 +141,9 @@ export const deleteAdvertisementController = async (req, res) => {
             });
         }
 
-        fs.unlinkSync(process.cwd() + '/assets/sutradhar/' + file);
+        
+        fs.unlinkSync(process.cwd() + '/assets/advertisement/' + file);
+
         const sql = `DELETE FROM advertisement WHERE id = ?`;
         await DB.query(sql, [id], (err, results) => {
             if (err) {

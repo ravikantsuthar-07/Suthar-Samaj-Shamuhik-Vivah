@@ -21,7 +21,7 @@ const AdminAddAdvertisement = () => {
             advertisement.append('mobile', mobile);
             advertisement.append('Photo', photo);
 
-            const { data } = await axios.post('/api/v1/advertisement/create', advertisement, {
+            const { data } = await axios.post('/api/v1/advertisment/create', advertisement, {
                 headers: {
                     "Authorization": auth.token
                 }

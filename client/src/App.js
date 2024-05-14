@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-import './App.css';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import GalleryPage from './pages/GalleryPage';
@@ -16,6 +15,7 @@ import LoginPage from './pages/LoginPage';
 import AdminWedding from './pages/Admin/AdminWedding';
 import AdminAddSlider from './pages/Admin/AdminAddSlider';
 import AdminSlider from './pages/Admin/AdminSlider';
+import './App.css';
 import AdminAddWeddingMember from './pages/Admin/AdminAddWeddingMember';
 import AdminWeddingList from './pages/Admin/AdminWeddingList';
 import AdminUpdateWeddingMember from './pages/Admin/AdminUpdateWeddingMember';
