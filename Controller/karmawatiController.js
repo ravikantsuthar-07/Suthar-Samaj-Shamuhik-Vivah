@@ -63,7 +63,7 @@ export const getYearByKarmawatiController = async (req, res) => {
 
 export const createKarmawatiController = async (req, res) => {
     try {
-        const { name, husbandname, address, mobile } = req.body;
+        const { name, husbandname, address, mobile, age, DODOfHusband, MaholaReport, SamitiReport, BANKNAME, ACC, IFCECODE } = req.body;
         const img = req.file;
         if (!name) {
             return res.status(400).json({
@@ -95,11 +95,53 @@ export const createKarmawatiController = async (req, res) => {
                 message: 'Image is Required'
             });
         }
+        if (!age) {
+            return res.status(400).json({
+                success: false,
+                message: 'Age is Required'
+            });
+        }
+        if (!DODOfHusband) {
+            return res.status(400).json({
+                success: false,
+                message: 'Date of Death of Husband is Required'
+            });
+        }
+        if (!MaholaReport) {
+            return res.status(400).json({
+                success: false,
+                message: 'मौहल्ला प्रभारी की रिपोर्ट is Required'
+            });
+        }
+        if (!SamitiReport) {
+            return res.status(400).json({
+                success: false,
+                message: 'समिति सदस्य की रिपोर्ट is Required'
+            });
+        }
+        if (!BANKNAME) {
+            return res.status(400).json({
+                success: false,
+                message: 'Bank Name is Required'
+            });
+        }
+        if (!ACC) {
+            return res.status(400).json({
+                success: false,
+                message: 'Account Number is Required'
+            });
+        }
+        if (!IFCECODE) {
+            return res.status(400).json({
+                success: false,
+                message: 'IFCE Code is Required'
+            });
+        }
         const d = new Date();
         let year = d.getFullYear();
 
-        const sql = `INSERT INTO karmawati (year, name, wifeof, img, address, mobile) VALUES (?, ?, ?, ?, ?, ?)`;
-        await DB.query(sql, [year, name, husbandname, img.filename, address, mobile], (err, results) => {
+        const sql = `INSERT INTO karmawati (year, name, wifeof, img, address, mobile, age, DODOfHusband, MaholaReport, SamitiReport, BANKNAME, ACC, IFCECODE ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?)`;
+        await DB.query(sql, [year, name, husbandname, img.filename, address, mobile, age, DODOfHusband, MaholaReport, SamitiReport, BANKNAME, ACC, IFCECODE], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,

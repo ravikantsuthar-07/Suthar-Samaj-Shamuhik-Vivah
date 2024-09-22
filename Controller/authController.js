@@ -96,7 +96,7 @@ export const loginController = async (req, res) => {
                 message: "Password is Required"
             });
         }
-
+        
         const abc =  async (password , results) => {
             const match = await  comparePassword(password, results[0].password)
             if (match) {
@@ -115,7 +115,7 @@ export const loginController = async (req, res) => {
             }
         }
         await DB.query(
-            `SELECT * From admins WHERE email = ?`, [email], (err, results) => {
+            `SELECT * FROM admins WHERE email = ?`, [email], (err, results) => {
                 if (err) {
                     return res.status(500).json({
                         success: false,
