@@ -47,6 +47,10 @@ app.use('/api/v1/sutradhar', Sutradhar);
 app.use('/api/v1/advertisment', advertisment)
 app.use('/static', express.static(path.join(__dirname, 'assets')));
 
+app.use('*', function(req, res){
+    res.sendFile(path.join(__dirname ,'./client/build/index.html'));
+});
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
