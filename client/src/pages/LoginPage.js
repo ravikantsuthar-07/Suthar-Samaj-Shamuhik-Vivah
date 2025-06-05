@@ -13,7 +13,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post('/api/v1/rgister/login', { email, "pass": password });
+            const { data } = await axios.post('/api/v1/rgister/login', { email, "password": password });
             if (data?.success) {
                 setAuth({
                     ...auth,

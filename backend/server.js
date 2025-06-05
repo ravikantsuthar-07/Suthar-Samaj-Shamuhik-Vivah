@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import cors from 'cors'
 import register from './Routes/registerRouter.js';
 import Slider from './Routes/sliderRoutes.js'
 import wedding from "./Routes/weddingRoutes.js";
@@ -22,7 +22,7 @@ dotenv.config();
 
 const app = express();
 
-
+app.use(cors("*"))
 app.use(bodyParser.json());
 app.use(
 	bodyParser.urlencoded({
