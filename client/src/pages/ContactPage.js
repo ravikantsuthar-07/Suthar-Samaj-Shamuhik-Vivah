@@ -13,7 +13,7 @@ const ContactPage = () => {
     const handleContact = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post(`/api/v1/contact/create`, { FName: fName, LName: lName, Email: email, Subject: subject, Message: message });
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/contact/create`, { FName: fName, LName: lName, Email: email, Subject: subject, Message: message });
             if (data?.success) {
                 alert(data?.message);
                 window.location.reload();

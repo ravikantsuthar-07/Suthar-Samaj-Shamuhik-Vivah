@@ -23,7 +23,7 @@ const AdminUpdateTeam = () => {
             teamData.append('Mobile', mobile);
             teamData.append('Address', address);
             teamData.append('img', img);
-            const { data } = await axios.put(`/api/v1/team/update-team/${params.id}`, teamData, {
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/update-team/${params.id}`, teamData, {
                 headers: {
                     'Authorization': auth.token
                 }
@@ -42,7 +42,7 @@ const AdminUpdateTeam = () => {
 
     const data = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/team/get-member/${params.id}`, {
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/get-member/${params.id}`, {
                 headers: {
                     'Authorization': auth.token
                 }

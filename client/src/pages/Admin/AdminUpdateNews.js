@@ -15,7 +15,7 @@ const AdminUpdateNews = () => {
 
     const getSingleNews = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/news/get-single-news/${params.id}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/get-single-news/${params.id}`);
             if (data?.success) {
                 setTitle(data?.results[0].Title);
                 setS_Description(data?.results[0].S_Description);
@@ -35,7 +35,7 @@ const AdminUpdateNews = () => {
             newsData.append('S_Description', s_Description);
             newsData.append('L_Description', l_Description);
             newsData.append('img', img);
-            const { data } = await axios.post(`/api/v1/news/create-news`, newsData, {
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/create-news`, newsData, {
                 headers: {
                     'Authorization': auth.token
                 }

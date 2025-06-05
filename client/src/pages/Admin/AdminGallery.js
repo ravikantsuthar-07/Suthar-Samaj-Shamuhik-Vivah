@@ -10,7 +10,7 @@ const AdminGallery = () => {
 
     const gettingGallery = async () => {
         try {
-            const { data } = await axios.get('/api/v1/gallery/get-year');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/gallery/get-year');
             if (data?.success) {
                 setGallery(data?.results);
             }

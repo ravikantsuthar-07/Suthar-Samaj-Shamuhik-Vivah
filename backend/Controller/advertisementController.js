@@ -60,7 +60,7 @@ export const createAdvertisementController = async (req, res) => {
         }
 
         const sql = `INSERT INTO advertisement (title, description, image, mobile, img) VALUES (?, ?, ?, ?, ?)`;
-        await DB.query(sql, [title, description, '/static/advertisement/'+file.filename, mobile, file.filename], (err, results) => {
+        await DB.query(sql, [title, description, 'https://suthar-samaj-shamuhik-vivah.onrender.com/static/advertisement/'+file.filename, mobile, file.filename], (err, results) => {
             if (err) {
                 return res.status(500).json({
                     success: false,

@@ -7,7 +7,7 @@ const SutradharPage = () => {
 
     const gettingBook = async () => {
         try {
-            const { data } = await axios.get('/api/v1/sutradhar/get-book');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sutradhar/get-book');
             if (data?.success) {
                 setBook(data?.results[0].file);
             }
@@ -23,7 +23,7 @@ const SutradharPage = () => {
 
     return (
         <Layout>
-            {book ? <iframe src={`http://localhost:8080/static/sutradhar/${book}`} title='Book' id='sutradhar' width="100%" height="900px" style={{marginTop: '130px'}} /> : "Not Book Found"}
+            {book ? <iframe src={`http://localhost:8080https://suthar-samaj-shamuhik-vivah.onrender.com/static/sutradhar/${book}`} title='Book' id='sutradhar' width="100%" height="900px" style={{marginTop: '130px'}} /> : "Not Book Found"}
         </Layout>
     )
 }

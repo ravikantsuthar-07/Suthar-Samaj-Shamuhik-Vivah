@@ -16,7 +16,7 @@ const AdminAddGifts = () => {
 
     const yy = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-slider');
             if (data?.success) {
                 setSYear(data?.results)
             }
@@ -28,7 +28,7 @@ const AdminAddGifts = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post(`/api/v1/wedding/createGift`, {year: year, Name: name, Number: number, Price: price }, {
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/createGift`, {year: year, Name: name, Number: number, Price: price }, {
                 headers:{
                     "Authorization": auth.token
                 }

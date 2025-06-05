@@ -5,7 +5,7 @@ const SliderMain = () => {
 
     const getSlider = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-slider');
             if (data?.success) {
                 setSlider(data?.results)
             }
@@ -24,7 +24,7 @@ const SliderMain = () => {
 
                 {slider.map((sli, i) => (
                     <div className={i === 0 ? "carousel-item active" : "carousel-item"} key={i}>
-                        <img src={`/static/sliders/${sli.path}`} className="d-block w-100" alt='Sliders' />
+                        <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/sliders/${sli.path}`} className="d-block w-100" alt='Sliders' />
                     </div>
                 ))}
             </div>

@@ -5,7 +5,7 @@ const TeamCom = () => {
     const [team, setTeam] = useState([]);
 
     const teamData = async () => {
-        const { data } = await axios.get(`/api/v1/team/get-team`);
+        const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/get-team`);
         if (data?.success) {
             setTeam(data?.results);
         } 
@@ -23,7 +23,7 @@ const TeamCom = () => {
                 {team?.map((t, i) => (
                     <div className="col-md-3 col-sm-6 col-6" key={i}>
                         <div className="card infoCard team">
-                            <img src={`/static/team/${t.img}`} className="card-img-top" height={170} alt="Team" />
+                            <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/team/${t.img}`} className="card-img-top" height={170} alt="Team" />
                             <div className="card-body">
                                 <h5 className="card-title">{t.Name}</h5>
                                 <h5 className="card-text">{t.PostOn}</h5>

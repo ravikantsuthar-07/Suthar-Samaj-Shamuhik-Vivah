@@ -11,7 +11,7 @@ const AdminSlider = () => {
 
     const sli = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-admin-slider', {
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-admin-slider', {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -26,7 +26,7 @@ const AdminSlider = () => {
 
     const updateStatusSlider = async (status, id) => {
         try {
-            const { data } = await axios.put(`/api/v1/slider/update-status-slider/${id}`,
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/update-status-slider/${id}`,
                 { status: !status }, {
                 headers: {
                     "Authorization": auth.token
@@ -54,7 +54,7 @@ const AdminSlider = () => {
 
     const deleteSlider = async (id) => {
         try {
-            const { data } = await axios.delete(`/api/v1/slider/delete-slider/${id}`, {
+            const { data } = await axios.delete(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/delete-slider/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -100,7 +100,7 @@ const AdminSlider = () => {
                                                     <td>{c.Year}</td>
                                                     <td>{formatDate(c.Dates)}</td>
                                                     <td>{c.SrNo}</td>
-                                                    <td><img src={`/static/sliders/${c.path}`} width={150} height={120} alt='Slider' /></td>
+                                                    <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/sliders/${c.path}`} width={150} height={120} alt='Slider' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_slider/${c.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-2' onClick={() => updateStatusSlider(c.status, c.id)}>{c.status ? "Active" : "Deactive"}</button>

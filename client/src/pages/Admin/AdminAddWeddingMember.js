@@ -24,7 +24,7 @@ const AdminAddWeddingMember = () => {
     const [auth] = useAuth();
     const yy = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-slider');
             if (data?.success) {
                 setSYear(data?.results)
             }
@@ -53,7 +53,7 @@ const AdminAddWeddingMember = () => {
             weddingData.append('F_Address', woMenAddress);
             weddingData.append('F_Mobile', woMenMobile);
 
-            const { data } = await axios.post('/api/v1/wedding/createWedding',
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/createWedding',
                 weddingData, {
                 headers: {
                     "Authorization": auth.token

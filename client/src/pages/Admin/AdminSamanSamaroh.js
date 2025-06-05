@@ -10,7 +10,7 @@ const AdminSamanSamaroh = () => {
 
     const gettingSamanYear = async () => {
         try {
-            const { data } = await axios.get('/api/v1/sammanit/get-year');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sammanit/get-year');
 
             if (data?.success) {
                 setSaman(data?.results);

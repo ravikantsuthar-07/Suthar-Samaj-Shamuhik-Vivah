@@ -18,7 +18,7 @@ const InforMationPerYear = () => {
 
     const gettAllWedding = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/wedding/gettAllWedding/${params.year}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/gettAllWedding/${params.year}`);
             if (data?.success) {
                 setWedding(data?.results);
                 if (data?.results.length === 0) {
@@ -36,7 +36,7 @@ const InforMationPerYear = () => {
 
     const giftsAll = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/wedding/gifts/${params.year}`)
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/gifts/${params.year}`)
             if (data?.success) {
                 setGifts(data?.results);
             } else {
@@ -49,7 +49,7 @@ const InforMationPerYear = () => {
 
     const info = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/slider/get-single-slider/${params.year}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-single-slider/${params.year}`);
             if (data?.success) {
                 if (data?.results?.length === 0) {
                     navigate('/wedding');
@@ -86,7 +86,7 @@ const InforMationPerYear = () => {
             <section id='wedding'>
                 <h3> {sr} सामूहिक विवाह के वैवाहिक जोड़े</h3>
                 <img className='under' src={under} alt="" />
-                <img className='mainImg' src={imgWed ? (`/static/sliders/${imgWed}`) : Frist} alt="abc" />
+                <img className='mainImg' src={imgWed ? (`https://suthar-samaj-shamuhik-vivah.onrender.com/static/sliders/${imgWed}`) : Frist} alt="abc" />
                 <div className="container">
                     {wedding?.map((w, i) => (
                         <div className="row mb-3" key={i}>
@@ -105,7 +105,7 @@ const InforMationPerYear = () => {
                                         </div>
                                     </div>
                                     <div className="Menimage" style={{ alignItems: 'center' }}>
-                                        <img src={`/static/wedding/${img[1]}`} alt="Men" />
+                                        <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/wedding/${img[1]}`} alt="Men" />
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ const InforMationPerYear = () => {
                             <div className="col-md-5 col-5 col-sm-5 col-lg-5">
                                 <div className="details">
                                     <div className="Menimage">
-                                        <img src={`/static/wedding/${img[0]}`} alt="Men" />
+                                        <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/wedding/${img[0]}`} alt="Men" />
                                     </div>
                                     <div className='col-8 col-sm-8 col-md-8'>
                                         <div className="womenDetail" style={{ color: '#FEF9A7' }}>

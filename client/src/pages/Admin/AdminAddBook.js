@@ -17,7 +17,7 @@ const AdminAddBook = () => {
             sutradharData.append('year', year)
             sutradharData.append('file', file)
 
-            const { data } = await axios.post('/api/v1/sutradhar/create', sutradharData, {
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sutradhar/create', sutradharData, {
                 headers: {
                     "Authorization": auth.token
                 }

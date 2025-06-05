@@ -12,7 +12,7 @@ const AdminAddGalleryImage = () => {
     const [auth] = useAuth();
     const getYear = async () => {
         try {
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-slider');
             if (data?.success) {
                 setGetYears(data?.results)
             }
@@ -29,7 +29,7 @@ const AdminAddGalleryImage = () => {
             for(var x = 0; x < photo.length; x++) {
                 weddingData.append('Photo', photo[x]);
             }
-            const { data } = await axios.post('/api/v1/gallery/create',
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/gallery/create',
                 weddingData, {
                 headers: {
                     "Authorization": auth.token

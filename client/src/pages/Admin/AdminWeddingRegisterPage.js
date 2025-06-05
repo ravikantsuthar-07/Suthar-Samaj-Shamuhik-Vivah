@@ -12,7 +12,7 @@ const AdminWeddingRegisterPage = () => {
 
     const gettingweddingRegister = async () => {
         try {
-            const { data } = await axios.get('/api/v1/weddingRegister/get-year-wedding', {
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/weddingRegister/get-year-wedding', {
                 headers: {
                     "Authorization": auth.token
                 }

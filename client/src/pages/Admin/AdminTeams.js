@@ -10,7 +10,7 @@ const AdminTeams = () => {
     const navigate = useNavigate();
 
     const teamData = async () => {
-        const { data } = await axios.get(`/api/v1/team/get-admin-team`, {
+        const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/get-admin-team`, {
             headers: {
                 "Authorization": auth.token
             }
@@ -27,7 +27,7 @@ const AdminTeams = () => {
             } else {
                 sta = 0;
             }
-            const { data } = await axios.put(`/api/v1/team/update-status-team/${id}`,
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/update-status-team/${id}`,
                 { status: sta }, {
                 headers: {
                     "Authorization": auth.token
@@ -46,7 +46,7 @@ const AdminTeams = () => {
 
     const deleteTeamMember = async (id) => {
         try {
-            const { data } = await axios.delete(`/api/v1/team/delete-team/${id}`, {
+            const { data } = await axios.delete(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/delete-team/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -96,7 +96,7 @@ const AdminTeams = () => {
                                                     <td>{t.PostOn}</td>
                                                     <td>{t.Mobile}</td>
                                                     <td>{t.Address}</td>
-                                                    <td><img src={`/static/team/${t.img}`} width={100} height={80} alt='team' /></td>
+                                                    <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/team/${t.img}`} width={100} height={80} alt='team' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-1' onClick={() => navigate(`/dashboard/admin/update_team/${t.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-1' onClick={() => updateStatusTeam(t.status, t.id)}>{t.status ? "Active" : "Deactive"}</button>

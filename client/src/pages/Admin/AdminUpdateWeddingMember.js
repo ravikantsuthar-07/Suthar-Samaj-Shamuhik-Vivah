@@ -23,7 +23,7 @@ const AdminUpdateWeddingMember = () => {
     const [auth] = useAuth();
 
     const dd = async () => {
-        const { data } = await axios.get(`/api/v1/wedding/gettSingleWedding/${params.id}`)
+        const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/gettSingleWedding/${params.id}`)
         if (data?.success) {
             setYear(data?.results[0].year);
             setPhoto(data?.results[0].M_Photo);
@@ -43,7 +43,7 @@ const AdminUpdateWeddingMember = () => {
     const yy = async () => {
         try {
 
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-slider');
             if (data?.success) {
                 setSYear(data?.results)
             }
@@ -70,7 +70,7 @@ const AdminUpdateWeddingMember = () => {
             for(var x = 0; x < photo.length; x++) {
                 weddingData.append('Photo', photo[x]);
             }
-            const { data } = await axios.put(`/api/v1/wedding/updateWedding/${params.id}`,
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/updateWedding/${params.id}`,
                 weddingData, {
                 headers: {
                     "Authorization": auth.token

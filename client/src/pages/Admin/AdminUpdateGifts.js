@@ -17,7 +17,7 @@ const AdminUpdateGifts = () => {
     const yy = async () => {
         try {
 
-            const { data } = await axios.get('/api/v1/slider/get-slider');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-slider');
             if (data?.success) {
                 setSYear(data?.results)
             }
@@ -27,7 +27,7 @@ const AdminUpdateGifts = () => {
     }
 
     const dd = async () => {
-        const { data } = await axios.get(`/api/v1/wedding/getSingleGift/${params.id}`)
+        const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/getSingleGift/${params.id}`)
         if (data?.success) {
             setYear(data?.results[0].year);
             setName(data?.results[0].Name);
@@ -39,7 +39,7 @@ const AdminUpdateGifts = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.put(`/api/v1/wedding/updateGift/${params.id}`, {year: year, Name: name, Number: number, Price: price }, {
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/updateGift/${params.id}`, {year: year, Name: name, Number: number, Price: price }, {
                 headers:{
                     "Authorization": auth.token
                 }

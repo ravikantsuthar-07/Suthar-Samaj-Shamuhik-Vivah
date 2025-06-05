@@ -10,7 +10,7 @@ const AdminBooks = () => {
     const navigate = useNavigate();
 
     const getBookData = async () => {
-        const { data } = await axios.get(`/api/v1/sutradhar/get-admin-book`, {
+        const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sutradhar/get-admin-book`, {
             headers: {
                 "Authorization": auth.token
             }
@@ -22,7 +22,7 @@ const AdminBooks = () => {
 
     const deleteSutradharBook = async (id, file) => {
         try {
-            const { data } = await axios.post(`/api/v1/sutradhar/delete/${id}`, { file: file }, {
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sutradhar/delete/${id}`, { file: file }, {
                 headers: {
                     "Authorization": auth.token
                 }

@@ -22,7 +22,7 @@ const AdminAddTeam = () => {
             teamData.append('Mobile', mobile);
             teamData.append('Address', address);
             teamData.append('img', img);
-            const {data} = await axios.post(`/api/v1/team/create-team`, teamData, {
+            const {data} = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/team/create-team`, teamData, {
                 headers:{
                     'Authorization' : auth.token
                 }

@@ -9,7 +9,7 @@ const NewsPage = () => {
 
     const details = async () => {
         try {
-            const { data } = await axios.get('/api/v1/news/get-news');
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/get-news');
             if (data?.success) {
                 setNews(data?.results)
             }

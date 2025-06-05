@@ -34,7 +34,7 @@ const RegisterKarmawatiPage = () => {
             karmawatiData.append('BANKNAME', BANKNAME);
             karmawatiData.append('ACC', ACC);
             karmawatiData.append('IFCECODE', IFCECODE);
-            const { data } = await axios.post('/api/v1/karmawati/create', karmawatiData);
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/create', karmawatiData);
             if (data?.success) {
                 alert(data?.message);
                 window.location.reload();

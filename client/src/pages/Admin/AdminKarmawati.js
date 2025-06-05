@@ -12,7 +12,7 @@ const AdminKarmawati = () => {
 
     const gettingKarmawati = async () => {
         try {
-            const { data } = await axios.get('/api/v1/karmawati/admin-get-year', {
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/admin-get-year', {
                 headers: {
                     "Authorization": auth.token
                 }

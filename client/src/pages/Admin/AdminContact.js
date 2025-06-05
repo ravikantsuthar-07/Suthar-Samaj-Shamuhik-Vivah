@@ -8,7 +8,7 @@ const AdminContact = () => {
     const [auth] = useAuth();
 
     const contactData = async () => {
-        const {data} = await axios.get(`/api/v1/contact/get-contact`, {
+        const {data} = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/contact/get-contact`, {
             headers:{
                 "Authorization": auth.token
             }

@@ -26,7 +26,7 @@ const AdminAddKarmawati = () => {
             karmawatiData.append('amount', amount);
             karmawatiData.append('year', year);
             karmawatiData.append('img', img);
-            const {data} = await axios.post(`/api/v1/karmawati/create-whose`, karmawatiData, {
+            const {data} = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/create-whose`, karmawatiData, {
                 headers:{
                     'Authorization' : auth.token
                 }

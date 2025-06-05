@@ -12,7 +12,7 @@ const AdminWeddingList = () => {
 
     const gettingweddingYear = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/wedding/gettAllWedding/${params.year}`)
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/gettAllWedding/${params.year}`)
             if (data?.success) {
                 setWedding(data?.results);
             }
@@ -23,7 +23,7 @@ const AdminWeddingList = () => {
 
     const deleteWedding = async (id, file) => {
         try {
-            const { data } = await axios.post(`/api/v1/wedding/deleteWedding/${id}`, {file: file}, {
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/deleteWedding/${id}`, {file: file}, {
                 headers: {
                     "Authorization": auth.token
                 }

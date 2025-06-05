@@ -11,7 +11,7 @@ const AdminNews = () => {
 
     const getNews = async () => {
         try {
-            const { data } = await axios.get('/api/v1/news/get-admin-news', {
+            const { data } = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/get-admin-news', {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -32,7 +32,7 @@ const AdminNews = () => {
             } else {
                 status = 1;
             }
-            const { data } = await axios.put(`/api/v1/news/update-status/${id}`,
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/update-status/${id}`,
                 { status: status }, {
                 headers: {
                     "Authorization": auth.token
@@ -49,7 +49,7 @@ const AdminNews = () => {
 
     const deleteNews = async (id) => {
         try {
-            const { data } = await axios.delete(`/api/v1/news/delete-news/${id}`, {
+            const { data } = await axios.delete(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/delete-news/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -99,7 +99,7 @@ const AdminNews = () => {
                                                     <td>{n.S_Description}</td>
                                                     <td>{n.L_Description}</td>
                                                     <td>{n.Time}</td>
-                                                    <td><img src={`/static/news/${n.Image}`} width={150} height={120} alt='News' /></td>
+                                                    <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/news/${n.Image}`} width={150} height={120} alt='News' /></td>
                                                     <td>
                                                         <button className='btn btn-primary m-2' onClick={() => navigate(`/dashboard/admin/update_news/${n.id}`)} >Update</button>
                                                         <button className='btn btn-primary m-2' onClick={() => updateStatusNews(n.status, n.id)}>{n.status ? "Active" : "Deactive"}</button> 

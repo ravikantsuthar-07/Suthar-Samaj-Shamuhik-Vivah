@@ -20,7 +20,7 @@ const AdminAddSlider = () => {
             slider.append('img', img);
             slider.append('date', date);
             slider.append('SrNo', srNo);
-            const { data } = await axios.post('/api/v1/slider/create-slider',
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/create-slider',
                 slider,
                 {
                     headers: {

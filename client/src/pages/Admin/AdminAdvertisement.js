@@ -9,7 +9,7 @@ const AdminAdvertisement = () => {
 
     const getAdvertisementData = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/advertisment/get-admin`, {
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/advertisment/get-admin`, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -24,7 +24,7 @@ const AdminAdvertisement = () => {
 
     const deleteSutradharBook = async (id, file) => {
         try {
-            const { data } = await axios.post(`/api/v1/advertisment/delete/${id}`, { file: file }, {
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/advertisment/delete/${id}`, { file: file }, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -47,7 +47,7 @@ const AdminAdvertisement = () => {
             } else {
                 status = 1
             }
-            const {data} = await axios.put(`/api/v1/advertisment/update-status/${id}`, {status : status}, {
+            const {data} = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/advertisment/update-status/${id}`, {status : status}, {
                 headers:{
                     Authorization: auth.token
                 }

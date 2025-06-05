@@ -18,7 +18,7 @@ export default function AdminRoute() {
 
     useEffect(() => {
         const authCheck = async () => {
-            const res = await axios.get('/api/v1/rgister/admin-auth',
+            const res = await axios.get('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/rgister/admin-auth',
                 {
                     headers: {
                         "Authorization": auth?.token

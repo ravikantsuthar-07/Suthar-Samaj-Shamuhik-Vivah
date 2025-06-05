@@ -12,7 +12,7 @@ const AdminWeddingRegisterYearPage = () => {
 
     const gettingwedding = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/weddingRegister/get-wedding/${params.year}`, {
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/weddingRegister/get-wedding/${params.year}`, {
                 headers: {
                     "Authorization": auth.token
                 }
@@ -32,7 +32,7 @@ const AdminWeddingRegisterYearPage = () => {
     const updateStatus = async (id, status) => {
         try {
             status ? status = 0 : status = 1;
-            const { data } = await axios.put(`/api/v1/weddingRegister/status-update/${id}`, { status: status }, {
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/weddingRegister/status-update/${id}`, { status: status }, {
                 headers: {
                     Authorization: auth.token
                 }
@@ -48,7 +48,7 @@ const AdminWeddingRegisterYearPage = () => {
 
     const deleteWedding = async (id, file) => {
         try {
-            const { data } = await axios.post(`/api/v1/weddingRegister/delete/${id}`, { file: file }, {
+            const { data } = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/weddingRegister/delete/${id}`, { file: file }, {
                 headers: {
                     Authorization: auth.token
                 }
@@ -118,7 +118,7 @@ const AdminWeddingRegisterYearPage = () => {
                                                         <td>{c.groomMobile}</td>
                                                         <td>{c.groomAddress}</td>
                                                         <td>{formatDate(c.groomDOB)}</td>
-                                                        <td><img src={`/static/weddingRegister/${img[0]}`} width={70} alt='groom' /></td>
+                                                        <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/weddingRegister/${img[0]}`} width={70} alt='groom' /></td>
                                                         <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                     </tr>
                                                     <tr>
@@ -129,7 +129,7 @@ const AdminWeddingRegisterYearPage = () => {
                                                         <td>{c.BrideMobile}</td>
                                                         <td>{c.BrideAddress}</td>
                                                         <td>{formatDate(c.BrideDOB)}</td>
-                                                        <td><img src={`/static/weddingRegister/${img[1]}`} alt='Bride' width={70} /></td>
+                                                        <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/weddingRegister/${img[1]}`} alt='Bride' width={70} /></td>
                                                         <td><button type='button' className='btn btn-danger' onClick={() => deleteWedding(c.id, img)}>Delete</button></td>
                                                     </tr>
                                                 </>

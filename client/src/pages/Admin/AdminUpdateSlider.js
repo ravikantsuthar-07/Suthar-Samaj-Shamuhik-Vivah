@@ -15,7 +15,7 @@ const AdminUpdateSlider = () => {
 
     const getSingleSlider = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/slider/get-single-slider/${params.id}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/get-single-slider/${params.id}`);
             if (data?.success) {
                 setYear(data?.results[0].Year);
                 setImg(data?.results[0].path);
@@ -36,7 +36,7 @@ const AdminUpdateSlider = () => {
             slider.append('date', date);
             slider.append('SrNo', srNo);
 
-            const { data } = await axios.put(`/api/v1/slider/update-slider/${params.id}`,
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/slider/update-slider/${params.id}`,
                 slider,
                 {
                     headers: {

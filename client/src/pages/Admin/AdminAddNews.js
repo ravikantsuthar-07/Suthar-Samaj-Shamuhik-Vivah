@@ -20,7 +20,7 @@ const AdminAddNews = () => {
             newsData.append('S_Description', s_Description);
             newsData.append('L_Description', l_Description);
             newsData.append('img', img);
-            const {data} = await axios.post(`/api/v1/news/create-news`, newsData, {
+            const {data} = await axios.post(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/create-news`, newsData, {
                 headers:{
                     'Authorization' : auth.token
                 }

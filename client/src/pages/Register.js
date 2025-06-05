@@ -38,7 +38,7 @@ const Register = () => {
             formData.append('BrideAddress', brideAddress);
             formData.append('BrideDOB', brideDOB);
             formData.append('img', brideImg);
-            const { data } = await axios.post('/api/v1/weddingRegister/create', formData);
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/weddingRegister/create', formData);
             if (data?.success) {
                 alert(data?.message);
                 window.location.reload();

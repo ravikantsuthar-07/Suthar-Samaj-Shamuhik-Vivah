@@ -21,7 +21,7 @@ const RegisterSamanSamarohPage = () => {
             samanData.append('address', address);
             samanData.append('mob', mobile);
             samanData.append('img', img);
-            const { data } = await axios.post('/api/v1/sammanit/create', samanData);
+            const { data } = await axios.post('https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sammanit/create', samanData);
             if (data?.success) {
                 alert(data?.message);
                 window.location.reload();

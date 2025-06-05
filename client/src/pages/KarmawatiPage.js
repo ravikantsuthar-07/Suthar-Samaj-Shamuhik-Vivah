@@ -10,7 +10,7 @@ const KarmawatiPage = () => {
 
     const gettingKarmawati = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/karmawati/get-year`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/get-year`);
             if (data?.success) {
                 setKarmawati(data?.results);
             }

@@ -8,7 +8,7 @@ const AdminGalleryImage = () => {
     const [getImage, setGetImage] = useState([]);
     const gettingImage = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/gallery/get-images/${params.year}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/gallery/get-images/${params.year}`);
             if (data?.success) {
                 setGetImage(data?.results);
             }
@@ -29,7 +29,7 @@ const AdminGalleryImage = () => {
                         {getImage?.map((c, i) => (
                             <div className="col-md-2 col-sm-4 col-3 ">
                                 <div className="card infoCard">
-                                    <img src={`/static/gallery/${c.img}`} className="card-img-top" alt="Gallery" />
+                                    <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/gallery/${c.img}`} className="card-img-top" alt="Gallery" />
                                 </div>
                             </div>
                         ))}

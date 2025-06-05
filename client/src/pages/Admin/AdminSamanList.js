@@ -11,7 +11,7 @@ const AdminSamanList = () => {
 
     const gettingSamanYearVise = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/sammanit/get-admin/${params.year}`, {
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sammanit/get-admin/${params.year}`, {
                 headers:{
                     Authorization: auth.token
                 }
@@ -31,7 +31,7 @@ const AdminSamanList = () => {
             } else {
                 status = 1
             }
-            const { data } = await axios.put(`/api/v1/sammanit/update-status/${id}`, { status: status }, {
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/sammanit/update-status/${id}`, { status: status }, {
                 headers: {
                     Authorization: auth.token,
                 }
@@ -85,7 +85,7 @@ const AdminSamanList = () => {
                                                     <td>{c.Date_of_birth}</td>
                                                     <td>{c.Mobile}</td>
                                                     <td>{c.address}</td>
-                                                    <td><img src={`/static/sammanit/${c.Image}`} alt='Saman' width={50} height={50} /></td>
+                                                    <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/sammanit/${c.Image}`} alt='Saman' width={50} height={50} /></td>
                                                     <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                 </tr>
                                             )) }

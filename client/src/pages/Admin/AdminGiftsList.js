@@ -12,7 +12,7 @@ const AdminGiftsList = () => {
 
     const gettingweddingYear = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/wedding/gifts/${params.year}`)
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/gifts/${params.year}`)
             if (data?.success) {
                 setGift(data?.results);
             }
@@ -26,7 +26,7 @@ const AdminGiftsList = () => {
 
     const deleteGiftsss = async (id) => {
         try {
-            const { data } = await axios.delete(`/api/v1/wedding/deleteGift/${id}`, {
+            const { data } = await axios.delete(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/wedding/deleteGift/${id}`, {
                 headers: {
                     "Authorization": auth.token
                 }

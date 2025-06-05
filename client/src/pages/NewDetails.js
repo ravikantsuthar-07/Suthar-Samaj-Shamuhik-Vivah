@@ -10,7 +10,7 @@ const NewDetails = () => {
 
     const singleNews = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/news/get-single-news/${params.id}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/news/get-single-news/${params.id}`);
             if (data?.success) {
                 setNews(data?.results[0]);
             }
@@ -32,7 +32,7 @@ const NewDetails = () => {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-md-6 col-sm-6 col-12 col-lg-6'>
-                            <img src={`/static/news/${news.Image ? news.Image : "3.png"}`} width={'100%'} alt='newsImage' />
+                            <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/news/${news.Image ? news.Image : "3.png"}`} width={'100%'} alt='newsImage' />
                         </div>
                         <div className='col-md-6 col-sm-6 col-12 col-lg-6'>
                             <p id='short'>{news.S_Description}</p>

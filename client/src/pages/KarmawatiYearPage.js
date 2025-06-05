@@ -12,7 +12,7 @@ const KarmawatiYearPage = () => {
 
     const gettingYearByKarmawati = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/karmawati/get-by-year/${params.year}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/get-by-year/${params.year}`);
             if (data?.success) {
                 setKarma(data?.results);
                 if (data?.results.length === 0) {
@@ -27,7 +27,7 @@ const KarmawatiYearPage = () => {
 
     const gettingkarmawati = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/karmawati/get-by-year-whom/${params.year}`);
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/get-by-year-whom/${params.year}`);
             if (data?.success) {
                 setKarmawati(data?.results);
                 if (data?.results.length === 0) {
@@ -54,7 +54,7 @@ const KarmawatiYearPage = () => {
                         {karma?.map((d, i) => (
                             <div className='col-sm-2 col-md-2 col-lg-2' key={i + 1}>
                                 <div className="card infoCard team">
-                                    <img src={`/static/karmawati/${d.img}`} className="card-img-top" height={120} alt="karmawati" />
+                                    <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/karmawati/${d.img}`} className="card-img-top" height={120} alt="karmawati" />
                                     <div className="card-body">
                                         <h5 className="card-title">{d.name}</h5>
                                         <h5 className="card-title">स्व. {d.wifeof}</h5>
@@ -71,7 +71,7 @@ const KarmawatiYearPage = () => {
                     {karmawati?.map((d, i) => (
                             <div className='col-sm-2 col-md-2 col-lg-2' key={i + 1}>
                                 <div className="card infoCard team">
-                                    <img src={`/static/karmawati/${d.img}`} className="card-img-top" height={120} alt="karmawati" />
+                                    <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/karmawati/${d.img}`} className="card-img-top" height={120} alt="karmawati" />
                                     <div className="card-body">
                                         <h5 className="card-title">{d.name}</h5>
                                         <h5 className="card-title">{d.fatherName}</h5>

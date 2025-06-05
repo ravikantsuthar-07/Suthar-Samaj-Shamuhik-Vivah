@@ -17,7 +17,7 @@ const AdminKarmaList = () => {
             } else { 
                 status = 0;
             }
-            const { data } = await axios.put(`/api/v1/karmawati/update-status-give/${id}`, { status: status }, {
+            const { data } = await axios.put(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/update-status-give/${id}`, { status: status }, {
                 headers: {
                     Authorization: auth.token
                 }
@@ -36,7 +36,7 @@ const AdminKarmaList = () => {
 
     const gettingKarmawatiYear = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/karmawati/get-by-year-admin-whom/${params.year}`, {
+            const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/get-by-year-admin-whom/${params.year}`, {
                 headers:{
                     Authorization: auth.token
                 }
@@ -90,7 +90,7 @@ const AdminKarmaList = () => {
                                                     <td>{c.address}</td>
                                                     <td>{c.mobile}</td>
                                                     <td>{c.Amount}</td>
-                                                    <td><img src={`/static/karmawati/${c.img}`} width={50} height={50} alt='karmawati' /></td>
+                                                    <td><img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/karmawati/${c.img}`} width={50} height={50} alt='karmawati' /></td>
                                                     <td><button type='button' className='btn btn-primary' onClick={() => updateStatus(c.id, !c.status)}>{c.status ? "Activate" : "DeActivate"}</button></td>
                                                 </tr>
                                             ))}
