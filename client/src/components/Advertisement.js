@@ -69,7 +69,7 @@ const Advertisement = () => {
                         {sliders.map((t, i) => (
                             <div className='h-[500px] flex text-black rounded-xl' style={{overflowY: 'hidden'}}>
                                 <div className='h-56 rounded-t-xl bg-indigo-500 flex justify-center text-center items-center'>
-                                    <img src={`https://suthar-samaj-shamuhik-vivah.onrender.com/static/`.t.image} alt='template'  height={180} />
+                                    <img src={t.image} alt='template'  height={180} />
                                 </div>
                             </div>
                         ))}

@@ -15,7 +15,7 @@ const KarmawatiYearPage = () => {
             const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/get-by-year/${params.year}`);
             if (data?.success) {
                 setKarma(data?.results);
-                if (data?.results.length === 0) {
+                if (data?.results?.length === 0) {
                     navigate('/karmawati');
                 }
                 gettingkarmawati();
@@ -30,7 +30,7 @@ const KarmawatiYearPage = () => {
             const { data } = await axios.get(`https://suthar-samaj-shamuhik-vivah.onrender.com/api/v1/karmawati/get-by-year-whom/${params.year}`);
             if (data?.success) {
                 setKarmawati(data?.results);
-                if (data?.results.length === 0) {
+                if (data?.results?.length === 0) {
                     navigate('/karmawati');
                 }
             }
